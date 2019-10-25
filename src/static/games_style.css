@@ -4,7 +4,7 @@ body {
 }
 
 #wrapper {
-    font-family: "Noto Sans", sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 /*  main  */
@@ -27,6 +27,18 @@ main {
     background-size: cover;
 }
 
+.title .inner-title-box {
+    width: 100%;
+    height: 100px;
+    padding-top: 250px;
+}
+
+.title .inner-title {
+    margin: 0;
+    padding-left: 20%;
+    color: white;
+}
+
 .title .games-box {
     width: 100%;
     height: 300px;
@@ -34,27 +46,32 @@ main {
     grid-template-columns: 25% 25% 25% 25%;
     position: absolute;
     bottom: 0;
-
 }
 
 .title .games-box .game-box {
     position: relative;
+    color: white;
+    font-weight: bold;
 }
 
-.title .games-box .one {
-    background: #eee;
+.title .games-box .game-box:nth-child(1) {
+    background: url("img/games/full/full-battlefront.jpg") 50% 50% no-repeat;
+    background-size: cover;
 }
 
-.title .games-box .two {
-    background: #ddd;
+.title .games-box .game-box:nth-child(2) {
+    background: url("img/games/full/full-witcher.jpg") 50% 50% no-repeat;
+    background-size: cover;
 }
 
-.title .games-box .three {
-    background: #ccc;
+.title .games-box .game-box:nth-child(3) {
+    background: url("img/games/full/full-origins.jpg") 50% 50% no-repeat;
+    background-size: cover;
 }
 
-.title .games-box .four {
-    background: #bbb;
+.title .games-box .game-box:nth-child(4) {
+    background: url("img/games/full/full-mk.jpg") 50% 50% no-repeat;
+    background-size: cover;
 }
 
 .title .text {
@@ -64,7 +81,6 @@ main {
     padding-right: 15px;
     text-align: right;
 }
-
 
 /* for tablet */
 @media screen and (max-width: 800px) {
@@ -83,9 +99,7 @@ main {
 /* for mobile */
 @media screen and (max-width: 480px) {
 
-
 }
-
 
 /*  popular-games  */
 /**************************************************/
@@ -216,7 +230,6 @@ main {
     position: relative;
     background: white;
 }
-
 
 .mobile-games {
     width: 100%;

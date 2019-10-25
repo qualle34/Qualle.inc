@@ -15,7 +15,7 @@ function plusSlides(n) {
 }
 
 function showSlides(n) {
-    var i;
+     i;
     var slides = document.getElementsByClassName("mySlides");
     if (n > slides.length) {
         slideIndex = 1
@@ -30,12 +30,6 @@ function showSlides(n) {
     slides[slideIndex - 1].style.display = "block";
 }
 
-
-
-
-
-
-
 $(document).ready(function(){
     $('.menu-toggle').on('click',function(){
         $('.menu-toggle').toggleClass('active');
@@ -48,7 +42,6 @@ $(document).ready(function(){
         }
     });
 });
-
 
 $(function () {
     $(window).scroll(function () {
