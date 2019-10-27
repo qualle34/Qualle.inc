@@ -13,33 +13,29 @@ main {
     width: 100%;
 }
 
-.box {
-    width: 100%;
-}
-
 /*  Title  */
 /**************************************************/
-.title {
+.title-box {
     width: 100%;
-    height: 900px;
+    height: 1000px;
     position: relative;
     background: url("img/bg/anthem.jpg") 50% 50% no-repeat;
     background-size: cover;
 }
 
-.title .inner-title-box {
+.title-box .inner-title-box {
     width: 100%;
     height: 100px;
     padding-top: 250px;
 }
 
-.title .inner-title {
+.title-box .inner-title {
     margin: 0;
     padding-left: 20%;
     color: white;
 }
 
-.title .games-box {
+.title-box .games-box {
     width: 100%;
     height: 300px;
     display: grid;
@@ -48,33 +44,27 @@ main {
     bottom: 0;
 }
 
-.title .games-box .game-box {
+.title-box .games-box .game-box {
     position: relative;
     color: white;
     font-weight: bold;
+    overflow: hidden;
+    background: black;
 }
 
-.title .games-box .game-box:nth-child(1) {
-    background: url("img/games/full/full-battlefront.jpg") 50% 50% no-repeat;
-    background-size: cover;
+.title-box .games-box .game-box .image:hover {
+    transform: scale(1.1);
+    opacity: 1;
 }
 
-.title .games-box .game-box:nth-child(2) {
-    background: url("img/games/full/full-witcher.jpg") 50% 50% no-repeat;
-    background-size: cover;
+.title-box .games-box .game-box .image {
+    width: 100%;
+    height: auto;
+    opacity: 0.7;
+    transition: 0.5s;
 }
 
-.title .games-box .game-box:nth-child(3) {
-    background: url("img/games/full/full-origins.jpg") 50% 50% no-repeat;
-    background-size: cover;
-}
-
-.title .games-box .game-box:nth-child(4) {
-    background: url("img/games/full/full-mk.jpg") 50% 50% no-repeat;
-    background-size: cover;
-}
-
-.title .text {
+.title-box .games-box .game-box .text {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -125,29 +115,6 @@ main {
 
 .popular-games .games-box .game-box {
     position: relative;
-}
-
-.popular-games .games-box .one {
-    background: #eee;
-}
-
-.popular-games .games-box .two {
-    background: #eee;
-}
-
-.popular-games .games-box .three {
-    background: #eee;
-}
-
-.popular-games .games-box .four {
-    background: #eee;
-}
-
-.popular-games .games-box .five {
-    background: #eee;
-}
-
-.popular-games .games-box .six {
     background: #eee;
 }
 
@@ -167,49 +134,41 @@ main {
     width: 100%;
     height: 600px;
     position: relative;
-    background-image: url("img/bg/arena.jpg");
-    background-position: center;
+    background: url("img/bg/arena.jpg") center;
     background-size: cover;
+}
+
+.sport-games::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;
 }
 
 .sport-games .games-box {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    margin-top: -270px;
-    margin-left: -640px;
+    left: calc(50% - 450px);
+    top: calc(50% - 150px);
     display: grid;
-    grid-template-columns: 400px 400px 400px;
-    grid-template-rows: 250px 250px;
-    grid-gap: 40px;
+    grid-template-columns: 200px 200px 200px;
+    grid-template-rows: 100px 100px;
+    grid-gap: 100px;
 }
 
 .sport-games .games-box .game-box {
     position: relative;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    transition: 0.5s;
 }
 
-.sport-games .games-box .one {
-    background: #eee;
-}
-
-.sport-games .games-box .two {
-    background: #eee;
-}
-
-.sport-games .games-box .three {
-    background: #eee;
-}
-
-.sport-games .games-box .four {
-    background: #eee;
-}
-
-.sport-games .games-box .five {
-    background: #eee;
-}
-
-.sport-games .games-box .six {
-    background: #eee;
+.sport-games .games-box .game-box:hover {
+    transform: scale(1.1);
 }
 
 /* for tablet */
@@ -252,29 +211,6 @@ main {
 
 .mobile-games .games-box .game-box {
     position: relative;
-}
-
-.mobile-games .games-box .one {
-    background: #eee;
-}
-
-.mobile-games .games-box .two {
-    background: #eee;
-}
-
-.mobile-games .games-box .three {
-    background: #eee;
-}
-
-.mobile-games .games-box .four {
-    background: #eee;
-}
-
-.mobile-games .games-box .five {
-    background: #eee;
-}
-
-.mobile-games .games-box .six {
     background: #eee;
 }
 
@@ -308,8 +244,12 @@ main {
 }
 
 .other-games .game-box:hover {
-
     background: #0077a6;
+}
+
+.other-games .game-box img {
+    width: 100%;
+    height: auto;
 }
 
 
