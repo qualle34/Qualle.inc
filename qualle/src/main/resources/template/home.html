@@ -1,0 +1,319 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>Qualle.inc</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" th:href="@{css/home.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/popup.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/header.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/footer.css}"/>
+
+    <script src="js/home.js" type="text/javascript"></script>
+    <script src="js/common.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div id="wrapper">
+
+    <header>
+        <div id="header"> <!-- Header -->
+            <div class="header-left">
+                <a class="head-logo">Qualle.inc</a>
+            </div>
+
+            <div class="header-menu">
+                <div class="menu-toggle">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="cross">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-right" id="header-right"><!-- Menu for pc -->
+                <a href="/service" class="head_services">Услуги</a>
+                <a href="/games" class="head_games">Игры</a>
+                <a href="/news" class="head_news">Новости</a>
+                <a href="/about" class="head_about">О Нас</a>
+                <a href="/career" class="head_career">Вакансии</a>
+                <a href="/contacts" class="head_contacts">Контакты</a>
+                <a href="/login" class="head_login">Вход</a>
+                <a href="/cart">
+                    <div class="head_cart"></div>
+                </a>
+                <a href="/profile">
+                    <div class="head_user"></div>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="popup" id="ads-popup">
+        <button class="close" type="button" onclick="closePopup()">X</button>
+        <img src="img/ads/1xbet.jpg">
+    </div>
+
+    <main><!-- main content -->
+        <section class="slides"><!-- slides -->
+            <div class="container">
+
+                <div class="mySlides fade yennefer">
+
+                    <div class="title_box">
+                        <div class="title">
+                            <span> КАРЬЕРА в Qualle.inc </span>
+                        </div>
+                        <div class="link">
+                            <button class="button">Посмотреть</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mySlides fade solders">
+                    <div class="title_box">
+                        <div class="title">
+                            <span> АРТ И ГРАФИКА </span>
+                        </div>
+                        <div class="link">
+                            <button class="button">Посмотреть</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mySlides fade servers">
+                    <div class="title_box">
+                        <div class="title">
+                            <span> СЕРВЕРНОЕ ОБСЛУЖИВАНИЕ ИГР </span>
+                        </div>
+
+                        <div class="link">
+                            <button class="button">Узнать Больше</button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+            </div>
+        </section>
+
+        <section class="development"><!-- icons of games -->
+
+            <div class="dev">
+                <img class="image" alt="Разработки" src="img/dev/dev_mkx.png" width="90%" height="70%"/>
+            </div>
+
+            <div class="dev">
+                <img class="image" alt="Разработки" src="img/dev/dev_pubg.png" width="90%" height="70%"/>
+            </div>
+
+            <div class="dev">
+                <img class="image" alt="Разработки" src="img/dev/dev_rdr2.png" width="90%" height="70%"/>
+            </div>
+
+            <div class="dev">
+                <img class="image" alt="Разработки" src="img/dev/dev_aco.png" width="90%" height="70%"/>
+            </div>
+
+            <div class="dev">
+                <img class="image" alt="Разработки" src="img/dev/dev_antem.png" width="90%" height="70%"/>
+            </div>
+
+            <div class="dev">
+                <img class="image" alt="Разработки" src="img/dev/dev_cod.png" width="90%" height="70%"/>
+            </div>
+        </section>
+
+        <section class="statistics"><!-- our statistics -->
+
+            <div class="st first">
+                <div class="st_round">
+                    <img src="img/statistics/hand.png" alt="">
+                </div>
+                <div class="st_count">
+                    <p>60</p>
+                </div>
+                <div class="st_description">
+                    <p>Компаний работают <br/> с нами</p>
+                </div>
+            </div>
+
+            <div class="st second">
+                <div class="st_round">
+                    <img src="img/statistics/gamepad.png" alt="">
+                </div>
+                <div class="st_count">
+                    <p>100</p>
+                </div>
+                <div class="st_description">
+                    <p>Приложений и игр <br/>
+                        создано</p>
+                </div>
+            </div>
+
+            <div class="st third">
+                <div class="st_round">
+                    <img src="img/statistics/users.png" alt="">
+                </div>
+                <div class="st_count">
+                    <p>700</p>
+                </div>
+                <div class="st_description">
+                    <p>Сотрудников в нашей <br/>
+                        компании</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about"><!-- about -->
+
+            <div class="left">
+                <img alt="people" src="img/peoples.jpg">
+            </div>
+
+            <div class="right">
+                <div class="text">
+                    <p>Мировая студия разработки компьютерных видеоигр</p>
+                    <p>Qualle.inc — ведущая компания по разработке компьютерных
+                        видеоигр. Офисы компании находятся в Беларуси, США, России
+                        и Польше. Мы тесно сотрудничаем с ведущими мировыми
+                        издателями и обеспечиваем всеми необходимыми ресурсами
+                        для создания ААА игр.</p>
+                    <button class="button btn-about">Узнать Больше</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="certificates"><!-- icons of certificates -->
+
+            <div class="cert">
+                <img class="image" alt="Сертификаты" src="img/cert/cert_ps3.png">
+            </div>
+
+            <div class="cert">
+                <img class="image" alt="Сертификаты" src="img/cert/cert_ps4.png"/>
+            </div>
+
+            <div class="cert">
+                <img class="image" alt="Сертификаты" src="img/cert/cert_xbox.png">
+            </div>
+
+            <div class="cert">
+                <img class="image" alt="Сертификаты" src="img/cert/cert_oracle.png">
+            </div>
+
+            <div class="cert">
+                <img class="image" alt="Сертификаты" src="img/cert/cert_ms.png">
+            </div>
+
+            <div class="cert">
+                <img class="image" alt="Сертификаты" src="img/cert/cert_nint.png">
+            </div>
+        </section>
+
+
+        <section class="services"><!-- services -->
+
+            <div class="left">
+                <div class="text">
+                    <p>Услуги</p>
+
+                    <p> Мы полностью обеспечиваем наших партнёров всеми необходимыми
+                        ресурсами для создания непревзойдённых ААА игр. Объединяя свой
+                        многолетний опыт и свежие идеи, мы предлагаем полный цикл
+                        разработки видеоигр, а так же возможности совместной
+                        распределённой разработки наших команд вместе.
+                    </p>
+                    <button class="button">Узнать Больше</button>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer"><!-- footer -->
+
+            <div class="box">
+                <p>Беларусь</p>
+                <p>ул. Советская 2<br/>
+                    +375 35 123 12 34<br/>
+                    qualle.rb.inc@gmail.com
+                </p>
+
+            </div>
+
+            <div class="box">
+                <p>Россия</p>
+                <p>Кирова, 24<br/>
+                    +7 33 497 89 56<br/>
+                    qualle.ru.inc@gmail.com
+                </p>
+            </div>
+
+            <div class="box">
+                <p>США</p>
+                <p>CA, Larksfur Dr. 34<br/>
+                    +1 32 435 23 43<br/>
+                    qualle.us.inc@gmail.com
+                </p>
+            </div>
+
+            <div class="comp">
+                <p>© 2019, Qualle.inc, Все права защищены</p>
+            </div>
+        </footer>
+
+
+        <a href="#"><!-- linkBar -->
+            <div class="linkBar"></div>
+        </a>
+
+        <div class="buttonHide"><!-- buttonHide -->
+            <div id="buttonTop"><img src="img/arrow.png" alt=""></div>
+        </div>
+
+    </main>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
