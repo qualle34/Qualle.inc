@@ -37,7 +37,7 @@ main {
 
 .title-box .games-box {
     width: 100%;
-    height: 300px;
+    height: auto;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     position: absolute;
@@ -52,16 +52,17 @@ main {
     background: black;
 }
 
+.title-box .games-box .game-box .image {
+    opacity: 0.7;
+    transition: 0.5s;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
 .title-box .games-box .game-box .image:hover {
     transform: scale(1.1);
     opacity: 1;
-}
-
-.title-box .games-box .game-box .image {
-    width: 100%;
-    height: auto;
-    opacity: 0.7;
-    transition: 0.5s;
 }
 
 .title-box .games-box .game-box .text {
@@ -75,9 +76,9 @@ main {
 /* for tablet */
 @media screen and (max-width: 800px) {
 
-    .title .games-box {
+    .title-box .games-box {
         width: 100%;
-        height: 200px;
+        height: 400px;
         display: grid;
         grid-template-columns: 50% 50%;
         grid-template-rows: 50% 50%;
@@ -89,6 +90,15 @@ main {
 /* for mobile */
 @media screen and (max-width: 480px) {
 
+    .title-box .games-box {
+        width: 100%;
+        height: 300px;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 50% 50%;
+        position: absolute;
+        bottom: 0;
+    }
 }
 
 /*  popular-games  */
@@ -114,8 +124,22 @@ main {
 }
 
 .popular-games .games-box .game-box {
-    position: relative;
-    background: #eee;
+    padding: 20px;
+}
+
+.popular-games .games-box .game-box:nth-child(even)::before {
+    content: '';
+    height: 100px;
+    width: 100px;
+    background: #fceeff;
+    filter: blur(50px);
+    position: absolute;
+}
+
+.popular-games .games-box .game-box .image {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
 }
 
 /* for tablet */
@@ -126,6 +150,99 @@ main {
 /* for mobile */
 @media screen and (max-width: 480px) {
 
+}
+
+/*  search  */
+/**************************************************/
+.search {
+    width: 100%;
+    background: #00425b;
+}
+
+.search .search-box {
+    width: 30%;
+    height: 100%;
+    padding: 100px 0;
+    position: relative;
+    margin: 0 auto;
+    background: #00425b;
+}
+
+input, button {
+    border: none;
+    outline: none;
+    background: white;
+}
+
+input {
+    width: 100%;
+    height: 42px;
+    padding-left: 15px;
+}
+
+button {
+    height: 42px;
+    width: 42px;
+    position: absolute;
+    top: 100px;
+    right: 0;
+    cursor: pointer;
+}
+
+button:before {
+    content: "\f002";
+    font-family: FontAwesome;
+    font-size: 16px;
+    color: #00b0ff;
+}
+
+/*  result  */
+/**************************************************/
+.result {
+    width: 100%;
+    display: none;
+    background: white;
+    animation-name: animate;
+    animation-duration: 0.6s;
+}
+
+.result .result-box {
+    width: 30%;
+    height: 100%;
+    margin: auto;
+    padding: 20px 0 5px;
+}
+
+.result .result-box .game {
+    margin: auto;
+}
+
+.result .result-box .name {
+    margin: 5px;
+    color: black;
+    text-decoration: none;
+}
+
+.result .result-box .name:hover {
+    color: #00b0ff;
+}
+
+.result .result-box .line {
+    width: 100%;
+    height: 1px;
+    margin-bottom: 20px;
+    background: #9b9b9b;
+}
+
+@keyframes animate {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
 }
 
 /*  sport-games  */
@@ -185,14 +302,8 @@ main {
 /**************************************************/
 .mobile-games {
     width: 100%;
-    height: 900px;
-    position: relative;
-    background: white;
-}
-
-.mobile-games {
-    width: 100%;
-    height: 900px;
+    height: 500px;
+    padding: 100px 0;
     position: relative;
     background: white;
 }
@@ -201,17 +312,34 @@ main {
     position: absolute;
     left: 50%;
     top: 50%;
-    margin-top: -270px;
-    margin-left: -640px;
+    margin-top: -245px;
+    margin-left: -310px;
     display: grid;
-    grid-template-columns: 400px 400px 400px;
-    grid-template-rows: 250px 250px;
-    grid-gap: 40px;
+    grid-template-columns: 400px 400px;
+    grid-template-rows: 150px 150px 150px;
+    grid-gap: 20px;
 }
 
 .mobile-games .games-box .game-box {
     position: relative;
-    background: #eee;
+}
+
+.mobile-games .games-box .game-box img {
+    width: 100px;
+    height: 100px;
+    padding-top: 25px;
+    float: left;
+}
+
+.mobile-games .games-box .game-box .text {
+    padding-left: 50px;
+    padding-top: 25px;
+    float: left;
+}
+
+.mobile-games .games-box .game-box .platform {
+    font-size: 13px;
+    color: #00b0ff;
 }
 
 /* for tablet */
@@ -235,26 +363,24 @@ main {
 }
 
 .other-games .game-box {
-    width: 12%;
+    width: 20%;
     height: 170px;
     margin: 0;
     padding: 0;
     position: relative;
-    background: #004d6c;
     overflow: hidden;
 }
 
-.other-games .game-box:hover {
-    background: #0077a6;
+.other-games .game-box img:hover {
+    transform: scale(1.1);
+    opacity: 1;
 }
 
 .other-games .game-box img {
+    object-fit: cover;
+    height: 100%;
     width: 100%;
-    height: auto;
+    overflow: hidden;
+    opacity: 0.7;
+    transition: 0.5s;
 }
-
-
-
-
-
-

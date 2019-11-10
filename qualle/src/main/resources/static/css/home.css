@@ -523,6 +523,7 @@ main {
     align-items: center;
     justify-content: center;
     color: white;
+    filter: invert(100%)
 }
 
 .services .left {
@@ -592,7 +593,6 @@ main {
         left: -25px;
         top: -25px;
     }
-
 }
 
 /* for mobile */
@@ -620,7 +620,6 @@ main {
         left: -25px;
         top: -25px;
     }
-
 }
 
 
@@ -669,7 +668,6 @@ main {
     border: 1px solid white;
     color: #00b0ff;
 }
-
 
 /*    linkBar   */
 /**************************************************/
