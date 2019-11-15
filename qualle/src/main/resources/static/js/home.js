@@ -4,7 +4,6 @@ window.onload = currentSlide;
 
 function currentSlide() {
     showSlides(2);
-    document.getElementById("services").style.filter = "grayscale(100%)";
 }
 
 function plusSlides(n) {
@@ -13,7 +12,7 @@ function plusSlides(n) {
 
 function showSlides(n) {
 
-    slides = document.getElementsByClassName("mySlides");
+    var slides = document.getElementsByClassName("mySlides");
     if (n > slides.length) {
         slideIndex = 1
     }
@@ -27,16 +26,17 @@ function showSlides(n) {
     slides[slideIndex - 1].style.display = "block";
 }
 
+
 showAds = setInterval(function () {
     openPopup()
-}, 5000 * 60);
+}, 5000);
 
 function openPopup() {
-    popup = document.getElementById("ads-popup");
+    var popup = document.getElementById("ads-popup");
     popup.style.display = "block";
 }
 
 function closePopup() {
-    popup = document.getElementById("ads-popup");
+    var popup = document.getElementById("ads-popup");
     popup.style.display = "none";
 }

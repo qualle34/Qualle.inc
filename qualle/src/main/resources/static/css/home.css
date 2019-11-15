@@ -288,8 +288,6 @@ main {
 }
 
 
-
-
 /*   for tablet   */
 @media screen and (min-width: 480px) {
 
@@ -351,7 +349,6 @@ main {
     margin: 0 20%;
     height: auto;
     max-width: 60%;
-
     box-shadow: 0 0 20px #777777;
 }
 
@@ -523,7 +520,6 @@ main {
     align-items: center;
     justify-content: center;
     color: white;
-    filter: invert(100%)
 }
 
 .services .left {

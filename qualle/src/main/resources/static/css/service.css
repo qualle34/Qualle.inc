@@ -13,56 +13,15 @@ main {
     width: 100%;
 }
 
-.box {
+/*  container  */
+/**************************************************/
+.container {
     width: 100%;
+    height: 2320px;
+    background: url("../img/page/service.png");
+    background-size: 100%;
 }
 
-/*  Title  */
-/**************************************************/
-.title {
-    width: 100%;
-    height: 600px;
-    background: url("../img/chort.jpg") no-repeat;
-    background-size: cover;
-}
-
-
-
-/*  development  */
-/**************************************************/
-.development {
-    width: 100%;
-    height: 500px;
-    background: white;
-}
-
-
-
-/*  porting  */
-/**************************************************/
-.porting {
-    width: 100%;
-    height: 600px;
-    background: linear-gradient(#001bff, #0a00a4);
-}
-
-
-
-/*  graphic  */
-/**************************************************/
-.graphic {
-    width: 100%;
-    height: 700px;
-    background: url("../img/skyrim.jpg");
-    background-size: cover;
-    opacity: 0.1;
-}
-
-
-
-/*  certificates  */
-/**************************************************/
-.certificates {
-    width: 100%;
-    height: 200px;
+footer {
+    background: #e4e4e4;
 }

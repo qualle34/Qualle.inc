@@ -2,7 +2,7 @@
 -- -----------------------------------------------------
 -- Schema qualle.inc
 -- -----------------------------------------------------
-DROP DATABASE `qualle`;
+DROP DATABASE IF EXISTS `qualle`;
 CREATE SCHEMA `qualle` DEFAULT CHARACTER SET utf8 ;
 USE `qualle` ;
 
