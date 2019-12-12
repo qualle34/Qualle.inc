@@ -1,0 +1,23 @@
+INSERT INTO qualle.user(name, lastname, birthdate) values('Андрей', 'Андреев', '2001-12-08');
+INSERT INTO qualle.user(name, lastname, birthdate) values('Дима', 'Димов', '1990-12-08');
+INSERT INTO qualle.user(name, lastname, birthdate) values('Максим', 'Максимов', '1995-12-04');
+INSERT INTO qualle.user(name, lastname, birthdate) values('Лена', 'Ленова', '1967-02-02');
+INSERT INTO qualle.user(name, lastname, birthdate) values('Аня', 'Ааааа', '1988-12-09');
+INSERT INTO qualle.user(name, lastname, birthdate) values('Коля', 'Котлин', '1960-12-09');
+INSERT INTO qualle.user(name, lastname, birthdate) values('Света', 'Свет', '1989-12-09');
+INSERT INTO qualle.user(name, lastname, birthdate) values('Таня', 'Танина', '1997-12-09');
+INSERT INTO qualle.user(name, lastname, birthdate) values('Егор', 'Егоров', '1978-12-09');
+INSERT INTO qualle.user(name, lastname, birthdate) values('Катя', 'Катева', '1956-12-09');
+INSERT INTO qualle.user(name, lastname, birthdate) values('Admin', 'Admin', '1998-12-09');
+
+INSERT INTO qualle.creds values(1, 'A1n', 'pas', 'USER');
+INSERT INTO qualle.creds values(2, 'Dimmer', 'pos', 'USER');
+INSERT INTO qualle.creds values(3, 'Maximer', '$2a$10$ge8V9B.RtVvf8/2SlGLemui1ohaz93UGiepzPCGiGZVnm/hnCSkxm', 'USER');
+INSERT INTO qualle.creds values(4, 'Vova', '$2a$10$/SftPQLuet74uEXbzap17e3JJyt6wO8RTzulmY71U8GlURTnvqdwi', 'USER');     
+INSERT INTO qualle.creds values(5, 'Anna', '$2a$10$HgqfPiefsadzs8H5AxBvpeuu.gajP2nHuAORmyf4sPK3PB/EML/i6', 'USER');         
+INSERT INTO qualle.creds values(6, 'Kola', '$2a$10$wGrKQj/d6zpi1q5XWyPByeGgVLUd4zhBzI.2Y9oWkBdFGzgsTxGPC', 'USER');            
+INSERT INTO qualle.creds values(7, 'Svet', '$2a$10$Q9VU53RuOuY772z0/uei2ODhWXq.rWGFCLCi5ysehAfCUrm1KjOnu', 'USER');            
+INSERT INTO qualle.creds values(8, 'Tanya', '$2a$10$o67Y3mfdnC//M/9CoSgBcOKjQrzL/LJ0M2IyrXyEPWqaD7vNEejzm', 'USER');       
+INSERT INTO qualle.creds values(9, 'Egor', '$2a$10$4hXHWtwzje2gXb8gCM772.Pd3DQX.bQLTX7fNL1Tmu2zXdbY4Q7VW', 'USER');         
+INSERT INTO qualle.creds values(10, 'Katya', '$2a$10$vjsSVPqs4Cu7im3JoxkVMu67to9xtADpSJuRzL5XnOpgqEQmP0SWC', 'USER');       
+INSERT INTO qualle.creds values(11, 'admin', '$2a$10$dt1Jmg.w/sgjVSo2u7Vks.CD6wOGe2PqX.vB9uVPfVswyIeS99/46', 'USER'); 

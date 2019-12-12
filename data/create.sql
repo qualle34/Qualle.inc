@@ -10,22 +10,21 @@ USE `qualle` ;
 -- Table `qualle`.`user`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `qualle`.`user` (
-  `id` BIGINT NOT NULL,
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `lastname` VARCHAR(45) NULL,
-  `birtdate` VARCHAR(45) NULL,
-  `role` VARCHAR(45) NOT NULL,
+  `birthdate` DATE NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `qualle`.`creds`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `qualle`.`creds` (
   `user_id` BIGINT NOT NULL,
-  `login` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
+  `login` VARCHAR(25) NOT NULL,
+  `password` VARCHAR(100) NOT NULL,
+  `role` VARCHAR(15) NOT NULL,
   PRIMARY KEY (`user_id`),
   CONSTRAINT `creds_user_fk`
     FOREIGN KEY (`user_id`)
@@ -34,22 +33,20 @@ CREATE TABLE IF NOT EXISTS `qualle`.`creds` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `qualle`.`category`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `qualle`.`category` (
-  `id` BIGINT NOT NULL,
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `qualle`.`developer`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `qualle`.`developer` (
-  `id` BIGINT NOT NULL,
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NOT NULL,
   `description` VARCHAR(45) NULL,
   `contacts` VARCHAR(45) NULL,
@@ -57,12 +54,11 @@ CREATE TABLE IF NOT EXISTS `qualle`.`developer` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `qualle`.`game`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `qualle`.`game` (
-  `id` BIGINT NOT NULL,
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
   `category_id` BIGINT NULL,
   `developer_id` BIGINT NOT NULL,
   `title` VARCHAR(45) NOT NULL,
@@ -76,7 +72,6 @@ CREATE TABLE IF NOT EXISTS `qualle`.`game` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `qualle`.`cart`
 -- -----------------------------------------------------
@@ -89,7 +84,6 @@ CREATE TABLE IF NOT EXISTS `qualle`.`cart` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `qualle`.`user_game`
@@ -111,19 +105,6 @@ CREATE TABLE IF NOT EXISTS `qualle`.`user_game` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
--- -----------------------------------------------------
--- Table `qualle`.`summary`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `qualle`.`summary` (
-  `id` BIGINT NOT NULL,
-  `title` VARCHAR(45) NOT NULL,
-  `description` VARCHAR(45) NULL,
-  `file` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB;
-
-
 -- -----------------------------------------------------
 -- Table `qualle`.`cart_game`
 -- -----------------------------------------------------
@@ -144,7 +125,6 @@ CREATE TABLE IF NOT EXISTS `qualle`.`cart_game` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
 -- -----------------------------------------------------
 -- Table `qualle`.`dev_game`
 -- -----------------------------------------------------
@@ -163,4 +143,15 @@ CREATE TABLE IF NOT EXISTS `qualle`.`dev_game` (
     REFERENCES `qualle`.`game` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+-- Table `qualle`.`summary`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `qualle`.`summary` (
+  `id` BIGINT NOT NULL,
+  `title` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(45) NULL,
+  `file` VARCHAR(255) NOT NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
