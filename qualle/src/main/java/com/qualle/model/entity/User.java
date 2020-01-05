@@ -1,4 +1,4 @@
-package com.qualle.entity;
+package com.qualle.model.entity;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,10 +12,7 @@ public class User {
     private long id;
     private String name;
     private String lastname;
-
-    @Column(columnDefinition = "DATETIME")
-    @Temporal(TemporalType.DATE)
-    private Date birthdate;
+    private String phone;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Creds creds;
@@ -23,10 +20,10 @@ public class User {
     public User() {
     }
 
-    public User(String name, String lastname, Date birthdate) {
+    public User(String name, String lastname, String phone) {
         this.name = name;
         this.lastname = lastname;
-        this.birthdate = birthdate;
+        this.phone = phone;
     }
 
     public long getId() {
@@ -53,12 +50,12 @@ public class User {
         this.lastname = lastname;
     }
 
-    public Date getBirthdate() {
-        return birthdate;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public Creds getCreds() {
@@ -72,6 +69,6 @@ public class User {
 
     @Override
     public String toString() {
-        return id + " " + name + " " + lastname + " " + birthdate;
+        return id + " " + name + " " + lastname + " " + phone;
     }
 }

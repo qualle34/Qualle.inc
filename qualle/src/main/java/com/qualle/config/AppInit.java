@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication(scanBasePackages = "com.qualle")
 @ComponentScan("com.qualle")
-@EntityScan("com.qualle.entity")
+@EntityScan("com.qualle.model.entity")
 @EnableJpaRepositories("com.qualle.repository")
 public class AppInit {
 

@@ -1,4 +1,4 @@
-package com.qualle.entity;
+package com.qualle.model.entity;
 
 import javax.persistence.*;
 

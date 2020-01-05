@@ -1,7 +1,7 @@
 package com.qualle.controller;
 
-import com.qualle.api.service.IUserService;
-import com.qualle.entity.User;
+import com.qualle.service.UserService;
+import com.qualle.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class GameController {
 
     @Autowired
-    IUserService userService;
+    UserService userService;
 
     @GetMapping(value = "/games")
     public String getGamesPage() {

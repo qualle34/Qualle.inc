@@ -1,41 +1,21 @@
 package com.qualle.service;
 
-import com.qualle.api.service.IUserService;
-import com.qualle.entity.User;
-import com.qualle.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.qualle.model.dto.UserRegistrationDto;
+import com.qualle.model.entity.User;
 
 import java.util.Optional;
 
-@Service
-public class UserService implements IUserService {
+public interface UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    Optional<User> getById(long id);
 
-    @Override
-    public Optional<User> getById(long id) {
-        return userRepository.findById(id);
-    }
+    User getUserByLogin(String login);
 
-    @Override
-    public User getUserByLogin(String login) {
-        return null;
-    }
+    void add(User user);
 
-    @Override
-    public void add(User user) {
-        userRepository.save(user);
-    }
+    void add(UserRegistrationDto user);
 
-    @Override
-    public void update(User user) {
-        userRepository.save(user);
-    }
+    void update(User user);
 
-    @Override
-    public void delete(User user) {
-        userRepository.delete(user);
-    }
+    void delete(User user);
 }
