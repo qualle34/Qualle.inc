@@ -1,5 +1,6 @@
 package com.qualle.service;
 
+import com.qualle.model.dto.UserProfileDto;
 import com.qualle.model.dto.UserRegistrationDto;
 import com.qualle.model.entity.User;
 
@@ -9,7 +10,11 @@ public interface UserService {
 
     Optional<User> getById(long id);
 
-    User getUserByLogin(String login);
+    UserProfileDto getDtoById(long id);
+
+    User getByLogin(String login);
+
+    UserProfileDto getDtoByLogin(String login);
 
     void add(User user);
 

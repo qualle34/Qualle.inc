@@ -1,0 +1,20 @@
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#wrapper {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/*  main  */
+/**************************************************/
+main {
+    width: 100%;
+}
+
+/*  container  */
+/**************************************************/
+.container {
+    width: 100%;
+}

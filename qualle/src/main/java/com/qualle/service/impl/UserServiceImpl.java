@@ -1,5 +1,6 @@
 package com.qualle.service.impl;
 
+import com.qualle.model.dto.UserProfileDto;
 import com.qualle.model.dto.UserRegistrationDto;
 import com.qualle.model.entity.Creds;
 import com.qualle.model.entity.User;
@@ -23,8 +24,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserByLogin(String login) {
+    public UserProfileDto getDtoById(long id) {
+        Optional<User> optionalUser = userRepository.findById(id);
+        User user = optionalUser.orElseGet(User::new);
+        return new UserProfileDto(user.getName(), user.getLastname(), "login", user.getPhone());
+    }
+
+    @Override
+    public User getByLogin(String login) {
         return userRepository.findByLoginFetchCreds(login);
+    }
+
+    @Override
+    public UserProfileDto getDtoByLogin(String login) {
+        User user = getByLogin(login);
+        return new UserProfileDto(user.getName(), user.getLastname(), user.getCreds().getLogin(), user.getPhone());
     }
 
     @Override
