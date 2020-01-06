@@ -20,4 +20,4 @@ INSERT INTO qualle.creds values(7, 'Svet', '$2a$10$Q9VU53RuOuY772z0/uei2ODhWXq.r
 INSERT INTO qualle.creds values(8, 'Tanya', '$2a$10$o67Y3mfdnC//M/9CoSgBcOKjQrzL/LJ0M2IyrXyEPWqaD7vNEejzm', 'USER');       
 INSERT INTO qualle.creds values(9, 'Egor', '$2a$10$4hXHWtwzje2gXb8gCM772.Pd3DQX.bQLTX7fNL1Tmu2zXdbY4Q7VW', 'USER');         
 INSERT INTO qualle.creds values(10, 'Katya', '$2a$10$vjsSVPqs4Cu7im3JoxkVMu67to9xtADpSJuRzL5XnOpgqEQmP0SWC', 'USER');       
-INSERT INTO qualle.creds values(11, 'admin', '$2a$10$dt1Jmg.w/sgjVSo2u7Vks.CD6wOGe2PqX.vB9uVPfVswyIeS99/46', 'USER'); 
+INSERT INTO qualle.creds values(11, 'admin', '$2a$10$dt1Jmg.w/sgjVSo2u7Vks.CD6wOGe2PqX.vB9uVPfVswyIeS99/46', 'ADMIN'); 

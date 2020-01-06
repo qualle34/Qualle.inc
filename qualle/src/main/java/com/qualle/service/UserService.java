@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface UserService {
 
-    Optional<User> getById(long id);
+    User getById(long id);
 
     UserProfileDto getDtoById(long id);
 

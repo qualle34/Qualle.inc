@@ -7,6 +7,7 @@ import com.qualle.model.entity.User;
 import com.qualle.repository.UserRepository;
 import com.qualle.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,16 +19,17 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private PasswordEncoder encoder;
+
     @Override
-    public Optional<User> getById(long id) {
-        return userRepository.findById(id);
+    public User getById(long id) {
+        return toUser(userRepository.findById(id));
     }
 
     @Override
     public UserProfileDto getDtoById(long id) {
-        Optional<User> optionalUser = userRepository.findById(id);
-        User user = optionalUser.orElseGet(User::new);
-        return new UserProfileDto(user.getName(), user.getLastname(), "login", user.getPhone());
+        return toDto(getById(id));
     }
 
     @Override
@@ -37,8 +39,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserProfileDto getDtoByLogin(String login) {
-        User user = getByLogin(login);
-        return new UserProfileDto(user.getName(), user.getLastname(), user.getCreds().getLogin(), user.getPhone());
+        return toDto(getByLogin(login));
     }
 
     @Override
@@ -47,10 +48,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-   // @Transactional
+    // @Transactional
     public void add(UserRegistrationDto dto) {
         User user = new User(dto.getName(), "", dto.getPhone());
-        user.setCreds(new Creds(dto.getLogin(), dto.getPassword(), "USER"));
+        user.setCreds(new Creds(dto.getLogin(), encoder.encode(dto.getPassword()), "USER"));
         userRepository.save(user);
     }
 
@@ -62,5 +63,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(User user) {
         userRepository.delete(user);
+    }
+
+    private User toUser(Optional<User> optional) {
+        if (optional.isPresent()) {
+            return optional.get();
+        }
+        throw new NullPointerException();
+    }
+
+    private UserProfileDto toDto(User user) {
+        return new UserProfileDto(user.getName(), user.getLastname(), user.getCreds().getLogin(), user.getPhone());
     }
 }
