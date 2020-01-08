@@ -2,6 +2,7 @@ package com.qualle.model.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -13,17 +14,32 @@ public class User {
     private String name;
     private String lastname;
     private String phone;
+    private String email;
+    private Date birthdate;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Creds creds;
 
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Cart cart;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "user_game",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "game_id") }
+    )
+    private Set<Game> games;
+
     public User() {
     }
 
-    public User(String name, String lastname, String phone) {
+    public User(String name, String lastname, String phone, String email, Date birthdate) {
         this.name = name;
         this.lastname = lastname;
         this.phone = phone;
+        this.email = email;
+        this.birthdate = birthdate;
     }
 
     public long getId() {
@@ -58,6 +74,22 @@ public class User {
         this.phone = phone;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Date getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
+    }
+
     public Creds getCreds() {
         return creds;
     }
@@ -67,8 +99,24 @@ public class User {
         creds.setUser(this);
     }
 
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
+    public Set<Game> getGames() {
+        return games;
+    }
+
+    public void setGames(Set<Game> games) {
+        this.games = games;
+    }
+
     @Override
     public String toString() {
-        return id + " " + name + " " + lastname + " " + phone;
+        return id + " " + name + " " + phone + " " + email;
     }
 }

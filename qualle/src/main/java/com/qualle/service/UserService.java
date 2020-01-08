@@ -12,6 +12,8 @@ public interface UserService {
 
     UserProfileDto getDtoById(long id);
 
+    long getIdByLogin(String login);
+
     User getByLogin(String login);
 
     UserProfileDto getDtoByLogin(String login);
@@ -23,4 +25,6 @@ public interface UserService {
     void update(User user);
 
     void delete(User user);
+
+    void delete(long id);
 }

@@ -1,5 +1,6 @@
 package com.qualle.service.impl;
 
+import com.qualle.exception.UserNotFoundException;
 import com.qualle.model.dto.UserProfileDto;
 import com.qualle.model.dto.UserRegistrationDto;
 import com.qualle.model.entity.Creds;
@@ -33,8 +34,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public long getIdByLogin(String login) {
+        return userRepository.findIdByLogin(login).orElse(0L);
+    }
+
+    @Override
     public User getByLogin(String login) {
-        return userRepository.findByLoginFetchCreds(login);
+        return toUser(userRepository.findByLoginFetchCreds(login));
     }
 
     @Override
@@ -43,33 +49,42 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public void add(User user) {
         userRepository.save(user);
     }
 
     @Override
-    // @Transactional
+    @Transactional
     public void add(UserRegistrationDto dto) {
-        User user = new User(dto.getName(), "", dto.getPhone());
+        User user = new User(dto.getName(), null, dto.getPhone(), null, null);
         user.setCreds(new Creds(dto.getLogin(), encoder.encode(dto.getPassword()), "USER"));
-        userRepository.save(user);
+        add(user);
     }
 
     @Override
+    @Transactional
     public void update(User user) {
         userRepository.save(user);
     }
 
     @Override
+    @Transactional
     public void delete(User user) {
         userRepository.delete(user);
+    }
+
+    @Override
+    @Transactional
+    public void delete(long id) {
+        userRepository.deleteById(id);
     }
 
     private User toUser(Optional<User> optional) {
         if (optional.isPresent()) {
             return optional.get();
         }
-        throw new NullPointerException();
+        throw new UserNotFoundException();
     }
 
     private UserProfileDto toDto(User user) {

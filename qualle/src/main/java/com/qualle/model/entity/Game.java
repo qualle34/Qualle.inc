@@ -1,6 +1,7 @@
 package com.qualle.model.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "game")
@@ -9,23 +10,29 @@ public class Game {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String title;
+    private String name;
     private String description;
     private double price;
 
-    @ManyToOne
-    @MapsId
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "developer_id")
+    private Developer developer;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToOne
-    @MapsId
-    private Developer developer;
+    @ManyToMany(mappedBy = "games")
+    private Set<User> users;
+
+    @ManyToMany(mappedBy = "games")
+    private Set<Cart> carts;
 
     public Game() {
     }
 
-    public Game(String title, String description, double price) {
-        this.title = title;
+    public Game(String name, String description, double price) {
+        this.name = name;
         this.description = description;
         this.price = price;
     }
@@ -38,12 +45,12 @@ public class Game {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -78,8 +85,24 @@ public class Game {
         this.developer = developer;
     }
 
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+    public Set<Cart> getCarts() {
+        return carts;
+    }
+
+    public void setCarts(Set<Cart> carts) {
+        this.carts = carts;
+    }
+
     @Override
     public String toString() {
-        return title + " " + description + " " + price;
+        return name + " " + description + " " + price;
     }
 }

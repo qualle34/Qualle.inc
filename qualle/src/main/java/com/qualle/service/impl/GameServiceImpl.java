@@ -7,6 +7,8 @@ import com.qualle.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,6 +27,20 @@ public class GameServiceImpl implements GameService {
         return toDto(getById(id));
     }
 
+    @Override
+    public List<Game> getByName(String name) {
+        return gameRepository.findByName(name);
+    }
+
+    @Override
+    public List<GameDto> getDtoByName(String name) {
+        List<GameDto> dto = new ArrayList<>();
+        for(Game game : getByName(name)) {
+            dto.add(toDto(game));
+        }
+        return dto;
+    }
+
     private Game toGame(Optional<Game> optional) {
         if (optional.isPresent()) {
             return optional.get();
@@ -33,6 +49,6 @@ public class GameServiceImpl implements GameService {
     }
 
     private GameDto toDto(Game game) {
-        return new GameDto(game.getTitle(), game.getDescription(), game.getPrice(), game.getDeveloper().getTitle(), game.getCategory().getTitle());
+        return new GameDto(game.getName(), game.getDescription(), game.getPrice(), game.getDeveloper().getTitle(), game.getCategory().getTitle());
     }
 }
