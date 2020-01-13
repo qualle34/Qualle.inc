@@ -58,23 +58,43 @@
         </div>
     </header>
 
-    <div class="container">
+    <section class="info box">
+        <div class="profile">
 
-        <div class="info">
-            <div class="box name">
-                <p class="text-info"> Name:
-                <p class="text-info" th:text="${user.name}"></p>
-            </div>
-            <div class="box lastname">
-                <p class="text-info"> Lastname:
-                <p class="text-info" th:text="${user.lastname}"></p>
-            </div>
-            <div class="box phone">
-                <p class="text-info"> Phone:
-                <p class="text-info" th:text="${user.phone}"></p>
+            <h1 class="title"> Профиль </h1>
+
+            <ul>
+                <li>Имя -
+                    <p th:text="${user.name}"></p>
+                </li>
+                <li>Фамилия -
+                    <p th:text="${user.lastname}"></p>
+                </li>
+                <li>Телефон -
+                    <p th:text="${user.phone}"></p>
+                </li>
+                <li>Email -
+                    <p th:text="${user.email}"></p>
+                </li>
+                <li>День рождения -
+                    <p th:text="${user.birthday}"></p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="games">
+
+            <h1 class="title"> Игры </h1>
+
+            <div class="game" th:each="game : ${games}">
+                <div class="logo">
+                    <img th:src="@{/img/game-${game.id}}" class="image">
+                </div>
+                <p class="name" th:text="${game.name}"></p>
             </div>
         </div>
-    </div>
+    </section>
+
 
     <footer class="footer"><!-- footer -->
 

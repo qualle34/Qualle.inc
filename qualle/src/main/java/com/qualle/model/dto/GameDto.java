@@ -3,14 +3,17 @@ package com.qualle.model.dto;
 public class GameDto {
 
     private long id;
-    private String title;
+    private String name;
     private String description;
     private double price;
     private String developer;
     private String category;
 
-    public GameDto(String title, String description, double price, String developer, String category) {
-        this.title = title;
+    public GameDto() {
+    }
+
+    public GameDto(String name, String description, double price, String developer, String category) {
+        this.name = name;
         this.description = description;
         this.price = price;
         this.developer = developer;
@@ -25,12 +28,12 @@ public class GameDto {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {

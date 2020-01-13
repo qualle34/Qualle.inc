@@ -3,6 +3,7 @@ package com.qualle.controller;
 import com.qualle.model.dto.UserRegistrationDto;
 import com.qualle.security.SessionUtil;
 import com.qualle.service.CartService;
+import com.qualle.service.GameService;
 import com.qualle.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,10 +21,14 @@ public class UserController {
     @Autowired
     private CartService cartService;
 
+    @Autowired
+    private GameService gameService;
+
     @GetMapping(value = "/profile")
     public String getProfilePage(Model model) {
-
-        model.addAttribute("user", userService.getDtoByLogin(SessionUtil.getUserLogin()));
+        String login = SessionUtil.getUserLogin();
+        model.addAttribute("games", gameService.getDtoByUser(login));
+        model.addAttribute("user", userService.getDtoByLogin(login));
         return "profile";
     }
 
@@ -41,7 +46,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/registration")
-    public void doRegistration(UserRegistrationDto dto){
+    public void doRegistration(UserRegistrationDto dto) {
         userService.add(dto);
     }
 }

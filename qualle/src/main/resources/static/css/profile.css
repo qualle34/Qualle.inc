@@ -13,8 +13,47 @@ main {
     width: 100%;
 }
 
-/*  container  */
+/*  Info  */
 /**************************************************/
-.container {
+.info {
     width: 100%;
+    padding: 200px 0;
+    background: #e2e2e2;
 }
+
+.info .profile {
+    width: 60%;
+    margin: auto;
+    padding: 2% 5%;
+    background: white;
+}
+
+
+.info .title {
+    text-align: center;
+}
+
+.info .games {
+    width: 60%;
+    margin: 100px auto auto;
+    padding: 2% 5%;
+    background: white;
+}
+
+.info .games .game {
+    width: 60%;
+    margin: 20px auto 20px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.info .games .game .image {
+    width: 30%;
+    height: auto;
+    float: left;
+    background: gray;
+}
+
+.info .games .game .name {
+    text-align: right;
+}
+

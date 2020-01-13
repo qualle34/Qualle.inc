@@ -1,9 +1,11 @@
 package com.qualle.service.impl;
 
+import com.qualle.exception.GameNotFoundException;
 import com.qualle.model.dto.GameDto;
 import com.qualle.model.entity.Game;
 import com.qualle.repository.GameRepository;
 import com.qualle.service.GameService;
+import com.qualle.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,9 @@ public class GameServiceImpl implements GameService {
     @Autowired
     GameRepository gameRepository;
 
+    @Autowired
+    UserService userService;
+
     @Override
     public Game getById(long id) {
         return toGame(gameRepository.findById(id));
@@ -28,6 +33,25 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
+    public List<Game> getByUser(long id) {
+        return gameRepository.findByUserId(id);
+    }
+
+    @Override
+    public List<GameDto> getDtoByUser(long id) {
+        List<GameDto> dto = new ArrayList<>();
+        for (Game game : getByUser(id)) {
+            dto.add(toDto(game));
+        }
+        return dto;
+    }
+
+    @Override
+    public List<GameDto> getDtoByUser(String login) {
+        return getDtoByUser(userService.getIdByLogin(login));
+    }
+
+    @Override
     public List<Game> getByName(String name) {
         return gameRepository.findByName(name);
     }
@@ -35,17 +59,14 @@ public class GameServiceImpl implements GameService {
     @Override
     public List<GameDto> getDtoByName(String name) {
         List<GameDto> dto = new ArrayList<>();
-        for(Game game : getByName(name)) {
+        for (Game game : getByName(name)) {
             dto.add(toDto(game));
         }
         return dto;
     }
 
     private Game toGame(Optional<Game> optional) {
-        if (optional.isPresent()) {
-            return optional.get();
-        }
-        throw new NullPointerException();
+        return optional.orElseThrow(GameNotFoundException::new);
     }
 
     private GameDto toDto(Game game) {

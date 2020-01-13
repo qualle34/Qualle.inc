@@ -13,9 +13,9 @@ main {
     width: 100%;
 }
 
-/*  Slides  */
+/*  Photo  */
 /**************************************************/
-.container {
+.photo {
     max-width: 100%;
     height: 800px;
     position: relative;
@@ -23,155 +23,70 @@ main {
     box-sizing: border-box
 }
 
-.mySlides {
+.photo .background {
+    width: 100%;
+    height: 800px;
+    background: gray;
+}
+
+.photo .logo {
+    position: absolute;
+    top: 75px;
+    left: 10%;
+    width: 150px;
+    height: 150px;
+    background: white;
+}
+
+.photo .name-box {
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 35%);
+    width: 60%;
+    height: 100px;
+    margin: auto;
+    padding: 2% 5%;
+    background: white;
+}
+
+.photo .name-box .name {
+    float: left;
+}
+
+.photo .name-box .cart {
+    float: right;
+}
+
+
+/*  Info  */
+/**************************************************/
+.info {
+    width: 100%;
     height: 100%;
+    padding-bottom: 150px;
+    background: #e2e2e2;
+}
+
+.info .container {
+    width: 60%;
+    margin: auto;
+    padding: 2% 5%;
+    background: white;
+}
+
+.info .container table {
     width: 100%;
-    display: none;
+    border-collapse: collapse;
 }
 
-.yennefer {
-    background: url("../img/main_photo_1.jpg") 50% 10% no-repeat;
-    background-size: cover;
+.info .container table td {
+    height: 100px;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #dddddd;
 }
 
-.solders {
-    background: url("../img/main_photo_4.jpg") 50% 10% no-repeat;
-    background-size: cover;
-}
-
-.servers {
-    background: url("../img/main_photo_5.jpg") 50% 10% no-repeat;
-    background-size: cover;
-}
-
-.mySlides .title_box {
-    position: absolute;
-    top: 400px;
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
-}
-
-.mySlides .title_box .title {
-    padding-left: 15%;
-    padding-top: 100px;
-    padding-bottom: 20px;
-    overflow: hidden;
-}
-
-.mySlides .title_box .title span {
-    margin: 0;
-    padding: 20px 25px 15px 25px !important;
-    line-height: 100px;
-    background: #00b0ff;
-    opacity: 0.9;
-    font-size: 45px;
-    color: white;
-}
-
-.mySlides button {
-    margin-top: 30px;
-    margin-left: 15%;;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 16px;
-    margin-top: -22px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-}
-
-.next { /* right */
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-.prev:hover, .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-}
-
-/* animation */
-.fade {
-    animation-name: fade;
-    animation-duration: 1.5s;
-}
-
-@keyframes fade {
-    from {
-        opacity: .4
-    }
-    to {
-        opacity: 1
-    }
-}
-
-/* for tablet */
-@media screen and (max-width: 800px) {
-
-    .mySlides .title_box .title {
-        padding: 100px 0 0 10%;
-    }
-
-    .mySlides .title_box .title span {
-        font-size: 35px;
-    }
-
-    .mySlides button {
-        margin-left: 10%;
-    }
-
-}
-
-/* for mobile */
-@media screen and (max-width: 480px) {
-
-    .mySlides .title_box {
-        margin-top: 100px;
-    }
-
-    .mySlides .title_box .title {
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        background: #00b0ff;
-        text-align: center;
-    }
-
-    .mySlides .title_box .title span {
-        margin: 0;
-        width: 70%;
-        padding: 15px 15% 5px 15%;
-        font-size: 25px;
-        line-height: 54px;
-    }
-
-    .servers .title_box .title {
-        text-align: left;
-        padding-left: 10%;
-    }
-
-    .mySlides .link {
-        text-align: center;
-    }
-
-    .mySlides button {
-        margin-left: 0;
-    }
-}
-
-/* for control buttons */
-@media only screen and (max-width: 480px) {
-    .prev, .next, .text {
-        font-size: 11px
-    }
-
+.info .container table tr td:first-child {
+    text-align: right;
+    width: 30%;
 }

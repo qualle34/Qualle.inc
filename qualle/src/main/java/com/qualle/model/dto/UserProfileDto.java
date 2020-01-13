@@ -7,12 +7,18 @@ public class UserProfileDto {
     private String lastname;
     private String login;
     private String phone;
+    private String email;
+    private String birthday;
 
-    public UserProfileDto(String name, String lastname, String login, String phone) {
+    public UserProfileDto() {
+    }
+
+    public UserProfileDto(String name, String lastname, String login, String phone, String email) {
         this.name = name;
         this.lastname = lastname;
         this.login = login;
         this.phone = phone;
+        this.email = email;
     }
 
     public long getId() {
@@ -53,5 +59,21 @@ public class UserProfileDto {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 }

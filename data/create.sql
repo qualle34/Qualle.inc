@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `qualle`.`user` (
   `lastname` VARCHAR(45) NULL,
   `phone` VARCHAR(15) NULL,
   `email` VARCHAR(45) NULL,
-  `birtdate` DATE NULL,
+  `birthday` DATE NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `qualle`.`game` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `category_id` BIGINT NULL,
   `developer_id` BIGINT NOT NULL,
-  `title` VARCHAR(45) NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
   `description` VARCHAR(45) NULL,
   `price` DECIMAL(13,2) NULL,
   PRIMARY KEY (`id`),

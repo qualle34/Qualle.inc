@@ -15,7 +15,10 @@ public class User {
     private String lastname;
     private String phone;
     private String email;
-    private Date birthdate;
+
+    @Column(columnDefinition = "DATETIME")
+    @Temporal(TemporalType.DATE)
+    private Date birthday;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Creds creds;
@@ -34,12 +37,12 @@ public class User {
     public User() {
     }
 
-    public User(String name, String lastname, String phone, String email, Date birthdate) {
+    public User(String name, String lastname, String phone, String email, Date birthday) {
         this.name = name;
         this.lastname = lastname;
         this.phone = phone;
         this.email = email;
-        this.birthdate = birthdate;
+        this.birthday = birthday;
     }
 
     public long getId() {
@@ -82,12 +85,12 @@ public class User {
         this.email = email;
     }
 
-    public Date getBirthdate() {
-        return birthdate;
+    public Date getBirthday() {
+        return birthday;
     }
 
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     public Creds getCreds() {

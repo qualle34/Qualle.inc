@@ -11,6 +11,12 @@ public interface GameService {
 
     GameDto getDtoById(long id);
 
+    List<Game> getByUser(long id);
+
+    List<GameDto> getDtoByUser(long id);
+
+    List<GameDto> getDtoByUser(String login);
+
     List<Game> getByName(String name);
 
     List<GameDto> getDtoByName(String name);

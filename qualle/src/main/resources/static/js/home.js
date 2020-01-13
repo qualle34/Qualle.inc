@@ -27,16 +27,16 @@ function showSlides(n) {
 }
 
 
-showAds = setInterval(function () {
-    openPopup()
-}, 5000);
-
-function openPopup() {
-    var popup = document.getElementById("ads-popup");
-    popup.style.display = "block";
-}
-
-function closePopup() {
-    var popup = document.getElementById("ads-popup");
-    popup.style.display = "none";
-}
+// showAds = setInterval(function () {
+//     openPopup()
+// }, 5000);
+//
+// function openPopup() {
+//     var popup = document.getElementById("ads-popup");
+//     popup.style.display = "block";
+// }
+//
+// function closePopup() {
+//     var popup = document.getElementById("ads-popup");
+//     popup.style.display = "none";
+// }

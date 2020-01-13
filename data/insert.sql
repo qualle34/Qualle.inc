@@ -39,28 +39,33 @@ INSERT INTO qualle.category(title) values('RPG');
 INSERT INTO qualle.category(title) values('Мобильные игры');
 INSERT INTO qualle.category(title) values('Аниме');
 
-INSERT INTO qualle.game(title, price, description, developer_id, category_id) values('Witcher 3', 12.00, '', 4, 4);
-INSERT INTO qualle.game(title, price, description, developer_id, category_id) values('Battlefront 2', 23.00, '', 5, 3);
-INSERT INTO qualle.game(title, price, description, developer_id, category_id) values('Assassins Creed Origins', 34.00, '', 2, 4);
-INSERT INTO qualle.game(title, price, description, developer_id, category_id) values('Mortal Kombat', 27.00, '', 1, 1);
-INSERT INTO qualle.game(title, price, description, developer_id, category_id) values('Call of Duty Black Ops', 45.00, '', 8, 3);
-INSERT INTO qualle.game(title, price, description, developer_id, category_id) values('The Elder Scrolls Online', 19.00, '', 1, 4);
-INSERT INTO qualle.game(title, price, description, developer_id, category_id) values('Kill Strain', 13.00, '', 1, 1);
-INSERT INTO qualle.game(title, price, description, developer_id, category_id) values('League of Legends', 0, '', 1, 4);
-INSERT INTO qualle.game(title, price, description, developer_id, category_id) values('Quantum Break', 8.00, '', 8, 3);
-INSERT INTO qualle.game(title, price, description, developer_id, category_id) values('Fifa 12', 25.00, '', 2, 2);
-INSERT INTO qualle.game(title, price, description, developer_id, category_id) values('Fifa 13', 30.00, '', 2, 2);
-INSERT INTO qualle.game(title, price, description, developer_id, category_id) values('Fifa 14', 35.00, '', 2, 2);
-INSERT INTO qualle.game(title, price, description, developer_id, category_id) values('Fifa Street', 32.00, '', 2, 2);
-INSERT INTO qualle.game(title, price, description, developer_id, category_id) values('Euro 2012', 26.00, '', 1, 2);
-INSERT INTO qualle.game(title, price, description, developer_id, category_id) values('NHL 14', 31.00, '', 2, 2);
-INSERT INTO qualle.game(title, price, description, developer_id, category_id) values('Injustice 2', 0.00, '', 4, 5);
-INSERT INTO qualle.game(title, price, description, developer_id, category_id) values('Heroes of Dragon Age', 0.00, '', 1, 5);
-INSERT INTO qualle.game(title, price, description, developer_id, category_id) values('Mortal Kombat X', 0.00, '', 1, 5);
-INSERT INTO qualle.game(title, price, description, developer_id, category_id) values('WWE Immortals', 0.00, '', 1, 5);
-INSERT INTO qualle.game(title, price, description, developer_id, category_id) values('Star Wars: Galaxy of Heroes', 0.00, '', 2, 5);
-INSERT INTO qualle.game(title, price, description, developer_id, category_id) values('Injustice: Gods Among Us', 3.00, '', 1, 5);
+INSERT INTO qualle.game(name, price, description, developer_id, category_id) values('Witcher 3', 12.00, '', 4, 4);
+INSERT INTO qualle.game(name, price, description, developer_id, category_id) values('Battlefront 2', 23.00, '', 5, 3);
+INSERT INTO qualle.game(name, price, description, developer_id, category_id) values('Assassins Creed Origins', 34.00, '', 2, 4);
+INSERT INTO qualle.game(name, price, description, developer_id, category_id) values('Mortal Kombat', 27.00, '', 1, 1);
+INSERT INTO qualle.game(name, price, description, developer_id, category_id) values('Call of Duty Black Ops', 45.00, '', 8, 3);
+INSERT INTO qualle.game(name, price, description, developer_id, category_id) values('The Elder Scrolls Online', 19.00, '', 1, 4);
+INSERT INTO qualle.game(name, price, description, developer_id, category_id) values('Kill Strain', 13.00, '', 1, 1);
+INSERT INTO qualle.game(name, price, description, developer_id, category_id) values('League of Legends', 0, '', 1, 4);
+INSERT INTO qualle.game(name, price, description, developer_id, category_id) values('Quantum Break', 8.00, '', 8, 3);
+INSERT INTO qualle.game(name, price, description, developer_id, category_id) values('Fifa 12', 25.00, '', 2, 2);
+INSERT INTO qualle.game(name, price, description, developer_id, category_id) values('Fifa 13', 30.00, '', 2, 2);
+INSERT INTO qualle.game(name, price, description, developer_id, category_id) values('Fifa 14', 35.00, '', 2, 2);
+INSERT INTO qualle.game(name, price, description, developer_id, category_id) values('Fifa Street', 32.00, '', 2, 2);
+INSERT INTO qualle.game(name, price, description, developer_id, category_id) values('Euro 2012', 26.00, '', 1, 2);
+INSERT INTO qualle.game(name, price, description, developer_id, category_id) values('NHL 14', 31.00, '', 2, 2);
+INSERT INTO qualle.game(name, price, description, developer_id, category_id) values('Injustice 2', 0.00, '', 4, 5);
+INSERT INTO qualle.game(name, price, description, developer_id, category_id) values('Heroes of Dragon Age', 0.00, '', 1, 5);
+INSERT INTO qualle.game(name, price, description, developer_id, category_id) values('Mortal Kombat X', 0.00, '', 1, 5);
+INSERT INTO qualle.game(name, price, description, developer_id, category_id) values('WWE Immortals', 0.00, '', 1, 5);
+INSERT INTO qualle.game(name, price, description, developer_id, category_id) values('Star Wars: Galaxy of Heroes', 0.00, '', 2, 5);
+INSERT INTO qualle.game(name, price, description, developer_id, category_id) values('Injustice: Gods Among Us', 3.00, '', 1, 5);
 
-
+INSERT INTO qualle.user_game values(12, 1);
+INSERT INTO qualle.user_game values(12, 4);
+INSERT INTO qualle.user_game values(12, 6);
+INSERT INTO qualle.user_game values(12, 8);
+INSERT INTO qualle.user_game values(12, 12);
+INSERT INTO qualle.user_game values(12, 2);
 
 

@@ -88,6 +88,8 @@ public class UserServiceImpl implements UserService {
     }
 
     private UserProfileDto toDto(User user) {
-        return new UserProfileDto(user.getName(), user.getLastname(), user.getCreds().getLogin(), user.getPhone());
+        UserProfileDto dto = new UserProfileDto(user.getName(), user.getLastname(), user.getCreds().getLogin(), user.getPhone(), user.getEmail());
+        dto.setBirthday((user.getBirthday() != null) ? user.getBirthday().toString() : null);
+        return dto;
     }
 }
