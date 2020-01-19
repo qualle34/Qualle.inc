@@ -34,8 +34,9 @@ public class UserController {
 
     @GetMapping(value = "/cart")
     public String getCartPage(Model model) {
-        Long id = userService.getIdByLogin(SessionUtil.getUserLogin());
-        model.addAttribute("cart", cartService.getByUserId(id));
+        long id = userService.getIdByLogin(SessionUtil.getUserLogin());
+        model.addAttribute("games", gameService.getDtoByCart(id));
+        model.addAttribute("user", userService.getDtoById(id));
         return "cart";
     }
 

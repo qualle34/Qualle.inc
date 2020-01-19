@@ -4,8 +4,6 @@ import com.qualle.model.dto.UserProfileDto;
 import com.qualle.model.dto.UserRegistrationDto;
 import com.qualle.model.entity.User;
 
-import java.util.Optional;
-
 public interface UserService {
 
     User getById(long id);

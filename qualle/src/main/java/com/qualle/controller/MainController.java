@@ -16,11 +16,6 @@ public class MainController {
         return "about";
     }
 
-    @GetMapping(value = "/career")
-    public String getCareerPage() {
-        return "career";
-    }
-
     @GetMapping(value = "/contacts")
     public String getContactsPage() {
         return "contacts";
@@ -29,6 +24,11 @@ public class MainController {
     @GetMapping(value = "/service")
     public String getServicePage() {
         return "service";
+    }
+
+    @GetMapping(value = "/error")
+    public String getErrorPage() {
+        return "error";
     }
 
     @GetMapping(value = "/login")

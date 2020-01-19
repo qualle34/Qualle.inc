@@ -3,10 +3,14 @@ package com.qualle.exception;
 public class GameNotFoundException extends RuntimeException {
 
     public GameNotFoundException() {
-        super();
+        super("Игра не найдена!");
     }
 
     public GameNotFoundException(String message) {
         super(message);
+    }
+
+    public GameNotFoundException(Long gameId) {
+        super("Игра c id = " + gameId + " не найдена!");
     }
 }

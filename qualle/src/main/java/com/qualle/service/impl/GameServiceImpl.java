@@ -2,6 +2,7 @@ package com.qualle.service.impl;
 
 import com.qualle.exception.GameNotFoundException;
 import com.qualle.model.dto.GameDto;
+import com.qualle.model.dto.GameSimpleDto;
 import com.qualle.model.entity.Game;
 import com.qualle.repository.GameRepository;
 import com.qualle.service.GameService;
@@ -52,6 +53,20 @@ public class GameServiceImpl implements GameService {
     }
 
     @Override
+    public List<Game> getByCart(long cartId) {
+        return gameRepository.findByCartId(cartId);
+    }
+
+    @Override
+    public List<GameSimpleDto> getDtoByCart(long cartId) {
+        List<GameSimpleDto> dto = new ArrayList<>();
+        for (Game game : getByCart(cartId)) {
+            dto.add(toSimpleDto(game));
+        }
+        return dto;
+    }
+
+    @Override
     public List<Game> getByName(String name) {
         return gameRepository.findByName(name);
     }
@@ -71,5 +86,9 @@ public class GameServiceImpl implements GameService {
 
     private GameDto toDto(Game game) {
         return new GameDto(game.getName(), game.getDescription(), game.getPrice(), game.getDeveloper().getTitle(), game.getCategory().getTitle());
+    }
+
+    private GameSimpleDto toSimpleDto(Game game) {
+        return new GameSimpleDto(game.getName(), game.getPrice());
     }
 }

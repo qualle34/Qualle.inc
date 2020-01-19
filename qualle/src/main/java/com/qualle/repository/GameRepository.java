@@ -15,4 +15,7 @@ public interface GameRepository extends CrudRepository<Game, Long> {
 
     @Query("FROM Game g WHERE (SELECT u FROM User u WHERE :id = u.id) MEMBER OF g.users")
     List<Game> findByUserId(@Param("id") long id);
+
+    @Query("FROM Game g WHERE (SELECT c FROM Cart c WHERE :id = c.id) MEMBER OF g.carts")
+    List<Game> findByCartId(@Param("id") long id);
 }
