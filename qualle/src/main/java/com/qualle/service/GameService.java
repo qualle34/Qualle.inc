@@ -5,12 +5,21 @@ import com.qualle.model.dto.GameSimpleDto;
 import com.qualle.model.entity.Game;
 
 import java.util.List;
+import java.util.Map;
 
 public interface GameService {
 
     Game getById(long id);
 
     GameDto getDtoById(long id);
+
+    List<Game> getAll();
+
+    List<GameDto> getAllDto();
+
+    List<Game> getAllWithCategory();
+
+    Map<String, List<GameSimpleDto>> getForGamesPage();
 
     List<Game> getByUser(long id);
 

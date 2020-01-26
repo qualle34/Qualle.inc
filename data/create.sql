@@ -43,6 +43,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `qualle`.`category` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NOT NULL,
+  `title_ru` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -70,6 +71,7 @@ CREATE TABLE IF NOT EXISTS `qualle`.`game` (
   `name` VARCHAR(45) NOT NULL,
   `description` VARCHAR(45) NULL,
   `price` DECIMAL(13,2) NULL,
+  `img_link` VARCHAR(255) NULL,
   PRIMARY KEY (`id`),
   INDEX `game_category_fk_idx` (`category_id` ASC) VISIBLE,
   INDEX `game_developer_fk_idx` (`developer_id` ASC) VISIBLE,

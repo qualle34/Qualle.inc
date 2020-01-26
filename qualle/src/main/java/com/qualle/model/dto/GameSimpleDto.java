@@ -5,6 +5,7 @@ public class GameSimpleDto {
     private long id;
     private String name;
     private double price;
+    private String img;
 
     public GameSimpleDto() {
     }
@@ -12,6 +13,12 @@ public class GameSimpleDto {
     public GameSimpleDto(String name, double price) {
         this.name = name;
         this.price = price;
+    }
+
+    public GameSimpleDto(String name, double price, String img) {
+        this.name = name;
+        this.price = price;
+        this.img = img;
     }
 
     public long getId() {
@@ -36,5 +43,13 @@ public class GameSimpleDto {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

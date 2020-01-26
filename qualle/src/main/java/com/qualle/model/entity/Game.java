@@ -14,6 +14,9 @@ public class Game {
     private String description;
     private double price;
 
+    @Column(name = "img_link")
+    private String img;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "developer_id")
     private Developer developer;
@@ -67,6 +70,14 @@ public class Game {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public Category getCategory() {

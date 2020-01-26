@@ -70,66 +70,28 @@
 
             <div class="games-box">
 
-                <div class="game-box" id="game-1">
-                    <img class="image" src="img/games/full/full-battlefront.jpg">
-                    <div class="text">
-                        <p class="name">Battlefront</p>
-                        <p class="price">22 $</p>
-                    </div>
+                <div class="game-box" th:each="game : ${main}">
+                    <a th:href="${'/game/' + game.id}">
+                        <img class="image" th:src="${game.img}">
+                        <div class="text">
+                            <p class="name" th:text="${game.name}"></p>
+                            <p class="price" th:text="${game.price}"></p>
+                        </div>
+                    </a>
                 </div>
 
-                <div class="game-box" id="game-2">
-                    <img class="image" src="img/games/full/full-witcher.jpg">
-                    <div class="text">
-                        <p class="name">Witcher 3</p>
-                        <p class="price">34 $</p>
-                    </div>
-                </div>
-
-                <div class="game-box" id="game-3">
-                    <img class="image" src="img/games/full/full-origins.jpg">
-                    <div class="text">
-                        <p class="name">Assassin's Creed Origins</p>
-                        <p class="price">21 $</p>
-                    </div>
-                </div>
-
-                <div class="game-box" id="game-4">
-                    <img class="image" src="img/games/full/full-mk.jpg">
-                    <div class="text">
-                        <p class="name">Mortal Kombat</p>
-                        <p class="price">17 $</p>
-                    </div>
-                </div>
             </div>
         </section>
 
         <section class="popular-games">
             <div class="games-box">
 
-                <div class="game-box" id="game-5">
-                    <img class="image" src="img/games/logo/logo-battlefront.png">
+                <div class="game-box" th:each="game : ${popular}">
+                    <a th:href="${'/game/' + game.id}">
+                        <img class="image" th:src="${game.img}">
+                    </a>
                 </div>
 
-                <div class="game-box" id="game-6">
-                    <img class="image" src="img/games/logo/logo-cod.png">
-                </div>
-
-                <div class="game-box" id="game-7">
-                    <img class="image" src="img/games/logo/logo-elder-scrolls.png">
-                </div>
-
-                <div class="game-box" id="game-8">
-                    <img class="image" src="img/games/logo/logo-kill-strain.png">
-                </div>
-
-                <div class="game-box" id="game-9">
-                    <img class="image" src="img/games/logo/logo-lol.png">
-                </div>
-
-                <div class="game-box" id="game-10">
-                    <img class="image" src="img/games/logo/logo-quantum-break.png">
-                </div>
             </div>
         </section>
 
@@ -156,29 +118,13 @@
         <section class="sport-games">
 
             <div class="games-box">
-                <div class="game-box" id="game-11">
-                    <img class="image" src="img/games/sport/sport-fifa12.png">
+
+                <div class="game-box" th:each="game : ${sport}">
+                    <a th:href="${'/game/' + game.id}">
+                        <img class="image" th:src="${game.img}">
+                    </a>
                 </div>
 
-                <div class="game-box" id="game-12">
-                    <img class="image" src="img/games/sport/sport-fifa13.png">
-                </div>
-
-                <div class="game-box" id="game-13">
-                    <img class="image" src="img/games/sport/sport-fifa14.png">
-                </div>
-
-                <div class="game-box" id="game-14">
-                    <img class="image" src="img/games/sport/sport-fifa-street.png">
-                </div>
-
-                <div class="game-box" id="game-15">
-                    <img class="image" src="img/games/sport/sport-nhl14.png">
-                </div>
-
-                <div class="game-box" id="game-16">
-                    <img class="image" src="img/games/sport/sport-uefa-euro.png">
-                </div>
             </div>
 
         </section>
@@ -187,193 +133,30 @@
 
             <div class="games-box">
 
-                <div class="game-box" id="game-17">
-                    <img class="image" src="img/games/mobile/mobile-1.png">
-                    <div class="text">
-                        <p class="name">Heroes of Dragon Age</p>
-                        <p class="platform">Android, iOS</p>
-                    </div>
+                <div class="game-box" th:each="game : ${mobile}">
+                    <a th:href="${'/game/' + game.id}">
+                        <img class="image" th:src="${game.img}">
+                        <div class="text">
+                            <p class="name" th:text="${game.name}"></p>
+                            <p class="platform">Android, iOS</p>
+                        </div>
+                    </a>
                 </div>
 
-                <div class="game-box" id="game-18">
-                    <img class="image" src="img/games/mobile/mobile-2.png">
-                    <div class="text">
-                        <p class="name">Mortal Kombat X</p>
-                        <p class="platform">Android, iOS</p>
-                    </div>
-                </div>
-
-                <div class="game-box" id="game-19">
-                    <img class="image" src="img/games/mobile/mobile-3.png">
-                    <div class="text">
-                        <p class="name">Injustice 2</p>
-                        <p class="platform">Android, iOS</p>
-                    </div>
-                </div>
-
-                <div class="game-box" id="game-20">
-                    <img class="image" src="img/games/mobile/mobile-4.png">
-                    <div class="text">
-                        <p class="name">WWE Immortals</p>
-                        <p class="platform">iOS</p>
-                    </div>
-                </div>
-
-                <div class="game-box" id="game-21">
-                    <img class="image" src="img/games/mobile/mobile-5.png">
-                    <div class="text">
-                        <p class="name">Star Wars: Galaxy of Heroes</p>
-                        <p class="platform">Android, iOS</p>
-                    </div>
-                </div>
-
-                <div class="game-box" id="game-22">
-                    <img class="image" src="img/games/mobile/mobile-6.png">
-                    <div class="text">
-                        <p class="name">Injustice: Gods Among Us</p>
-                        <p class="platform">Android</p>
-                    </div>
-                </div>
             </div>
 
         </section>
 
         <section class="other-games">
 
-            <div class="game-box" id="game-23">
-                <img src="img/games/mini/mini-agents.jpg">
-                <div class="text">
-                    <p class="name">PUBG</p>
-                    <p class="price">7 $</p>
-                </div>
-            </div>
-
-            <div class="game-box" id="game-24">
-                <img src="img/games/mini/mini-battlecry.jpg">
-                <div class="text">
-                    <p class="name">PUBG</p>
-                    <p class="price">7 $</p>
-                </div>
-            </div>
-
-            <div class="game-box" id="game-25">
-                <img src="img/games/mini/mini-bulletstorm.jpg">
-                <div class="text">
-                    <p class="name">PUBG</p>
-                    <p class="price">7 $</p>
-                </div>
-            </div>
-
-            <div class="game-box" id="game-26">
-                <img src="img/games/mini/mini-dc-universe.jpg">
-                <div class="text">
-                    <p class="name">PUBG</p>
-                    <p class="price">7 $</p>
-                </div>
-            </div>
-
-            <div class="game-box" id="game-27">
-                <img src="img/games/mini/mini-dragon-age.jpg">
-                <div class="text">
-                    <p class="name">PUBG</p>
-                    <p class="price">7 $</p>
-                </div>
-            </div>
-
-            <div class="game-box" id="game-28">
-                <img src="img/games/mini/mini-inquisition.jpg">
-                <div class="text">
-                    <p class="name">PUBG</p>
-                    <p class="price">7 $</p>
-                </div>
-            </div>
-
-            <div class="game-box" id="game-29">
-                <img src="img/games/mini/mini-light.jpg">
-                <div class="text">
-                    <p class="name">PUBG</p>
-                    <p class="price">7 $</p>
-                </div>
-            </div>
-
-            <div class="game-box" id="game-30">
-                <img src="img/games/mini/mini-mass-effect.jpg">
-                <div class="text">
-                    <p class="name">PUBG</p>
-                    <p class="price">7 $</p>
-                </div>
-            </div>
-
-            <div class="game-box" id="game-31">
-                <img src="img/games/mini/mini-scrabble.jpg">
-                <div class="text">
-                    <p class="name">PUBG</p>
-                    <p class="price">7 $</p>
-                </div>
-            </div>
-
-            <div class="game-box" id="game-32">
-                <img src="img/games/mini/mini-simcity.jpg">
-                <div class="text">
-                    <p class="name">PUBG</p>
-                    <p class="price">7 $</p>
-                </div>
-            </div>
-
-            <div class="game-box" id="game-33">
-                <img src="img/games/mini/mini-sims.jpg">
-                <div class="text">
-                    <p class="name">PUBG</p>
-                    <p class="price">7 $</p>
-                </div>
-            </div>
-
-            <div class="game-box" id="game-34">
-                <img src="img/games/mini/mini-sims4.jpg">
-                <div class="text">
-                    <p class="name">PUBG</p>
-                    <p class="price">7 $</p>
-                </div>
-            </div>
-
-            <div class="game-box" id="game-35">
-                <img src="img/games/mini/mini-skyforge.jpg">
-                <div class="text">
-                    <p class="name">PUBG</p>
-                    <p class="price">7 $</p>
-                </div>
-            </div>
-
-            <div class="game-box" id="game-36">
-                <img src="img/games/mini/mini-skytopia.jpg">
-                <div class="text">
-                    <p class="name">PUBG</p>
-                    <p class="price">7 $</p>
-                </div>
-            </div>
-
-            <div class="game-box" id="game-37">
-                <img src="img/games/mini/mini-tetris.jpg">
-                <div class="text">
-                    <p class="name">PUBG</p>
-                    <p class="price">7 $</p>
-                </div>
-            </div>
-
-            <div class="game-box" id="game-38">
-                <img src="img/games/mini/mini-wheels.jpg">
-                <div class="text">
-                    <p class="name">PUBG</p>
-                    <p class="price">7 $</p>
-                </div>
-            </div>
-
-            <div class="game-box" id="game-39">
-                <img src="img/games/mini/mini-wot.jpg">
-                <div class="text">
-                    <p class="name">PUBG</p>
-                    <p class="price">7 $</p>
-                </div>
+            <div class="game-box" th:each="game : ${other}">
+                <a th:href="${'/game/' + game.id}">
+                    <img th:src="${game.img}">
+                    <div class="text">
+                        <p class="name" th:text="${game.name}"></p>
+                        <p class="price" th:text="${game.price}"></p>
+                    </div>
+                </a>
             </div>
 
         </section>

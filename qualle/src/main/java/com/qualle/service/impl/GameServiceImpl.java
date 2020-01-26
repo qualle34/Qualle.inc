@@ -10,9 +10,7 @@ import com.qualle.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class GameServiceImpl implements GameService {
@@ -31,6 +29,73 @@ public class GameServiceImpl implements GameService {
     @Override
     public GameDto getDtoById(long id) {
         return toDto(getById(id));
+    }
+
+    @Override
+    public List<Game> getAll() {
+        return gameRepository.findAll();
+    }
+
+    @Override
+    public List<GameDto> getAllDto() {
+        List<GameDto> dto = new ArrayList<>();
+        for (Game game : getAll()) {
+            dto.add(toDto(game));
+        }
+        return dto;
+    }
+
+    @Override
+    public List<Game> getAllWithCategory() {
+        return gameRepository.findAllWithCategory();
+    }
+
+    @Override
+    public Map<String, List<GameSimpleDto>> getForGamesPage() {
+        List<Game> games = getAllWithCategory();
+        Map<String, List<GameSimpleDto>> dto = new HashMap<>();
+        dto.put("main", new ArrayList<>());
+        dto.put("popular", new ArrayList<>());
+        dto.put("sport", new ArrayList<>());
+        dto.put("mobile", new ArrayList<>());
+        dto.put("other", new ArrayList<>());
+
+        for (Game game : games) {
+
+            switch (game.getCategory().getTitle().trim().toLowerCase()) {
+
+                case "main":
+                    if (dto.get("main").size() < 4) {
+                        dto.get("main").add(toSimpleDto(game));
+                    }
+                    break;
+
+                case "popular":
+                    if (dto.get("popular").size() < 6) {
+                        dto.get("popular").add(toSimpleDto(game));
+                    }
+                    break;
+
+                case "sport":
+                    if (dto.get("sport").size() < 6) {
+                        dto.get("sport").add(toSimpleDto(game));
+                    }
+                    break;
+
+                case "mobile":
+                    if (dto.get("mobile").size() < 6) {
+                        dto.get("mobile").add(toSimpleDto(game));
+                    }
+                    break;
+
+                case "other":
+                    if (dto.get("other").size() < 15) {
+                        dto.get("other").add(toSimpleDto(game));
+                    }
+                    break;
+            }
+        }
+        return dto;
     }
 
     @Override
@@ -85,10 +150,14 @@ public class GameServiceImpl implements GameService {
     }
 
     private GameDto toDto(Game game) {
-        return new GameDto(game.getName(), game.getDescription(), game.getPrice(), game.getDeveloper().getTitle(), game.getCategory().getTitle());
+        GameDto dto = new GameDto(game.getName(), game.getDescription(), game.getPrice(), game.getDeveloper().getTitle(), game.getCategory().getTitle());
+        dto.setId(game.getId());
+        return dto;
     }
 
     private GameSimpleDto toSimpleDto(Game game) {
-        return new GameSimpleDto(game.getName(), game.getPrice());
+        GameSimpleDto dto = new GameSimpleDto(game.getName(), game.getPrice(), game.getImg());
+        dto.setId(game.getId());
+        return dto;
     }
 }

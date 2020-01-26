@@ -12,6 +12,9 @@ public class Category {
     private long id;
     private String title;
 
+    @Column(name = "title_ru")
+    private String localTitle;
+
     @OneToMany(mappedBy="category", fetch = FetchType.LAZY)
     private Set<Game> games;
 
@@ -36,6 +39,14 @@ public class Category {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getLocalTitle() {
+        return localTitle;
+    }
+
+    public void setLocalTitle(String localTitle) {
+        this.localTitle = localTitle;
     }
 
     public Set<Game> getGames() {
