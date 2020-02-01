@@ -33,5 +33,5 @@ public interface GameService {
 
     List<Game> getByName(String name);
 
-    List<GameDto> getDtoByName(String name);
+    List<GameSimpleDto> getDtoByName(String name);
 }

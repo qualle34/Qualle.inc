@@ -18,7 +18,7 @@ public class Cart {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "cart_game",
-            joinColumns = { @JoinColumn(name = "cart_id") },
+            joinColumns = { @JoinColumn(name = "user_id") },
             inverseJoinColumns = { @JoinColumn(name = "game_id") }
     )
     private Set<Game> games;

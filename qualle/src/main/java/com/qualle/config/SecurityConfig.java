@@ -1,5 +1,6 @@
 package com.qualle.config;
 
+import com.qualle.controller.handler.AuthenticationHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
@@ -17,6 +18,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     PasswordEncoder encoder;
 
+    @Autowired
+    AuthenticationHandler handler;
+
     @Qualifier("userDetailsServiceImpl")
     @Autowired
     UserDetailsService userDetailsService;
@@ -24,18 +28,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                .antMatchers("/", "/home", "/game/**", "/about", "/contacts", "/error", "/games", "/news", "/service").permitAll()
+            .csrf()
+                .disable()
+            .authorizeRequests()
+                .antMatchers("/", "/home", "/game/**", "/games", "/about", "/contacts", "/error", "/service").permitAll()
                 .antMatchers("/js/**", "/css/**", "/img/**").permitAll()
                 .antMatchers("/registration").permitAll()
+                .antMatchers("/test").permitAll()
                 .anyRequest().authenticated()
-                .and()
+            .and()
                 .formLogin()
                 .loginPage("/login")
                 .permitAll()
-                .and()
+                .successHandler(handler)
+                .failureHandler(handler)
+            .and()
                 .logout()
-                .permitAll();
+                .permitAll()
+                .logoutSuccessHandler(handler);
     }
 
     @Override

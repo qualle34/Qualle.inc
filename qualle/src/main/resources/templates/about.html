@@ -23,36 +23,36 @@
     <header>
         <div id="header"> <!-- Header -->
             <div class="header-left">
-                <a href="/" class="head-logo">Qualle.inc</a>
+                <a href="/" class="link">Qualle.inc</a>
             </div>
 
             <div class="header-menu">
                 <div class="menu-toggle">
                     <div class="hamburger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <span></span><span></span><span></span>
                     </div>
                     <div class="cross">
-                        <span></span>
-                        <span></span>
+                        <span></span><span></span>
                     </div>
                 </div>
             </div>
 
             <div class="header-right" id="header-right"><!-- Menu for pc -->
-                <a href="/service" class="head_services">Услуги</a>
-                <a href="/games" class="head_games">Игры</a>
-                <a href="/news" class="head_news">Новости</a>
-                <a href="/about" class="head_about">О Нас</a>
-                <a href="/contacts" class="head_contacts">Контакты</a>
-                <a href="/login" class="head_login">Вход</a>
-                <a href="/cart">
-                    <div class="head_cart"></div>
-                </a>
-                <a href="/profile">
-                    <div class="head_user"></div>
-                </a>
+                <a href="/service" class="link">Услуги</a>
+                <a href="/games" class="link">Игры</a>
+                <a href="/about" class="link">О Нас</a>
+                <a href="/contacts" class="link">Контакты</a>
+
+                <div class="ignore" th:if="${isAuthenticated}">
+                    <a href="/cart" class="link">Корзина</a>
+                    <a href="/profile" class="link">Профиль</a>
+                    <a href="/logout" class="link">Выйти</a>
+                </div>
+
+                <div class="ignore" th:if="${not isAuthenticated}">
+                    <a href="/login" class="link">Log in</a>
+                    <a href="/registration" class="link">Sign up</a>
+                </div>
             </div>
         </div>
     </header>

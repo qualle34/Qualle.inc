@@ -133,14 +133,14 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public List<Game> getByName(String name) {
-        return gameRepository.findByName(name);
+        return gameRepository.findByName("%" + name + "%");
     }
 
     @Override
-    public List<GameDto> getDtoByName(String name) {
-        List<GameDto> dto = new ArrayList<>();
+    public List<GameSimpleDto> getDtoByName(String name) {
+        List<GameSimpleDto> dto = new ArrayList<>();
         for (Game game : getByName(name)) {
-            dto.add(toDto(game));
+            dto.add(toSimpleDto(game));
         }
         return dto;
     }

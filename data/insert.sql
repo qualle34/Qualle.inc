@@ -90,45 +90,35 @@ INSERT INTO qualle.user_game values(1, 6);
 INSERT INTO qualle.user_game values(1, 8);
 INSERT INTO qualle.user_game values(1, 12);
 INSERT INTO qualle.user_game values(1, 2);
-
 INSERT INTO qualle.user_game values(2, 1);
 INSERT INTO qualle.user_game values(2, 4);
 INSERT INTO qualle.user_game values(2, 6);
-
 INSERT INTO qualle.user_game values(3, 8);
 INSERT INTO qualle.user_game values(3, 12);
 INSERT INTO qualle.user_game values(3, 2);
-
 INSERT INTO qualle.user_game values(4, 1);
 INSERT INTO qualle.user_game values(4, 4);
-
 INSERT INTO qualle.user_game values(5, 6);
-
 INSERT INTO qualle.user_game values(7, 8);
 INSERT INTO qualle.user_game values(7, 12);
 INSERT INTO qualle.user_game values(7, 2);
 INSERT INTO qualle.user_game values(7, 1);
 INSERT INTO qualle.user_game values(7, 4);
 INSERT INTO qualle.user_game values(7, 6);
-
 INSERT INTO qualle.user_game values(8, 12);
 INSERT INTO qualle.user_game values(8, 2);
 INSERT INTO qualle.user_game values(8, 1);
 INSERT INTO qualle.user_game values(8, 4);
 INSERT INTO qualle.user_game values(8, 6);
-
 INSERT INTO qualle.user_game values(9, 8);
 INSERT INTO qualle.user_game values(9, 12);
-
 INSERT INTO qualle.user_game values(10, 2);
 INSERT INTO qualle.user_game values(10, 1);
 INSERT INTO qualle.user_game values(10, 4);
 INSERT INTO qualle.user_game values(10, 6);
 INSERT INTO qualle.user_game values(10, 8);
-
 INSERT INTO qualle.user_game values(11, 12);
 INSERT INTO qualle.user_game values(11, 2);
-
 INSERT INTO qualle.user_game values(12, 1);
 INSERT INTO qualle.user_game values(12, 4);
 INSERT INTO qualle.user_game values(12, 6);
@@ -137,19 +127,13 @@ INSERT INTO qualle.user_game values(12, 12);
 INSERT INTO qualle.user_game values(12, 2);
 
 INSERT INTO qualle.cart_game values(1, 3);
-
 INSERT INTO qualle.cart_game values(2, 10);
-
 INSERT INTO qualle.cart_game values(4, 3);
 INSERT INTO qualle.cart_game values(4, 8);
-
 INSERT INTO qualle.cart_game values(5, 7);
-
 INSERT INTO qualle.cart_game values(6, 7);
 INSERT INTO qualle.cart_game values(6, 11);
-
-INSERT INTO qualle.user_game values(10, 3);
-INSERT INTO qualle.user_game values(10, 11);
-
-INSERT INTO qualle.user_game values(12, 3);
-INSERT INTO qualle.user_game values(12, 7);
+INSERT INTO qualle.cart_game values(10, 3);
+INSERT INTO qualle.cart_game values(10, 11);
+INSERT INTO qualle.cart_game values(12, 3);
+INSERT INTO qualle.cart_game values(12, 7);

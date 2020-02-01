@@ -31,9 +31,5 @@ function countDownTimer(dt, id) {
 }
 
 function startTimer() {
-    countDownTimer('12/10/2019 10:1 AM', 'innerTimeTitle');
-}
-
-function search() {
-    document.getElementById("result").style.display = "block";
+    countDownTimer('03/15/2020 10:1 AM', 'innerTimeTitle');
 }

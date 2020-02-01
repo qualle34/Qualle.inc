@@ -16,7 +16,8 @@ public interface GameRepository extends CrudRepository<Game, Long> {
     @Query("FROM Game g JOIN FETCH g.category c")
     List<Game> findAllWithCategory();
 
-    List<Game> findByName(String name);
+    @Query("FROM Game g WHERE g.name LIKE :name")
+    List<Game> findByName(@Param("name") String name);
 
     @Query("FROM Game g WHERE (SELECT u FROM User u WHERE :id = u.id) MEMBER OF g.users")
     List<Game> findByUserId(@Param("id") long id);

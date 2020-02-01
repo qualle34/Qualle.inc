@@ -20,11 +20,15 @@ header .header-left {
 
 header .header-right {
     float: right;
-    margin-right: 5%;
+    margin-right: 3%;
     padding: 25px 0;
 }
 
-header .header-right a, .header-left a {
+header .header-right div{
+    display: inline;
+}
+
+header .link {
     float: left;
     color: white;
     text-align: center;
@@ -36,33 +40,13 @@ header .header-right a, .header-left a {
     border-radius: 4px;
 }
 
-header .header-right a:hover {
+header .header-right a:hover, .header-right div a:hover {
     color: #00b0ff;
 }
 
 header .header-right .head_login {
     font-weight: bold;
     margin-left: 2%;
-}
-
-header .head_cart {
-    display: none;
-    width: 19px;
-    height: 19px;
-    background: url("../img/head_cart.png") 50% 50%;
-    background-size: cover;
-}
-
-header .head_user {
-    display: none;
-    width: 19px;
-    height: 19px;
-    background: url("../img/head_user.png") 50% 50%;
-    background-size: cover;
-}
-
-header .header-right a div {
-    padding: 3px;
 }
 
 .header-mobile {
@@ -186,7 +170,6 @@ header .header-right a div {
         padding: 0 0 0 30px;
         background: rgba(0, 0, 0, 0.8);
         text-align: left;
-
     }
 
     header .header-right a {
