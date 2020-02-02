@@ -71,7 +71,10 @@
                 <h2 th:text="${game.name}">Название игры</h2>
             </div>
             <div class="cart">
-                <button>Добавить в корзину</button>
+                <form action="#" method="post" th:action="@{'/cart/add/'}">
+                    <input th:value="${game.id}" type="hidden" name="gameId"/>
+                    <input type="submit" class="button" value="Добавить в корзину">
+                </form>
             </div>
         </div>
     </section>

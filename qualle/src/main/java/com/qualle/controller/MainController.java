@@ -35,7 +35,7 @@ public class MainController {
     @GetMapping(value = "/login")
     public String getLoginPage(Authentication authentication) {
         if (SessionUtil.isAuthenticated(authentication)) {
-            return "redirect:home";
+            return "redirect:/home";
         }
         return "login";
     }
@@ -43,7 +43,7 @@ public class MainController {
     @GetMapping(value = "/registration")
     public String getRegistrationPage(Authentication authentication) {
         if (SessionUtil.isAuthenticated(authentication)) {
-            return "redirect:home";
+            return "redirect:/home";
         }
         return "registration";
     }

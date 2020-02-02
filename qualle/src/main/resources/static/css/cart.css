@@ -114,8 +114,49 @@ main {
     text-align: center;
 }
 
+.total .text-2 {
+    width: 50%;
+    height: auto;
+    margin: auto auto 30px;
+    background: white;
+    box-shadow: 5px 5px 30px -5px #9b9b9b;
+    text-align: center;
+}
+
 .total .text h1 {
     color: gray;
     font-weight: normal;
     font-size: 25px;
+}
+
+/*   main   */
+.button {
+    padding: 15px 30px;
+    font-weight: 600;
+    background-color: transparent;
+    color: gray;
+    border: 1px solid gray;
+    transition: background-color 0.25s linear;
+}
+
+.button:hover {
+    background-color: gray;
+    border: 1px solid gray;
+    color: white;
+}
+
+.big-button {
+    width: 100%;
+    height: 100%;
+    padding: 30px 30px;
+    font-weight: 600;
+    background-color: #00b0ff;
+    color: white;
+    border: 1px solid #00b0ff;
+    transition: background-color 0.25s linear;
+}
+
+.big-button:hover {
+    background-color: transparent;
+    color: #00b0ff;
 }

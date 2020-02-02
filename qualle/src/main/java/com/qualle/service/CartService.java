@@ -4,7 +4,9 @@ import com.qualle.model.entity.Cart;
 
 public interface CartService {
 
-    Cart getByUserId(Long userId);
+    Cart getById(Long id);
 
     void addGame(long id, long gameId);
+
+    void buyGames(long id);
 }

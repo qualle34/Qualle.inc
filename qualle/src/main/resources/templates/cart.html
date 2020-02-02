@@ -89,6 +89,12 @@
             <div class="text" id="amountText">
                 <h1>Сумма заказа: <span id="fullPrice"></span> $</h1>
             </div>
+
+            <div class="text-2" id="buy">
+                <form action="#" th:action="@{/cart/buy}" method="post">
+                    <input type="submit" class="big-button" value="Купить"/>
+                </form>
+            </div>
         </section>
 
         <footer class="footer"> <!-- footer -->

@@ -2,6 +2,7 @@ package com.qualle.service;
 
 import com.qualle.model.dto.UserProfileDto;
 import com.qualle.model.dto.UserRegistrationDto;
+import com.qualle.model.entity.Cart;
 import com.qualle.model.entity.User;
 
 public interface UserService {

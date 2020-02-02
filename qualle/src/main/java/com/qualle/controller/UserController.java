@@ -10,7 +10,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -43,10 +42,18 @@ public class UserController {
         return "cart";
     }
 
-    @PostMapping(value = "/cart/add/{gameId}")
-    public void addGameToCart(@PathVariable long gameId, Authentication authentication) {
+    @PostMapping(value = "/cart/add")
+    public String addGameToCart(long gameId, Authentication authentication) {
         long id = userService.getIdByLogin(SessionUtil.getUserLogin(authentication));
         cartService.addGame(id, gameId);
+        return "redirect:/cart";
+    }
+
+    @PostMapping(value = "/cart/buy")
+    public String buyGames(Authentication authentication) {
+        long id = userService.getIdByLogin(SessionUtil.getUserLogin(authentication));
+        cartService.buyGames(id);
+        return "redirect:/profile";
     }
 
     @PostMapping(value = "/registration")
