@@ -64,8 +64,11 @@
         case "cart":
             description = "Корзина не найдена";
             break;
-        default:
+        case null:
             description = "Что-то пошло не так..";
+            break;
+        default:
+            description = cause;
     }
     document.getElementById("description").innerText = description;
 </script>

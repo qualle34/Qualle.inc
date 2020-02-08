@@ -3,6 +3,7 @@ package com.qualle.service.impl;
 import com.qualle.exception.CartNotFoundException;
 import com.qualle.exception.GameNotFoundException;
 import com.qualle.model.entity.Cart;
+import com.qualle.model.entity.Game;
 import com.qualle.model.entity.User;
 import com.qualle.repository.CartRepository;
 import com.qualle.repository.GameRepository;
@@ -50,6 +51,20 @@ public class CartServiceImpl implements CartService {
         }
         cart.setGames(null);
         userService.update(user);
+        cartRepository.save(cart);
+    }
+
+    @Override
+    public void deleteGames(long id) {
+        Cart cart = getById(id);
+        cart.setGames(null);
+        cartRepository.save(cart);
+    }
+
+    @Override
+    public void deleteGame(long id, long gameId) {
+        Cart cart = getById(id);
+        cart.getGames().removeIf(game -> game.getId() == gameId);
         cartRepository.save(cart);
     }
 

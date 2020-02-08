@@ -68,6 +68,12 @@
 
         <section class="games">
 
+            <div class="main-delete" id="clear">
+                <form action="#" th:action="@{'/cart/delete'}" method="post">
+                    <input type="submit" class="delete-button" value="Очистить"/>
+                </form>
+            </div>
+
             <div th:each="game : ${games}" class="game-box">
                 <div class="image">
                     <img th:src="${game.img}">
@@ -76,6 +82,13 @@
                     <p class="name" th:text="${game.name}"></p>
                     <div class="line"></div>
                     <p class="price"> цена: <span class="numPrice" th:text="${game.price}"></span> $</p>
+                </div>
+
+                <div class="delete">
+                    <form action="#" th:action="@{'/cart/delete'}" method="post">
+                        <input th:value="${game.id}" type="hidden" name="gameId"/>
+                        <input type="submit" class="small-delete-button" value="X"/>
+                    </form>
                 </div>
             </div>
 

@@ -19,9 +19,6 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    private CartService cartService;
-
-    @Autowired
     private GameService gameService;
 
     @GetMapping(value = "/profile")
@@ -31,29 +28,6 @@ public class UserController {
         model.addAttribute("games", gameService.getDtoByUser(login));
         model.addAttribute("user", userService.getDtoByLogin(login));
         return "profile";
-    }
-
-    @GetMapping(value = "/cart")
-    public String getCartPage(Model model, Authentication authentication) {
-        long id = userService.getIdByLogin(SessionUtil.getUserLogin(authentication));
-        model.addAttribute("isAuthenticated", SessionUtil.isAuthenticated(authentication));
-        model.addAttribute("games", gameService.getDtoByCart(id));
-        model.addAttribute("user", userService.getDtoById(id));
-        return "cart";
-    }
-
-    @PostMapping(value = "/cart/add")
-    public String addGameToCart(long gameId, Authentication authentication) {
-        long id = userService.getIdByLogin(SessionUtil.getUserLogin(authentication));
-        cartService.addGame(id, gameId);
-        return "redirect:/cart";
-    }
-
-    @PostMapping(value = "/cart/buy")
-    public String buyGames(Authentication authentication) {
-        long id = userService.getIdByLogin(SessionUtil.getUserLogin(authentication));
-        cartService.buyGames(id);
-        return "redirect:/profile";
     }
 
     @PostMapping(value = "/registration")

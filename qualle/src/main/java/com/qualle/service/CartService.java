@@ -9,4 +9,8 @@ public interface CartService {
     void addGame(long id, long gameId);
 
     void buyGames(long id);
+
+    void deleteGames(long id);
+
+    void deleteGame(long id, long gameId);
 }

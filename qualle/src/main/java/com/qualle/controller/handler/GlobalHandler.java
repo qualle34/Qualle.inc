@@ -22,7 +22,8 @@ public class GlobalHandler {
     }
 
     @ExceptionHandler(value = Exception.class)
-    public String exception(Exception e) {
+    public String exception(Exception e, Model model) {
+        model.addAttribute("cause", e.getMessage());
         return "redirect:error";
     }
 }

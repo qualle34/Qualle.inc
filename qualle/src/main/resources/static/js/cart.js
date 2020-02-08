@@ -25,4 +25,5 @@ function hideNull() {
 function hideAmount() {
     document.getElementById("amountText").style.display = "none";
     document.getElementById("buy").style.display = "none";
+    document.getElementById("clear").style.display = "none";
 }
