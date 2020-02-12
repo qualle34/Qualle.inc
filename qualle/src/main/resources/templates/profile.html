@@ -20,42 +20,7 @@
 
 <div id="wrapper">
 
-    <header>
-        <div id="header"> <!-- Header -->
-            <div class="header-left">
-                <a href="/" class="link">Qualle.inc</a>
-            </div>
-
-            <div class="header-menu">
-                <div class="menu-toggle">
-                    <div class="hamburger">
-                        <span></span><span></span><span></span>
-                    </div>
-                    <div class="cross">
-                        <span></span><span></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="header-right" id="header-right"><!-- Menu for pc -->
-                <a href="/service" class="link">Услуги</a>
-                <a href="/games" class="link">Игры</a>
-                <a href="/about" class="link">О Нас</a>
-                <a href="/contacts" class="link">Контакты</a>
-
-                <div class="ignore" th:if="${isAuthenticated}">
-                    <a href="/cart" class="link">Корзина</a>
-                    <a href="/profile" class="link">Профиль</a>
-                    <a href="/logout" class="link">Выйти</a>
-                </div>
-
-                <div class="ignore" th:if="${not isAuthenticated}">
-                    <a href="/login" class="link">Log in</a>
-                    <a href="/registration" class="link">Sign up</a>
-                </div>
-            </div>
-        </div>
-    </header>
+    <div th:insert="fragments/header :: header"></div>
 
     <section class="info box">
         <div class="profile">
@@ -94,38 +59,7 @@
         </div>
     </section>
 
-
-    <footer class="footer"><!-- footer -->
-
-        <div class="box">
-            <p>Беларусь</p>
-            <p>ул. Советская 2<br/>
-                +375 35 123 12 34<br/>
-                qualle.rb.inc@gmail.com
-            </p>
-
-        </div>
-
-        <div class="box">
-            <p>Россия</p>
-            <p>Кирова, 24<br/>
-                +7 33 497 89 56<br/>
-                qualle.ru.inc@gmail.com
-            </p>
-        </div>
-
-        <div class="box">
-            <p>США</p>
-            <p>CA, Larksfur Dr. 34<br/>
-                +1 32 435 23 43<br/>
-                qualle.us.inc@gmail.com
-            </p>
-        </div>
-
-        <div class="comp">
-            <p>© 2019, Qualle.inc, Все права защищены</p>
-        </div>
-    </footer>
+    <div th:insert="fragments/footer :: footer"></div>
 
 </div>
 </body>
