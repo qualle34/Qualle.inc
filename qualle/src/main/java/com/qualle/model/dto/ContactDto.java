@@ -1,35 +1,20 @@
-package com.qualle.model.entity;
+package com.qualle.model.dto;
 
-import javax.persistence.*;
+public class ContactDto {
 
-@Entity
-@Table(name = "summary")
-public class Summary {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
     private String name;
     private String email;
     private String phone;
     private String message;
 
-    public Summary() {
+    public ContactDto() {
     }
 
-    public Summary(String name, String email, String phone, String message) {
+    public ContactDto(String name, String email, String phone, String message) {
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.message = message;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {

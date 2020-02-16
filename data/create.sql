@@ -128,9 +128,10 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `qualle`.`summary` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
-  `title` VARCHAR(45) NOT NULL,
-  `description` VARCHAR(45) NULL,
-  `file` VARCHAR(255) NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `phone` VARCHAR(45) NULL,
+  `message` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

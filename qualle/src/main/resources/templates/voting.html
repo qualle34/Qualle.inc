@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>Qualle.inc | Голосование</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/voting.css}"/>
+
+    <script src="../js/common.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div id="wrapper">
+
+
+    <div class="containerOuter" th:if="${not isResult}">
+        <div class="container">
+
+            <form th:action="@{'/voting/vote'}" method="post">
+
+                <h1>Оцените наш сайт:</h1>
+
+                <div id="radios">
+                    <label for="input1"></label>
+                    <input id="input1" name="one_star" type="radio"/>
+                    <label for="input2"></label>
+                    <input id="input2" name="two_stars" type="radio"/>
+                    <label for="input3"></label>
+                    <input id="input3" name="three_stars" type="radio"/>
+                    <label for="input4"></label>
+                    <input id="input4" name="four_stars" type="radio"/>
+                    <label for="input5"></label>
+                    <input id="input5" name="five_stars" type="radio"/>
+                    <span id="slider"></span>
+                </div>
+
+                <div class="container-contact100-form-btn">
+                    <button class="contact100-form-btn" type="submit">
+                        <span>Отправить</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="containerOuter" th:if="${isResult}">
+        <div class="container">
+
+            <h1>Результаты голосования</h1>
+
+            <div class="progress">
+                <p>1</p>
+                <div class="progress-value" th:style="'width:' + ${one_star} + 'px'"></div>
+            </div>
+            <div class="progress">
+                <p>2</p>
+                <div class="progress-value" th:style="'width:' + ${two_stars} + 'px'"></div>
+            </div>
+            <div class="progress">
+                <p>3</p>
+                <div class="progress-value" th:style="'width:' + ${three_stars} + 'px'"></div>
+            </div>
+            <div class="progress">
+                <p>4</p>
+                <div class="progress-value" th:style="'width:' + ${four_stars} + 'px'"></div>
+            </div>
+            <div class="progress">
+                <p>5</p>
+                <div class="progress-value" th:style="'width:' + ${five_stars} + 'px'"></div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

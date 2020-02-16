@@ -72,17 +72,17 @@ INSERT INTO qualle.game(name, price, description, developer_id, category_id, img
 INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('WWE Immortals', 0.00, '', 1, 5, 'img/games/mobile/mobile-4.png');
 INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Star Wars: Galaxy of Heroes', 0.00, '', 2, 5, 'img/games/mobile/mobile-5.png');
 INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Injustice: Gods Among Us', 3.00, '', 1, 5, 'img/games/mobile/mobile-6.png');
-INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Игра 1', 10.00, '', 1, 1, 'img/games/others/game.png');
-INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Игра 2', 10.00, '', 1, 1, 'img/games/others/game.png');
-INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Игра 3', 10.00, '', 1, 1, 'img/games/others/game.png');
-INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Игра 4', 10.00, '', 1, 1, 'img/games/others/game.png');
-INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Игра 5', 10.00, '', 1, 1, 'img/games/others/game.png');
-INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Игра 6', 10.00, '', 1, 1, 'img/games/others/game.png');
-INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Игра 7', 10.00, '', 1, 1, 'img/games/others/game.png');
-INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Игра 8', 10.00, '', 1, 1, 'img/games/others/game.png');
-INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Игра 9', 10.00, '', 1, 1, 'img/games/others/game.png');
-INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Игра 10', 10.00, '', 1, 1, 'img/games/others/game.png');
-INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Игра 11', 10.00, '', 1, 1, 'img/games/others/game.png');
+INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Игра 1', 10.00, '', 1, 1, 'img/games/others/game.jpg');
+INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Игра 2', 10.00, '', 1, 1, 'img/games/others/game.jpg');
+INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Игра 3', 10.00, '', 1, 1, 'img/games/others/game.jpg');
+INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Игра 4', 10.00, '', 1, 1, 'img/games/others/game.jpg');
+INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Игра 5', 10.00, '', 1, 1, 'img/games/others/game.jpg');
+INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Игра 6', 10.00, '', 1, 1, 'img/games/others/game.jpg');
+INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Игра 7', 10.00, '', 1, 1, 'img/games/others/game.jpg');
+INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Игра 8', 10.00, '', 1, 1, 'img/games/others/game.jpg');
+INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Игра 9', 10.00, '', 1, 1, 'img/games/others/game.jpg');
+INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Игра 10', 10.00, '', 1, 1, 'img/games/others/game.jpg');
+INSERT INTO qualle.game(name, price, description, developer_id, category_id, img_link) values('Игра 11', 10.00, '', 1, 1, 'img/games/others/game.jpg');
 
 INSERT INTO qualle.user_game values(1, 1);
 INSERT INTO qualle.user_game values(1, 4);

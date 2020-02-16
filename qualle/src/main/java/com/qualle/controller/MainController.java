@@ -15,12 +15,6 @@ public class MainController {
         return "about";
     }
 
-    @GetMapping(value = "/contacts")
-    public String getContactsPage(Model model, Authentication authentication) {
-        model.addAttribute("isAuthenticated", SessionUtil.isAuthenticated(authentication));
-        return "contacts";
-    }
-
     @GetMapping(value = "/service")
     public String getServicePage(Model model, Authentication authentication) {
         model.addAttribute("isAuthenticated", SessionUtil.isAuthenticated(authentication));

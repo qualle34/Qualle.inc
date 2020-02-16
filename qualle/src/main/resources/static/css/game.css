@@ -25,10 +25,25 @@ main {
     background: gray;
 }
 
+.photo .background img {
+    width: 100%;
+    height: 800px;
+    background: gray;
+    object-fit: cover;
+}
+
 .photo .logo {
     position: absolute;
     top: 75px;
     left: 10%;
+    width: 150px;
+    height: 150px;
+    background: white;
+}
+
+.photo .logo img {
+    position: absolute;
+    object-fit: cover;
     width: 150px;
     height: 150px;
     background: white;

@@ -26,11 +26,13 @@
 
     <section class="photo box">
         <div class="background">
-            <img src="" alt="game">
+            <img src="" alt="game" id="bg">
         </div>
+
         <div class="logo">
-            <img src="" alt="logo">
+            <img src="/img/links/logo.jpg" alt="logo">
         </div>
+
         <div class="name-box">
             <div class="name">
                 <h2 th:text="${game.name}">Название игры</h2>
@@ -102,6 +104,19 @@
     <section class="system box"></section>
 
     <div th:insert="fragments/footer :: footer"></div>
+
+    <script>
+
+        document.getElementById('bg').setAttribute('src', getPath());
+
+        function getPath(){
+           return '/img/bg/img' + getRandomInt(9) + '.jpg';
+        }
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max)) + 1;
+        }
+    </script>
 
 </div>
 </body>
