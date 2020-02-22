@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}"/>
 
     <script src="../js/games.js" type="text/javascript"></script>
+    <script src="../js/search.js" type="text/javascript"></script>
     <script src="../js/common.js" type="text/javascript"></script>
 </head>
 <body>
@@ -62,18 +63,14 @@
 
         <section class="search">
             <div class="search-box">
-                <form th:action="@{/games}" method="get">
-                    <input type="text" name="search" id="search" placeholder="Поиск..." th:value="${search}"/>
-                    <input class="search-button" type="submit" value="0"/>
-                </form>
+                <input id="search" type="text" name="search" placeholder="Поиск..."/>
+                <input id="find" class="search-button" type="submit" value="0"/>
             </div>
         </section>
 
-        <section class="result" id="result">
-            <div class="result-box" th:if="${not #lists.isEmpty(found)}">
-                <div class="game" th:each="game : ${found}">
-                    <a class="name" th:href="${'/game/' + game.id}" th:text="${game.name}"></a>
-                    <div class="line"></div>
+        <section class="result">
+            <div id="searchResult" class="result-box">
+                <div id="result">
                 </div>
             </div>
         </section>

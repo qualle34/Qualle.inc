@@ -28,21 +28,11 @@
             <h1 class="title"> Профиль </h1>
 
             <ul>
-                <li>Имя -
-                    <p th:text="${user.name}"></p>
-                </li>
-                <li>Фамилия -
-                    <p th:text="${user.lastname}"></p>
-                </li>
-                <li>Телефон -
-                    <p th:text="${user.phone}"></p>
-                </li>
-                <li>Email -
-                    <p th:text="${user.email}"></p>
-                </li>
-                <li>День рождения -
-                    <p th:text="${user.birthday}"></p>
-                </li>
+                <li>Имя - <span th:text="${user.name}"></span></li>
+                <li>Фамилия - <span th:text="${user.lastname}"></span></li>
+                <li>Телефон - <span th:text="${user.phone}"></span></li>
+                <li>Email - <span th:text="${user.email}"></span></li>
+                <li>День рождения - <span th:text="${user.birthday}"></span></li>
             </ul>
         </div>
 
@@ -52,7 +42,7 @@
 
             <div class="game" th:each="game : ${games}">
                 <div class="logo">
-                    <img th:src="@{/img/game-${game.id}}" class="image">
+                    <img th:src="${game.img}">
                 </div>
                 <p class="name" th:text="${game.name}"></p>
             </div>

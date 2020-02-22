@@ -221,7 +221,7 @@ input {
 }
 
 .result .result-box .name {
-    margin: 5px;
+    margin: 20px 0;
     color: black;
     text-decoration: none;
 }

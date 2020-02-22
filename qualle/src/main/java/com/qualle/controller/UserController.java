@@ -2,7 +2,6 @@ package com.qualle.controller;
 
 import com.qualle.model.dto.UserRegistrationDto;
 import com.qualle.security.SessionUtil;
-import com.qualle.service.CartService;
 import com.qualle.service.GameService;
 import com.qualle.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

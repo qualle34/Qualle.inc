@@ -150,7 +150,7 @@ public class GameServiceImpl implements GameService {
     }
 
     private GameDto toDto(Game game) {
-        GameDto dto = new GameDto(game.getName(), game.getDescription(), game.getPrice(), game.getDeveloper().getTitle(), game.getCategory().getTitle());
+        GameDto dto = new GameDto(game.getName(), game.getDescription(), game.getPrice(), game.getDeveloper().getTitle(), game.getCategory().getTitle(), game.getImg());
         dto.setId(game.getId());
         return dto;
     }

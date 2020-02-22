@@ -8,16 +8,18 @@ public class GameDto {
     private double price;
     private String developer;
     private String category;
+    private String img;
 
     public GameDto() {
     }
 
-    public GameDto(String name, String description, double price, String developer, String category) {
+    public GameDto(String name, String description, double price, String developer, String category, String img) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.developer = developer;
         this.category = category;
+        this.img = img;
     }
 
     public long getId() {
@@ -66,5 +68,13 @@ public class GameDto {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }
