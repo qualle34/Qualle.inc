@@ -11,13 +11,13 @@ public class MainController {
 
     @GetMapping(value = "/about")
     public String getAboutPage(Model model, Authentication authentication) {
-        model.addAttribute("isAuthenticated", SessionUtil.isAuthenticated(authentication));
+        model.addAttribute("authority", SessionUtil.getAuthority(authentication));
         return "about";
     }
 
     @GetMapping(value = "/service")
     public String getServicePage(Model model, Authentication authentication) {
-        model.addAttribute("isAuthenticated", SessionUtil.isAuthenticated(authentication));
+        model.addAttribute("authority", SessionUtil.getAuthority(authentication));
         return "service";
     }
 

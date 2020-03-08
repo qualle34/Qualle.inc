@@ -21,7 +21,7 @@ public class ExtraController {
 
     @GetMapping(value = "/contacts")
     public String getContactsPage(Model model, Authentication authentication) {
-        model.addAttribute("isAuthenticated", SessionUtil.isAuthenticated(authentication));
+        model.addAttribute("authority", SessionUtil.getAuthority(authentication));
         return "contacts";
     }
 
@@ -33,7 +33,7 @@ public class ExtraController {
 
     @GetMapping(value = "/voting")
     public String getVotingPage(Model model, Authentication authentication) {
-        model.addAttribute("isAuthenticated", SessionUtil.isAuthenticated(authentication));
+        model.addAttribute("authority", SessionUtil.getAuthority(authentication));
         model.addAttribute("isResult", false);
         return "voting";
     }

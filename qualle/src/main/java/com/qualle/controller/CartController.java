@@ -27,7 +27,7 @@ public class CartController {
     @GetMapping(value = "/cart")
     public String getCartPage(Model model, Authentication authentication) {
         long id = userService.getIdByLogin(SessionUtil.getUserLogin(authentication));
-        model.addAttribute("isAuthenticated", SessionUtil.isAuthenticated(authentication));
+        model.addAttribute("authority", SessionUtil.getAuthority(authentication));
         model.addAttribute("games", gameService.getDtoByCart(id));
         model.addAttribute("user", userService.getDtoById(id));
         return "cart";

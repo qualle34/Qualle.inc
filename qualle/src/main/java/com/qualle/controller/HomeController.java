@@ -11,7 +11,7 @@ public class HomeController {
 
     @GetMapping(value = {"/", "/home"})
     public String getPage(Model model, Authentication authentication) {
-        model.addAttribute("isAuthenticated", SessionUtil.isAuthenticated(authentication));
+        model.addAttribute("authority", SessionUtil.getAuthority(authentication));
         return "home";
     }
 }

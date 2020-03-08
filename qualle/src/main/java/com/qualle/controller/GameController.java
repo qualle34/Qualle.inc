@@ -18,11 +18,11 @@ import java.util.Map;
 public class GameController {
 
     @Autowired
-    GameService gameService;
+    private GameService gameService;
 
     @GetMapping(value = "/games")
     public String getGamePage(Model model, Authentication authentication) {
-        model.addAttribute("isAuthenticated", SessionUtil.isAuthenticated(authentication));
+        model.addAttribute("authority", SessionUtil.getAuthority(authentication));
         Map<String, List<GameSimpleDto>> dto = gameService.getForGamesPage();
         model.addAttribute("main", dto.get("main"));
         model.addAttribute("popular", dto.get("popular"));
@@ -34,7 +34,7 @@ public class GameController {
 
     @GetMapping(value = "/game/{id}")
     public String getGamePage(@PathVariable Long id, Model model, Authentication authentication) {
-        model.addAttribute("isAuthenticated", SessionUtil.isAuthenticated(authentication));
+        model.addAttribute("authority", SessionUtil.getAuthority(authentication));
         model.addAttribute("game", gameService.getDtoById(id));
         return "game";
     }

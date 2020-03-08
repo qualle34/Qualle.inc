@@ -12,7 +12,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -22,6 +25,16 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private PasswordEncoder encoder;
+
+    @Override
+    public List<User> getAll() {
+        return (List<User>) userRepository.findAll();
+    }
+
+    @Override
+    public List<UserProfileDto> getAllDto() {
+        return getAll().stream().map(this::toDto).collect(Collectors.toCollection(ArrayList::new));
+    }
 
     @Override
     public User getById(long id) {
@@ -90,6 +103,7 @@ public class UserServiceImpl implements UserService {
     private UserProfileDto toDto(User user) {
         UserProfileDto dto = new UserProfileDto(user.getName(), user.getLastname(), user.getCreds().getLogin(), user.getPhone(), user.getEmail());
         dto.setBirthday((user.getBirthday() != null) ? user.getBirthday().toString() : null);
+        dto.setId(user.getId());
         return dto;
     }
 }

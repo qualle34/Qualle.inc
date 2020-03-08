@@ -23,7 +23,7 @@ public class UserController {
     @GetMapping(value = "/profile")
     public String getProfilePage(Model model, Authentication authentication) {
         String login = SessionUtil.getUserLogin(authentication);
-        model.addAttribute("isAuthenticated", authentication.isAuthenticated());
+        model.addAttribute("authority", SessionUtil.getAuthority(authentication));
         model.addAttribute("games", gameService.getDtoByUser(login));
         model.addAttribute("user", userService.getDtoByLogin(login));
         return "profile";

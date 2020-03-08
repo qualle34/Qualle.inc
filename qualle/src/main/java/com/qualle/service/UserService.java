@@ -5,7 +5,13 @@ import com.qualle.model.dto.UserRegistrationDto;
 import com.qualle.model.entity.Cart;
 import com.qualle.model.entity.User;
 
+import java.util.List;
+
 public interface UserService {
+
+    List<User> getAll();
+
+    List<UserProfileDto> getAllDto();
 
     User getById(long id);
 
