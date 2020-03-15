@@ -1,8 +1,10 @@
 package com.qualle.service;
 
 import com.qualle.model.dto.CategoryDto;
-import com.qualle.model.dto.ContactDto;
+import com.qualle.model.dto.SummaryDto;
+import com.qualle.model.dto.DeveloperDto;
 import com.qualle.model.entity.Category;
+import com.qualle.model.entity.Developer;
 import com.qualle.model.entity.Summary;
 
 import java.util.List;
@@ -12,17 +14,29 @@ public interface ExtraService {
 
     List<CategoryDto> getAllCategoriesDto();
 
-    List<ContactDto> getAllSummariesDto();
+    CategoryDto getCategoryDtoById(long id);
+
+    List<DeveloperDto> getAllDeveloperDto();
+
+    DeveloperDto getDeveloperDtoById(long id);
+
+    List<SummaryDto> getAllSummariesDto();
+
+    SummaryDto getSummaryDtoById(long id);
+
+    void add(CategoryDto dto);
 
     void add(Summary summary);
 
-    void add(ContactDto dto);
+    void add(SummaryDto dto);
 
     void add(String vote);
 
     Map<String, Integer> getVotes();
 
-    ContactDto toSummaryDto(Summary summary);
+    SummaryDto toDto(Summary summary);
 
-    CategoryDto toCategoryDto(Category category);
+    CategoryDto toDto(Category category);
+
+    DeveloperDto toDto(Developer developer);
 }

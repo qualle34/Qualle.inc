@@ -81,18 +81,17 @@ a {
 }
 
 #sidebar ul li {
+    list-style-type: disc;
     font-size: 16px;
 }
 
 #sidebar ul li > ul {
+    list-style-type: disc;
     margin-left: 10px;
 }
 
-#sidebar ul li > ul li {
-    font-size: 14px;
-}
-
 #sidebar ul li a {
+    font-size: 16px;
     padding: 15px 30px;
     display: block;
     color: rgb(255, 255, 255);
@@ -176,6 +175,12 @@ a[data-toggle="collapse"] {
     }
 }
 
+.switch {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+
 /*  content  */
 /**************************************************/
 
@@ -192,11 +197,6 @@ a[data-toggle="collapse"] {
 .p-4 {
     padding: 3rem !important;
     padding-top: 3rem !important;
-}
-
-.box {
-    background: white;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .box table {
@@ -223,8 +223,21 @@ a[data-toggle="collapse"] {
     padding: 20px;
 }
 
+.box .info {
+    padding: 30px;
+    background: white;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);
+}
 
-
+.add-box {
+    width: 300px;
+    display: inline-block;
+    padding: 20px;
+    text-align: center;
+    margin: 20px 50px 20px 0;
+    background: white;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);
+}
 
 
 

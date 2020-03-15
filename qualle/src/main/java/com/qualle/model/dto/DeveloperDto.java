@@ -1,27 +1,17 @@
-package com.qualle.model.entity;
+package com.qualle.model.dto;
 
-import javax.persistence.*;
-import java.util.Set;
+public class DeveloperDto {
 
-@Entity
-@Table(name = "developer")
-public class Developer {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String title;
     private String description;
     private String contacts;
     private String address;
 
-    @OneToMany(mappedBy="developer", fetch = FetchType.LAZY)
-    private Set<Game> games;
-
-    public Developer() {
+    public DeveloperDto() {
     }
 
-    public Developer(String title, String description, String contacts, String address) {
+    public DeveloperDto(String title, String description, String contacts, String address) {
         this.title = title;
         this.description = description;
         this.contacts = contacts;
@@ -66,18 +56,5 @@ public class Developer {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public Set<Game> getGames() {
-        return games;
-    }
-
-    public void setGames(Set<Game> games) {
-        this.games = games;
-    }
-
-    @Override
-    public String toString() {
-        return title + " " + description + " " + contacts + " " + address;
     }
 }

@@ -3,17 +3,19 @@ package com.qualle.model.dto;
 public class SummaryDto {
 
     private long id;
-    private String title;
-    private String description;
-    private String file;
+    private String name;
+    private String email;
+    private String phone;
+    private String message;
 
     public SummaryDto() {
     }
 
-    public SummaryDto(String title, String description, String file) {
-        this.title = title;
-        this.description = description;
-        this.file = file;
+    public SummaryDto(String name, String email, String phone, String message) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.message = message;
     }
 
     public long getId() {
@@ -24,27 +26,35 @@ public class SummaryDto {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getEmail() {
+        return email;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getFile() {
-        return file;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setFile(String file) {
-        this.file = file;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

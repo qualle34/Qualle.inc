@@ -7,7 +7,9 @@ public class GameDto {
     private String description;
     private double price;
     private String developer;
+    private String developerId;
     private String category;
+    private String categoryId;
     private String img;
 
     public GameDto() {
@@ -62,12 +64,28 @@ public class GameDto {
         this.developer = developer;
     }
 
+    public String getDeveloperId() {
+        return developerId;
+    }
+
+    public void setDeveloperId(String developerId) {
+        this.developerId = developerId;
+    }
+
     public String getCategory() {
         return category;
     }
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getImg() {

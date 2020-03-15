@@ -1,6 +1,6 @@
 package com.qualle.controller;
 
-import com.qualle.model.dto.ContactDto;
+import com.qualle.model.dto.SummaryDto;
 import com.qualle.security.SessionUtil;
 import com.qualle.service.ExtraService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class ExtraController {
     }
 
     @PostMapping(value = "/contacts/send")
-    public String saveContacts(ContactDto dto) {
+    public String saveContacts(SummaryDto dto) {
         extraService.add(dto);
         return "redirect:/home";
     }

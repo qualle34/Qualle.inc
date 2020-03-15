@@ -13,7 +13,6 @@
 
     <link rel="stylesheet" type="text/css" th:href="@{/css/admin.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}"/>
 
     <script src="../js/common.js" type="text/javascript"></script>
     <script src="../js/admin.js" type="text/javascript"></script>
@@ -26,27 +25,70 @@
 
     <div class="wrapper d-flex align-items-stretch">
 
-        <nav id="sidebar">
-
-            <ul class="switch">
-
-                <li id="main"><a href="/admin"><span class="case"></span> Главная </a></li>
-
-                <li id="games"><a href=""><span class="case"></span> Игры </a></li>
-
-                <li id="categories"><a href=""><span class="case"></span> Категории </a></li>
-
-                <li id="users"><a href=""><span class="case"></span> Пользователи </a></li>
-
-                <li id="summaries"><a href=""><span class="case"></span> Сообщения </a></li>
-            </ul>
-
-        </nav>
+        <nav id="sidebar" th:insert="fragments/sidebar :: sidebar"></nav>
 
         <div id="content" class="p-4">
 
             <div class="box">
-                <table id="table">
+
+                <div class="add-box">
+                    <a href="/admin/add/game">Добавить игру</a>
+                </div>
+
+                <div class="add-box">
+                    <a href="/admin/add/category">Добавить категорию</a>
+                </div>
+
+                <div class="add-box">
+                    <a href="/admin/add/developer">Добавить разработчика</a>
+                </div>
+
+                <div class="info" th:if="${type == 'game'}">
+                    <h2>Информация о игре </h2>
+                    <p th:text="'id: ' + ${game.id}"></p>
+                    <p th:text="'Название: ' + ${game.name}"></p>
+                    <p th:text="'Описание: ' + ${game.description}"></p>
+                    <p th:text="'Цена: ' + ${game.price}"></p>
+                    <p th:text="'Разработчик: ' + ${game.developer}"></p>
+                    <p th:text="'Категория: ' + ${game.category}"></p>
+                    <p th:text="'Ссылка на логотип: ' + ${game.img}"></p>
+                </div>
+
+                <div class="info" th:if="${type == 'category'}">
+                    <h2>Информация о категории</h2>
+                    <p th:text="'id: ' + ${category.id}"></p>
+                    <p th:text="'Заголовок: ' + ${category.title}"></p>
+                    <p th:text="'Заголовок на русском: ' + ${category.localTitle}"></p>
+                </div>
+
+                <div class="info" th:if="${type == 'developer'}">
+                    <h2>Информация о разработчике</h2>
+                    <p th:text="'id: ' + ${developer.id}"></p>
+                    <p th:text="'Заголовок: ' + ${developer.title}"></p>
+                    <p th:text="'Описание: ' + ${developer.description}"></p>
+                    <p th:text="'Контактные данные: ' + ${developer.contacts}"></p>
+                    <p th:text="'Адрес: ' + ${developer.address}"></p>
+                </div>
+
+                <div class="info" th:if="${type == 'user'}">
+                    <h2>Информация о пользователе</h2>
+                    <p th:text="'id: ' + ${user.id}"></p>
+                    <p th:text="'Имя: ' + ${user.name}"></p>
+                    <p th:text="'Фамилия: ' + ${user.lastname}"></p>
+                    <p th:text="'Телефон: ' + ${user.phone}"></p>
+                    <p th:text="'Email: ' + ${user.email}"></p>
+                </div>
+
+                <div class="info" th:if="${type == 'summary'}">
+                    <h2>Информация о сообщении</h2>
+                    <p th:text="'id: ' + ${summary.id}"></p>
+                    <p th:text="'Имя: ' + ${summary.name}"></p>
+                    <p th:text="'Email: ' + ${summary.email}"></p>
+                    <p th:text="'Телефон: ' + ${summary.phone}"></p>
+                    <p th:text="'Сообщение: ' + ${summary.message}"></p>
+                </div>
+
+                <table id="table" style="background: white; box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);">
 
                 </table>
             </div>
