@@ -7,9 +7,9 @@ public class GameDto {
     private String description;
     private double price;
     private String developer;
-    private String developerId;
+    private long developerId;
     private String category;
-    private String categoryId;
+    private long categoryId;
     private String img;
 
     public GameDto() {
@@ -64,11 +64,11 @@ public class GameDto {
         this.developer = developer;
     }
 
-    public String getDeveloperId() {
+    public long getDeveloperId() {
         return developerId;
     }
 
-    public void setDeveloperId(String developerId) {
+    public void setDeveloperId(long developerId) {
         this.developerId = developerId;
     }
 
@@ -80,11 +80,11 @@ public class GameDto {
         this.category = category;
     }
 
-    public String getCategoryId() {
+    public long getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(String categoryId) {
+    public void setCategoryId(long categoryId) {
         this.categoryId = categoryId;
     }
 

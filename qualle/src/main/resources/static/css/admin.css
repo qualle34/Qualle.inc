@@ -225,6 +225,7 @@ a[data-toggle="collapse"] {
 
 .box .info {
     padding: 30px;
+    position: relative;
     background: white;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);
 }
@@ -240,7 +241,45 @@ a[data-toggle="collapse"] {
 }
 
 
+.info .update {
+    position: absolute;
+    right: 39px;
+    top: 6px;
+}
 
+.info .update a span {
+    padding: 6px 11px 7px;
+    background-color: white;
+    color: #2c95ff;
+    border: 0;
+    font-size: 16px !important;
+    transition: background-color 0.25s linear;
+}
+
+.info .update a span:hover {
+    background-color: #2c95ff;
+    color: white;
+}
+
+.info .delete {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.small-delete-button {
+    font-weight: 600;
+    padding: 10px 15px;
+    background-color: white;
+    color: #ff3724;
+    border: 0;
+    transition: background-color 0.25s linear;
+}
+
+.small-delete-button:hover {
+    background-color: #ff3724;
+    color: white;
+}
 
 
 

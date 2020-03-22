@@ -4,6 +4,8 @@ import com.qualle.exception.GameNotFoundException;
 import com.qualle.model.dto.GameDto;
 import com.qualle.model.dto.GameSimpleDto;
 import com.qualle.model.entity.Game;
+import com.qualle.repository.CategoryRepository;
+import com.qualle.repository.DeveloperRepository;
 import com.qualle.repository.GameRepository;
 import com.qualle.service.GameService;
 import com.qualle.service.UserService;
@@ -16,10 +18,16 @@ import java.util.*;
 public class GameServiceImpl implements GameService {
 
     @Autowired
-    GameRepository gameRepository;
+    private GameRepository gameRepository;
 
     @Autowired
-    UserService userService;
+    private DeveloperRepository developerRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
+
+    @Autowired
+    private UserService userService;
 
     @Override
     public Game getById(long id) {
@@ -145,6 +153,21 @@ public class GameServiceImpl implements GameService {
         return dto;
     }
 
+    @Override
+    public void add(GameDto dto) {
+        gameRepository.save(fromDto(dto));
+    }
+
+    @Override
+    public void update(GameDto dto) {
+        gameRepository.save(fromDto(dto));
+    }
+
+    @Override
+    public void delete(long id) {
+        gameRepository.delete(getById(id));
+    }
+
     private Game toGame(Optional<Game> optional) {
         return optional.orElseThrow(GameNotFoundException::new);
     }
@@ -152,6 +175,8 @@ public class GameServiceImpl implements GameService {
     private GameDto toDto(Game game) {
         GameDto dto = new GameDto(game.getName(), game.getDescription(), game.getPrice(), game.getDeveloper().getTitle(), game.getCategory().getTitle(), game.getImg());
         dto.setId(game.getId());
+        dto.setCategoryId(game.getCategory().getId());
+        dto.setDeveloperId(game.getDeveloper().getId());
         return dto;
     }
 
@@ -159,5 +184,14 @@ public class GameServiceImpl implements GameService {
         GameSimpleDto dto = new GameSimpleDto(game.getName(), game.getPrice(), game.getImg());
         dto.setId(game.getId());
         return dto;
+    }
+
+    private Game fromDto(GameDto dto) {
+        Game game = new Game(dto.getName(), dto.getDescription(), dto.getPrice());
+        game.setId(dto.getId());
+        game.setImg(dto.getImg());
+        game.setCategory(categoryRepository.findById(dto.getCategoryId()).get());
+        game.setDeveloper(developerRepository.findById(dto.getDeveloperId()).get());
+        return game;
     }
 }

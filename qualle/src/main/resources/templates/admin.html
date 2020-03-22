@@ -52,6 +52,17 @@
                     <p th:text="'Разработчик: ' + ${game.developer}"></p>
                     <p th:text="'Категория: ' + ${game.category}"></p>
                     <p th:text="'Ссылка на логотип: ' + ${game.img}"></p>
+
+                    <div class="update">
+                        <a th:href="${'/admin/update/game/' + game.id}"><span style='font-size:20px;'>&#x270e;</span></a>
+                    </div>
+
+                    <div class="delete">
+                        <form action="#" th:action="@{'/admin/delete/game'}" method="post">
+                            <input th:value="${game.id}" type="hidden" name="gameId"/>
+                            <input type="submit" class="small-delete-button" value="X"/>
+                        </form>
+                    </div>
                 </div>
 
                 <div class="info" th:if="${type == 'category'}">

@@ -1,6 +1,7 @@
 package com.qualle.controller;
 
 import com.qualle.model.dto.CategoryDto;
+import com.qualle.model.dto.DeveloperDto;
 import com.qualle.model.dto.GameDto;
 import com.qualle.security.SessionUtil;
 import com.qualle.service.ExtraService;
@@ -119,30 +120,57 @@ public class AdminController {
         model.addAttribute("authority", SessionUtil.getAuthority(authentication));
         model.addAttribute("categories", extraService.getAllCategoriesDto());
         model.addAttribute("developers", extraService.getAllDeveloperDto());
-        return "add_game";
+        return "edit_game";
     }
 
     @GetMapping(value = "/admin/add/category")
     public String addCategoryPage(Model model, Authentication authentication) {
         model.addAttribute("authority", SessionUtil.getAuthority(authentication));
-        return "add_category";
+        return "edit_category";
     }
 
     @GetMapping(value = "/admin/add/developer")
     public String addDeveloperPage(Model model, Authentication authentication) {
         model.addAttribute("authority", SessionUtil.getAuthority(authentication));
-        return "add_developer";
+        return "edit_developer";
+    }
+
+    @GetMapping(value = "/admin/update/game/{id}")
+    public String updateGamePage(@PathVariable Long id, Model model, Authentication authentication) {
+        model.addAttribute("authority", SessionUtil.getAuthority(authentication));
+        model.addAttribute("categories", extraService.getAllCategoriesDto());
+        model.addAttribute("developers", extraService.getAllDeveloperDto());
+        model.addAttribute("game", gameService.getDtoById(id));
+        return "edit_game";
     }
 
     @PostMapping(value = "/admin/add/game")
-    public void addGame(GameDto dto) {
+    public String addGame(GameDto dto) {
+        gameService.add(dto);
+        return "admin";
+    }
+
+    @PostMapping(value = "/admin/update/game")
+    public String addDeveloper(GameDto dto) {
+        gameService.update(dto);
+        return "admin";
+    }
+
+    @PostMapping(value = "/admin/delete/game")
+    public String addDeveloper(Long gameId) {
+        gameService.delete(gameId);
+        return "admin";
     }
 
     @PostMapping(value = "/admin/add/category")
-    public void addCategory(CategoryDto dto) {
+    public String addCategory(CategoryDto dto) {
+        extraService.add(dto);
+        return "admin";
     }
 
     @PostMapping(value = "/admin/add/developer")
-    public void addDeveloper(CategoryDto dto) {
+    public String addDeveloper(DeveloperDto dto) {
+        extraService.add(dto);
+        return "admin";
     }
 }

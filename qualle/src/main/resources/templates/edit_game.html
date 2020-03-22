@@ -38,7 +38,7 @@
                             <span class="contact-form-title-2"> Заполните все поля! </span>
                         </div>
 
-                        <form class="contact-form validate-form" method="post" th:action="@{'/admin/add/game'}">
+                        <form class="contact-form validate-form" method="post" th:if="${game == null}" th:action="@{'/admin/add/game'}">
 
                             <div class="wrap-input validate-input">
                                 <span class="label-input">Название:</span>
@@ -82,7 +82,57 @@
 
                             <div class="container-contact-form-btn">
                                 <button class="contact-form-btn" type="submit">
-                                    <span>Создать</span>
+                                    <span>ОК</span>
+                                </button>
+                            </div>
+                        </form>
+                        <form class="contact-form validate-form" method="post" th:if="${game != null}" th:action="@{'/admin/update/game'}">
+
+                            <div class="wrap-input validate-input">
+                                <span class="label-input">Название:</span>
+                                <input class="input" th:value="${game.name}" type="text" name="name" placeholder="Введите название игры*">
+                                <span class="focus-input"></span>
+                            </div>
+
+                            <div class="wrap-input validate-input">
+                                <span class="label-input">Цена:</span>
+                                <input class="input" th:value="${game.price}" type="text" name="price" placeholder="Введите цену игры" value="">
+                                <span class="focus-input"></span>
+                            </div>
+
+                            <div class="wrap-input validate-input">
+                                <span class="label-input">Ссылка на картинку:</span>
+                                <input class="input" th:value="${game.img}" type="text" name="img" placeholder="Введите путь к катинке">
+                                <span class="focus-input"></span>
+                            </div>
+
+                            <div class="wrap-input validate-input">
+                                <span class="label-input">Описание:</span>
+                                <textarea class="input" th:value="${game.description}" name="description" placeholder="Описание игры..."></textarea>
+                                <span class="focus-input"></span>
+                            </div>
+
+                            <div class="wrap-input validate-input">
+                                <span class="label-input" th:text="${'Разработчик: ' + game.developer}"></span>
+                                <select size="5" name="developerId">
+                                    <option th:each="developer : ${developers}" th:value="${developer.id}" th:text="${developer.title}"></option>
+                                </select>
+                                <span class="focus-input"></span>
+                            </div>
+
+                            <div class="wrap-input validate-input">
+                                <span class="label-input" th:text="${'Категория: ' + game.category}"></span>
+                                <select size="5" name="categoryId">
+                                    <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.localTitle}"></option>
+                                </select>
+                                <span class="focus-input"></span>
+                            </div>
+
+                            <input th:value="${game.id}" type="hidden" name="id"/>
+
+                            <div class="container-contact-form-btn">
+                                <button class="contact-form-btn" type="submit">
+                                    <span>ОК</span>
                                 </button>
                             </div>
                         </form>

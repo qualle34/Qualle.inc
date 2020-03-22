@@ -26,6 +26,8 @@ public interface ExtraService {
 
     void add(CategoryDto dto);
 
+    void add(DeveloperDto dto);
+
     void add(Summary summary);
 
     void add(SummaryDto dto);

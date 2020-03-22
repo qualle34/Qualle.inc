@@ -34,4 +34,10 @@ public interface GameService {
     List<Game> getByName(String name);
 
     List<GameSimpleDto> getDtoByName(String name);
+
+    void add(GameDto dto);
+
+    void update(GameDto dto);
+
+    void delete(long id);
 }

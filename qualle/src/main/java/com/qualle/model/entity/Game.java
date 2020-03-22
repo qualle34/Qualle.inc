@@ -25,10 +25,10 @@ public class Game {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToMany(mappedBy = "games")
+    @ManyToMany(mappedBy = "games", cascade = CascadeType.ALL)
     private Set<User> users;
 
-    @ManyToMany(mappedBy = "games")
+    @ManyToMany(mappedBy = "games", cascade = CascadeType.ALL)
     private Set<Cart> carts;
 
     public Game() {

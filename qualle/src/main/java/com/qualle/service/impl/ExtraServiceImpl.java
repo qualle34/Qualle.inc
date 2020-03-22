@@ -63,7 +63,14 @@ public class ExtraServiceImpl implements ExtraService {
 
     @Override
     public void add(CategoryDto dto) {
+        Category category = new Category(dto.getTitle());
+        category.setLocalTitle(dto.getTitle());
+        categoryRepository.save(category);
+    }
 
+    @Override
+    public void add(DeveloperDto dto) {
+        developerRepository.save(new Developer(dto.getTitle(), dto.getDescription(), dto.getContacts(), dto.getAddress()));
     }
 
     @Override
