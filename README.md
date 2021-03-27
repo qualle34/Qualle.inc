@@ -1,2 +1,2 @@
 # Qualle.inc
-Website
+Game development company website
