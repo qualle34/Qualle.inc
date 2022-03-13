@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>Qualle.inc | Профиль</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/profile.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/footer.css}"/>
+
+    <script src="../js/common.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div id="wrapper">
+
+    <div th:insert="fragments/header :: header"></div>
+
+    <section class="info box">
+        <div class="profile">
+
+            <h1 class="title"> Профиль </h1>
+
+            <ul>
+                <li>Имя - <span th:text="${user.name}"></span></li>
+                <li>Фамилия - <span th:text="${user.lastname}"></span></li>
+                <li>Телефон - <span th:text="${user.phone}"></span></li>
+                <li>Email - <span th:text="${user.email}"></span></li>
+                <li>День рождения - <span th:text="${user.birthday}"></span></li>
+            </ul>
+        </div>
+
+        <div class="products">
+
+            <h1 class="title"> Игры </h1>
+
+            <div class="product" th:each="product : ${products}">
+                <div class="logo">
+                    <img th:src="${product.img}">
+                </div>
+                <p class="name" th:text="${product.name}"></p>
+            </div>
+        </div>
+    </section>
+
+    <div th:insert="fragments/footer :: footer"></div>
+
+</div>
+</body>
+</html>

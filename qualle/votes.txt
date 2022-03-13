@@ -1,6 +1,0 @@
-#Sun Feb 16 13:10:19 MSK 2020
-one_star=10
-three_stars=60
-two_stars=71
-four_stars=100
-five_stars=50

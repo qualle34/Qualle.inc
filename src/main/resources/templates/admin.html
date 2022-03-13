@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>Qualle.inc | Admin</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/admin.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/header.css}"/>
+
+    <script src="../js/common.js" type="text/javascript"></script>
+    <script src="../js/admin.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div id="wrapper">
+
+    <div th:insert="fragments/header :: header"></div>
+
+    <div class="wrapper d-flex align-items-stretch">
+
+        <nav id="sidebar" th:insert="fragments/sidebar :: sidebar"></nav>
+
+        <div id="content" class="p-4">
+
+            <div class="box">
+
+                <div class="add-box">
+                    <a href="/admin/add/product">Добавить игру</a>
+                </div>
+
+                <div class="add-box">
+                    <a href="/admin/add/category">Добавить категорию</a>
+                </div>
+
+                <div class="add-box">
+                    <a href="/admin/add/developer">Добавить разработчика</a>
+                </div>
+
+                <div class="info" th:if="${type == 'product'}">
+                    <h2>Информация о игре </h2>
+                    <p th:text="'id: ' + ${product.id}"></p>
+                    <p th:text="'Название: ' + ${product.name}"></p>
+                    <p th:text="'Описание: ' + ${product.description}"></p>
+                    <p th:text="'Цена: ' + ${product.price}"></p>
+                    <p th:text="'Разработчик: ' + ${product.developer}"></p>
+                    <p th:text="'Категория: ' + ${product.category}"></p>
+                    <p th:text="'Ссылка на логотип: ' + ${product.img}"></p>
+
+                    <div class="update">
+                        <a th:href="${'/admin/update/product/' + product.id}"><span style='font-size:20px;'>&#x270e;</span></a>
+                    </div>
+
+                    <div class="delete">
+                        <form action="#" th:action="@{'/admin/delete/product'}" method="post">
+                            <input th:value="${product.id}" type="hidden" name="gameId"/>
+                            <input type="submit" class="small-delete-button" value="X"/>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="info" th:if="${type == 'category'}">
+                    <h2>Информация о категории</h2>
+                    <p th:text="'id: ' + ${category.id}"></p>
+                    <p th:text="'Заголовок: ' + ${category.title}"></p>
+                    <p th:text="'Заголовок на русском: ' + ${category.localTitle}"></p>
+                </div>
+
+                <div class="info" th:if="${type == 'developer'}">
+                    <h2>Информация о разработчике</h2>
+                    <p th:text="'id: ' + ${developer.id}"></p>
+                    <p th:text="'Заголовок: ' + ${developer.title}"></p>
+                    <p th:text="'Описание: ' + ${developer.description}"></p>
+                    <p th:text="'Контактные данные: ' + ${developer.contacts}"></p>
+                    <p th:text="'Адрес: ' + ${developer.address}"></p>
+                </div>
+
+                <div class="info" th:if="${type == 'user'}">
+                    <h2>Информация о пользователе</h2>
+                    <p th:text="'id: ' + ${user.id}"></p>
+                    <p th:text="'Имя: ' + ${user.name}"></p>
+                    <p th:text="'Фамилия: ' + ${user.lastname}"></p>
+                    <p th:text="'Телефон: ' + ${user.phone}"></p>
+                    <p th:text="'Email: ' + ${user.email}"></p>
+                </div>
+
+                <div class="info" th:if="${type == 'feedback'}">
+                    <h2>Информация о сообщении</h2>
+                    <p th:text="'id: ' + ${feedback.id}"></p>
+                    <p th:text="'Имя: ' + ${feedback.name}"></p>
+                    <p th:text="'Email: ' + ${feedback.email}"></p>
+                    <p th:text="'Телефон: ' + ${feedback.phone}"></p>
+                    <p th:text="'Сообщение: ' + ${feedback.message}"></p>
+                </div>
+
+                <table id="table" style="background: white; box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);">
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
+

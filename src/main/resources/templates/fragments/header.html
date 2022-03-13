@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="header">
+    <header>
+        <div id="header">
+            <div class="header-left">
+                <a href="/" class="link">Qualle.inc</a>
+            </div>
+
+            <div class="header-menu">
+                <div class="menu-toggle">
+                    <div class="hamburger">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="cross">
+                        <span></span><span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-right" id="header-right">
+                <a href="/service" class="link">Услуги</a>
+                <a href="/products" class="link">Игры</a>
+                <a href="/about" class="link">О Нас</a>
+                <a href="/contacts" class="link">Контакты</a>
+
+                <div class="ignore" th:if="${authority == 'USER'}">
+                    <a href="/cart" class="link">Корзина</a>
+                    <a href="/profile" class="link">Профиль</a>
+                    <a href="/logout" class="link">Выйти</a>
+                </div>
+
+                <div class="ignore" th:if="${authority == 'ADMIN'}">
+                    <a href="/profile" class="link">Профиль</a>
+                    <a href="/admin" class="link">Управление</a>
+                    <a href="/logout" class="link">Выйти</a>
+                </div>
+
+                <div class="ignore" th:if="${authority == 'ANONYMOUS'}">
+                    <a href="/login" class="link">Log in</a>
+                    <a href="/registration" class="link">Sign up</a>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+</body>
+</html>
