@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 
@@ -17,24 +18,34 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(columnDefinition = "name")
+    @Column(name = "name")
     private String name;
 
-    @Column(columnDefinition = "lastname")
+    @Column(name = "lastname")
     private String lastname;
 
-    @Column(columnDefinition = "phone")
+    @Column(name = "phone")
     private String phone;
 
-    @Column(columnDefinition = "email")
+    @Column(name = "email")
     private String email;
 
-    @Column(columnDefinition = "birthday")
-    @Temporal(TemporalType.DATE)
-    private Date birthday;
+    @Column(name = "birthday")
+    private LocalDate birthday;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Credentials credentials;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "image_id")
+    private Image image;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "metadata_id")
+    private Metadata metadata;
+
+    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+    private Set<Card> cards;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
@@ -52,13 +63,10 @@ public class User {
     )
     private Set<Product> purchases;
 
-    @OneToMany(mappedBy="card", fetch = FetchType.LAZY)
-    private Set<Card> cards;
-
     public User() {
     }
 
-    public User(String name, String lastname, String phone, String email, Date birthday) {
+    public User(String name, String lastname, String phone, String email, LocalDate birthday) {
         this.name = name;
         this.lastname = lastname;
         this.phone = phone;

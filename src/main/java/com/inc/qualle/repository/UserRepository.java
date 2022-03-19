@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
 
-    @Query("FROM User u JOIN FETCH u.creds c WHERE c.login = :login")
+    @Query("FROM User u JOIN FETCH u.credentials c WHERE c.login = :login")
     Optional<User> findByLoginFetchCreds(@Param("login") String login);
 
     @Query("SELECT c.id FROM Credentials c WHERE c.login = :login")

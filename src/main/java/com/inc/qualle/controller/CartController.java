@@ -1,9 +1,9 @@
 package com.inc.qualle.controller;
 
-import com.inc.qualle.security.SessionUtil;
-import com.inc.qualle.service.CartService;
-import com.inc.qualle.service.GameService;
-import com.inc.qualle.service.UserService;
+import com.inc.qualle.service.security.SessionUtil;
+import com.inc.qualle.service.dao.CartService;
+import com.inc.qualle.service.dao.GameService;
+import com.inc.qualle.service.dao.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;

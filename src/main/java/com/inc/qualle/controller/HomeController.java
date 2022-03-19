@@ -1,6 +1,6 @@
 package com.inc.qualle.controller;
 
-import com.inc.qualle.security.SessionUtil;
+import com.inc.qualle.service.security.SessionUtil;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

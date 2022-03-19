@@ -1,8 +1,8 @@
 package com.inc.qualle.controller;
 
 import com.inc.qualle.model.dto.GameSimpleDto;
-import com.inc.qualle.security.SessionUtil;
-import com.inc.qualle.service.GameService;
+import com.inc.qualle.service.security.SessionUtil;
+import com.inc.qualle.service.dao.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

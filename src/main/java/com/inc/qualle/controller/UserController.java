@@ -1,9 +1,10 @@
 package com.inc.qualle.controller;
 
 import com.inc.qualle.model.dto.UserRegistrationDto;
-import com.inc.qualle.security.SessionUtil;
-import com.inc.qualle.service.GameService;
-import com.inc.qualle.service.UserService;
+import com.inc.qualle.service.RegistrationService;
+import com.inc.qualle.service.security.SessionUtil;
+import com.inc.qualle.service.dao.GameService;
+import com.inc.qualle.service.dao.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RegistrationService registrationService;
 
     @Autowired
     private GameService gameService;
@@ -31,6 +35,6 @@ public class UserController {
 
     @PostMapping(value = "/registration")
     public void doRegistration(UserRegistrationDto dto) {
-        userService.add(dto);
+        registrationService.register(dto);
     }
 }

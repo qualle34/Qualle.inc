@@ -31,6 +31,10 @@ public class Developer {
     @OneToMany(mappedBy = "developer", fetch = FetchType.LAZY)
     private Set<Product> products;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "metadata_id")
+    private Metadata metadata;
+
     public Developer() {
     }
 

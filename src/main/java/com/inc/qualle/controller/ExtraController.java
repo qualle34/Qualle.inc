@@ -1,17 +1,14 @@
 package com.inc.qualle.controller;
 
 import com.inc.qualle.model.dto.SummaryDto;
-import com.inc.qualle.security.SessionUtil;
-import com.inc.qualle.service.ExtraService;
+import com.inc.qualle.service.security.SessionUtil;
+import com.inc.qualle.service.dao.ExtraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.Map;
 
 @Controller
 public class ExtraController {

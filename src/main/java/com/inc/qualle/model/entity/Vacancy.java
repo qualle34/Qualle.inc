@@ -21,6 +21,10 @@ public class Vacancy {
     @Column(name = "description")
     private String description;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "metadata_id")
+    private Metadata metadata;
+
     public Vacancy() {
     }
 

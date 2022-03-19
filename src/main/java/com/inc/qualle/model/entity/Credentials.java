@@ -1,13 +1,15 @@
 package com.inc.qualle.model.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "credentials")
 public class Credentials {
 
@@ -21,19 +23,11 @@ public class Credentials {
     @Column(name = "password")
     private String password;
 
-//    @Column(name = "role")
-//    private Role role;
+    @Column(name = "role")
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    @OneToOne(fetch = FetchType.LAZY)
     @MapsId
+    @OneToOne
     private User user;
-
-    public Credentials() {
-    }
-
-    public Credentials(String login, String password, Role role) {
-        this.login = login;
-        this.password = password;
-//        this.role = role;
-    }
 }

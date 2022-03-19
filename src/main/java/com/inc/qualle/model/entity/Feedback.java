@@ -24,6 +24,10 @@ public class Feedback {
     @Column(name = "file")
     private String file;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "metadata_id")
+    private Metadata metadata;
+
     public Feedback() {
     }
 

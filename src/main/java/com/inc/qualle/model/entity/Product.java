@@ -37,14 +37,22 @@ public class Product {
     @JoinColumn(name = "genre_id")
     private Genre genre;
 
-    @ManyToMany(mappedBy = "products", cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "image_id")
+    private Image image;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "metadata_id")
+    private Metadata metadata;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private Set<Review> reviews;
+
+    @ManyToMany(mappedBy = "purchases", cascade = CascadeType.ALL)
     private Set<User> purchases;
 
-    @ManyToMany(mappedBy = "products", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "cart", cascade = CascadeType.ALL)
     private Set<User> carts;
-
-    @ManyToMany(mappedBy = "products", cascade = CascadeType.ALL)
-    private Set<Review> reviews;
 
     public Product() {
     }

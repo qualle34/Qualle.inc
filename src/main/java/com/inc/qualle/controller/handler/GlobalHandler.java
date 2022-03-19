@@ -1,7 +1,7 @@
 package com.inc.qualle.controller.handler;
 
-import com.inc.qualle.exception.CartNotFoundException;
-import com.inc.qualle.exception.GameNotFoundException;
+import com.inc.qualle.model.exception.CartNotFoundException;
+import com.inc.qualle.model.exception.GameNotFoundException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
