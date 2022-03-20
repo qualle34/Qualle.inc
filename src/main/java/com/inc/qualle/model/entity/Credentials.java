@@ -8,8 +8,8 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "credentials")
 public class Credentials {
 
@@ -25,7 +25,7 @@ public class Credentials {
 
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private UserRole role;
 
     @MapsId
     @OneToOne

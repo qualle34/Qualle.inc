@@ -1,7 +1,6 @@
 package com.inc.qualle.model.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -9,6 +8,9 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "product")
 public class Product {
 
@@ -24,6 +26,9 @@ public class Product {
 
     @Column(name = "price")
     private double price;
+
+    @Column(name = "type")
+    private ProductType type;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "developer_id")
@@ -48,18 +53,9 @@ public class Product {
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private Set<Review> reviews;
 
-    @ManyToMany(mappedBy = "purchases", cascade = CascadeType.ALL)
-    private Set<User> purchases;
+    @OneToMany(mappedBy="product", fetch = FetchType.LAZY)
+    private Set<Purchase> purchases;
 
     @ManyToMany(mappedBy = "cart", cascade = CascadeType.ALL)
     private Set<User> carts;
-
-    public Product() {
-    }
-
-    public Product(String title, String description, double price) {
-        this.title = title;
-        this.description = description;
-        this.price = price;
-    }
 }

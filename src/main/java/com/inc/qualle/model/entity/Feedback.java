@@ -1,13 +1,15 @@
 package com.inc.qualle.model.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "feedback")
 public class Feedback {
 
@@ -27,13 +29,4 @@ public class Feedback {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "metadata_id")
     private Metadata metadata;
-
-    public Feedback() {
-    }
-
-    public Feedback(String title, String description, String file) {
-        this.title = title;
-        this.description = description;
-        this.file = file;
-    }
 }

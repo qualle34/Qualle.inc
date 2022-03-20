@@ -1,20 +1,13 @@
 package com.inc.qualle.service.dao.impl;
 
-import com.inc.qualle.model.entity.Credentials;
-import com.inc.qualle.model.entity.Image;
-import com.inc.qualle.model.entity.Role;
 import com.inc.qualle.model.exception.UserNotFoundException;
 import com.inc.qualle.model.dto.UserProfileDto;
-import com.inc.qualle.model.dto.UserRegistrationDto;
-import com.inc.qualle.repository.ImageRepository;
 import com.inc.qualle.repository.UserRepository;
 import com.inc.qualle.model.entity.User;
 import com.inc.qualle.service.dao.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;

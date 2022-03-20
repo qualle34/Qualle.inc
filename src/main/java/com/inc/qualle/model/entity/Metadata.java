@@ -1,7 +1,6 @@
 package com.inc.qualle.model.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -10,6 +9,9 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "metadata")
 public class Metadata {
 
@@ -49,13 +51,4 @@ public class Metadata {
 
     @OneToMany(mappedBy="metadata", fetch = FetchType.LAZY)
     private Set<Developer> developers;
-
-    public Metadata() {
-    }
-
-    public Metadata(LocalDateTime createdAt, String createdBy, boolean enabled) {
-        this.createdAt = createdAt;
-        this.createdBy = createdBy;
-        this.enabled = enabled;
-    }
 }

@@ -61,13 +61,20 @@ public class ExtraServiceImpl implements ExtraService {
 
     @Override
     public void add(CategoryDto dto) {
-        Category category = new Category(dto.getTitle());
+        Category category = Category.builder()
+                .value(dto.getTitle())
+                .build();
         categoryRepository.save(category);
     }
 
     @Override
     public void add(DeveloperDto dto) {
-        developerRepository.save(new Developer(dto.getTitle(), dto.getDescription(), dto.getContacts(), dto.getAddress()));
+        developerRepository.save(Developer.builder()
+                .title(dto.getTitle())
+                .description(dto.getDescription())
+                .contacts(dto.getContacts())
+                .address(dto.getAddress())
+                .build());
     }
 
     @Override
@@ -102,6 +109,6 @@ public class ExtraServiceImpl implements ExtraService {
     }
 
     private Feedback fromDto(SummaryDto dto) {
-        return new Feedback(dto.getName(), dto.getMessage(), "");
+        return Feedback.builder().title(dto.getName()).description(dto.getMessage()).build();
     }
 }

@@ -1,7 +1,6 @@
 package com.inc.qualle.model.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -11,6 +10,9 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "user")
 public class User {
 
@@ -47,6 +49,9 @@ public class User {
     @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
     private Set<Card> cards;
 
+    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
+    private Set<Purchase> purchases;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "cart",
@@ -54,23 +59,4 @@ public class User {
             inverseJoinColumns = { @JoinColumn(name = "game_id") }
     )
     private Set<Product> cart;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "purchases",
-            joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "game_id") }
-    )
-    private Set<Product> purchases;
-
-    public User() {
-    }
-
-    public User(String name, String lastname, String phone, String email, LocalDate birthday) {
-        this.name = name;
-        this.lastname = lastname;
-        this.phone = phone;
-        this.email = email;
-        this.birthday = birthday;
-    }
 }

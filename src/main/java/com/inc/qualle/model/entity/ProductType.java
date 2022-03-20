@@ -1,6 +1,6 @@
 package com.inc.qualle.model.entity;
 
-public enum Type {
+public enum ProductType {
     GAME,
     MERCH
 }

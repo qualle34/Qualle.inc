@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/qualleinc?serverTimezone=UTC
+    username: qualle
+    password: 43q21
+  jpa:
+    show-sql: true
+  liquibase:
+    change-log: classpath:db/changelog-master.xml
+    enabled: true
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}

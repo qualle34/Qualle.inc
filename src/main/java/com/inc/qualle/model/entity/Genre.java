@@ -1,7 +1,6 @@
 package com.inc.qualle.model.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -9,6 +8,9 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "genre")
 public class Genre {
 
@@ -21,11 +23,4 @@ public class Genre {
 
     @OneToMany(mappedBy="genre", fetch = FetchType.LAZY)
     private Set<Product> products;
-
-    public Genre() {
-    }
-
-    public Genre(String value) {
-        this.value = value;
-    }
 }

@@ -2,10 +2,9 @@ package com.inc.qualle.service.impl;
 
 import com.inc.qualle.model.dto.UserRegistrationDto;
 import com.inc.qualle.model.entity.Credentials;
-import com.inc.qualle.model.entity.Role;
+import com.inc.qualle.model.entity.UserRole;
 import com.inc.qualle.model.entity.User;
 import com.inc.qualle.service.RegistrationService;
-import com.inc.qualle.service.dao.ImageService;
 import com.inc.qualle.service.dao.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,12 +19,15 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Override
     public void register(UserRegistrationDto dto) {
-        User user = new User(dto.getName(), null, dto.getPhone(), null, null);
+        User user = User.builder()
+                .name(dto.getName())
+                .phone(dto.getPhone())
+                .build();
 
         Credentials credentials = Credentials.builder()
                 .login(dto.getLogin())
                 .password(encoder.encode(dto.getPassword()))
-                .role(Role.USER)
+                .role(UserRole.USER)
                 .user(user)
                 .build();
 

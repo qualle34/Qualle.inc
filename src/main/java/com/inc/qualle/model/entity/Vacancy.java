@@ -1,13 +1,15 @@
 package com.inc.qualle.model.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "vacancy")
 public class Vacancy {
 
@@ -24,12 +26,4 @@ public class Vacancy {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "metadata_id")
     private Metadata metadata;
-
-    public Vacancy() {
-    }
-
-    public Vacancy(String title, String description) {
-        this.title = title;
-        this.description = description;
-    }
 }

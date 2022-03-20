@@ -1,6 +1,7 @@
 package com.inc.qualle.service.security;
 
 import com.inc.qualle.model.entity.User;
+import com.inc.qualle.model.entity.UserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,9 +24,9 @@ public class UserDetailsImpl implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<GrantedAuthority> roles = new HashSet<>();
-//        if (user.getCredentials().getRole().equals("ADMIN")) {
-//            roles.add(new SimpleGrantedAuthority("ADMIN"));
-//        }
+        if (UserRole.ADMIN.equals(user.getCredentials().getRole())) {
+            roles.add(new SimpleGrantedAuthority("ADMIN"));
+        }
         roles.add(new SimpleGrantedAuthority("USER"));
         return roles;
     }

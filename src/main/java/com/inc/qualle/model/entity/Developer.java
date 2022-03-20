@@ -1,7 +1,6 @@
 package com.inc.qualle.model.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -9,6 +8,9 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "developer")
 public class Developer {
 
@@ -34,14 +36,4 @@ public class Developer {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "metadata_id")
     private Metadata metadata;
-
-    public Developer() {
-    }
-
-    public Developer(String title, String description, String contacts, String address) {
-        this.title = title;
-        this.description = description;
-        this.contacts = contacts;
-        this.address = address;
-    }
 }

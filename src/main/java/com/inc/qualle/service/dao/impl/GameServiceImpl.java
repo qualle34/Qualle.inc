@@ -188,9 +188,13 @@ public class GameServiceImpl implements GameService {
     }
 
     private Product fromDto(GameDto dto) {
-        Product product = new Product(dto.getName(), dto.getDescription(), dto.getPrice());
+        Product product =  Product.builder()
+                .title(dto.getName())
+                .description(dto.getDescription())
+                .price(dto.getPrice())
+                .build();
         product.setId(dto.getId());
-        product.setImage(new Image("", dto.getImg()));
+        product.setImage(Image.builder().link(dto.getImg()).build());
         product.setCategory(categoryRepository.findById(dto.getCategoryId()).get());
         product.setDeveloper(developerRepository.findById(dto.getDeveloperId()).get());
         return product;
