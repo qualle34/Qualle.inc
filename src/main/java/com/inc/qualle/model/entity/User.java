@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.Date;
 import java.util.Set;
 
@@ -49,14 +50,19 @@ public class User {
     @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
     private Set<Card> cards;
 
-    @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
-    private Set<Purchase> purchases;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "purchase",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "product_id") }
+    )
+    private Set<Product> purchases;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "cart",
             joinColumns = { @JoinColumn(name = "user_id") },
-            inverseJoinColumns = { @JoinColumn(name = "game_id") }
+            inverseJoinColumns = { @JoinColumn(name = "product_id") }
     )
     private Set<Product> cart;
 }

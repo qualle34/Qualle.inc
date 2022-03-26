@@ -1,5 +1,6 @@
 package com.inc.qualle.service.security;
 
+import com.inc.qualle.model.dto.UserDto;
 import com.inc.qualle.model.entity.User;
 import com.inc.qualle.model.entity.UserRole;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,12 +13,12 @@ import java.util.Set;
 
 public class UserDetailsImpl implements UserDetails {
 
-    private User user;
+    private UserDto user;
 
     public UserDetailsImpl() {
     }
 
-    public UserDetailsImpl(User user) {
+    public UserDetailsImpl(UserDto user) {
         this.user = user;
     }
 

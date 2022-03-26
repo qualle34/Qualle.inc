@@ -1,9 +1,10 @@
 package com.inc.qualle.controller;
 
-import com.inc.qualle.model.dto.SummaryDto;
+import com.inc.qualle.model.dto.FeedbackDto;
+import com.inc.qualle.model.dto.UserDto;
+import com.inc.qualle.service.FeedbackService;
 import com.inc.qualle.service.security.SessionUtil;
-import com.inc.qualle.service.dao.ExtraService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,20 +12,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
+@RequiredArgsConstructor
 public class ExtraController {
 
-    @Autowired
-    private ExtraService extraService;
+    private final FeedbackService feedbackService;
 
-    @GetMapping(value = "/contacts")
+    @GetMapping(value = "/feedback")
     public String getContactsPage(Model model, Authentication authentication) {
         model.addAttribute("authority", SessionUtil.getAuthority(authentication));
-        return "contacts";
+        return "feedback";
     }
 
-    @PostMapping(value = "/contacts/send")
-    public String saveContacts(SummaryDto dto) {
-        extraService.add(dto);
+    @PostMapping(value = "/feedback/send")
+    public String saveContacts(Authentication authentication, FeedbackDto dto) {
+        dto.setUser(UserDto.builder().login(SessionUtil.getUserLogin(authentication)).build());
+        feedbackService.save(dto);
         return "redirect:/home";
     }
 }

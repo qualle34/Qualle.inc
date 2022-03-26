@@ -1,9 +1,9 @@
 GET: $(document).ready(
     function () {
 
-        $("#games").click(function (event) {
+        $("#products").click(function (event) {
             event.preventDefault();
-            getGames();
+            getProducts();
         });
 
         $("#categories").click(function (event) {
@@ -11,9 +11,29 @@ GET: $(document).ready(
             getCategories();
         });
 
+        $("#genres").click(function (event) {
+            event.preventDefault();
+            getGenres();
+        });
+
         $("#developers").click(function (event) {
             event.preventDefault();
             getDevelopers();
+        });
+
+        $("#feedbacks").click(function (event) {
+            event.preventDefault();
+            getFeedbacks();
+        });
+
+        $("#vacancies").click(function (event) {
+            event.preventDefault();
+            getVacancies();
+        });
+
+        $("#images").click(function (event) {
+            event.preventDefault();
+            getImages();
         });
 
         $("#users").click(function (event) {
@@ -21,20 +41,15 @@ GET: $(document).ready(
             getUsers();
         });
 
-        $("#summaries").click(function (event) {
-            event.preventDefault();
-            getSummaries();
-        });
-
-        function getGames() {
+        function getProducts() {
             $.ajax({
                 type: "GET",
-                url: "/admin/games",
+                url: "/admin/product",
                 success: function (result) {
                     $('#table').empty().append("<tr><th>id</th><th>name</th> </tr>");
                     $.each(result,
-                        function (i, game) {
-                            $('#table').append("<tr> <td> <a href=\"/admin/game/" + game.id + "\">" + game.id + "</a> </td> <td> <a href=\"/admin/game/" + game.id + "\">" + game.name + "</a> </td> </tr>");
+                        function (i, product) {
+                            $('#table').append("<tr> <td> <a href=\"/admin/product/" + product.id + "\">" + product.id + "</a> </td> <td> <a href=\"/admin/product/" + product.id + "\">" + product.title + "</a> </td> </tr>");
                         });
                 },
                 error: function (e) {
@@ -46,12 +61,29 @@ GET: $(document).ready(
         function getCategories() {
             $.ajax({
                 type: "GET",
-                url: "/admin/categories",
+                url: "/admin/category",
                 success: function (result) {
                     $('#table').empty().append("<tr><th>id</th><th>name</th> </tr>");
                     $.each(result,
                         function (i, category) {
-                            $('#table').append("<tr> <td> <a href=\"/admin/category/" + category.id + "\">" + category.id + "</a> </td> <td> <a href=\"/admin/category/" + category.id + "\">" + category.title + "</a> </td> </tr>");
+                            $('#table').append("<tr> <td> <a href=\"/admin/category/" + category.id + "\">" + category.id + "</a> </td> <td> <a href=\"/admin/category/" + category.id + "\">" + category.value + "</a> </td> </tr>");
+                        });
+                },
+                error: function (e) {
+                    $("#table").html("<strong>Не найдено(</strong>");
+                }
+            });
+        }
+
+        function getGenres() {
+            $.ajax({
+                type: "GET",
+                url: "/admin/genre",
+                success: function (result) {
+                    $('#table').empty().append("<tr><th>id</th><th>name</th> </tr>");
+                    $.each(result,
+                        function (i, genre) {
+                            $('#table').append("<tr> <td> <a href=\"/admin/genre/" + genre.id + "\">" + genre.id + "</a> </td> <td> <a href=\"/admin/genre/" + genre.id + "\">" + genre.value + "</a> </td> </tr>");
                         });
                 },
                 error: function (e) {
@@ -63,7 +95,7 @@ GET: $(document).ready(
         function getDevelopers() {
             $.ajax({
                 type: "GET",
-                url: "/admin/developers",
+                url: "/admin/developer",
                 success: function (result) {
                     $('#table').empty().append("<tr><th>id</th><th>name</th> </tr>");
                     $.each(result,
@@ -77,15 +109,15 @@ GET: $(document).ready(
             });
         }
 
-        function getUsers() {
+        function getFeedbacks() {
             $.ajax({
                 type: "GET",
-                url: "/admin/users",
+                url: "/admin/feedback",
                 success: function (result) {
                     $('#table').empty().append("<tr><th>id</th><th>name</th> </tr>");
                     $.each(result,
-                        function (i, user) {
-                            $('#table').append("<tr> <td> <a href=\"/admin/user/" + user.id + "\">" + user.id + "</a> </td> <td> <a href=\"/admin/user/" + user.id + "\">" + user.name + ' ' + user.lastname + "</a> </td> </tr>");
+                        function (i, feedback) {
+                            $('#table').append("<tr> <td> <a href=\"/admin/feedback/" + feedback.id + "\">" + feedback.id + "</a> </td> <td> <a href=\"/admin/feedback/" + feedback.id + "\">" + feedback.title + "</a> </td> </tr>");
                         });
                 },
                 error: function (e) {
@@ -94,15 +126,49 @@ GET: $(document).ready(
             });
         }
 
-        function getSummaries() {
+        function getVacancies() {
             $.ajax({
                 type: "GET",
-                url: "/admin/summaries",
+                url: "/admin/vacancy",
                 success: function (result) {
                     $('#table').empty().append("<tr><th>id</th><th>name</th> </tr>");
                     $.each(result,
-                        function (i, summary) {
-                            $('#table').append("<tr> <td> <a href=\"/admin/summary/" + summary.id + "\">" + summary.id + "</a> </td> <td> <a href=\"/admin/summary/" + summary.id + "\">" + summary.name + ' - ' + summary.email + "</a> </td> </tr>");
+                        function (i, vacancy) {
+                            $('#table').append("<tr> <td> <a href=\"/admin/vacancy/" + vacancy.id + "\">" + vacancy.id + "</a> </td> <td> <a href=\"/admin/category/" + vacancy.id + "\">" + vacancy.title + "</a> </td> </tr>");
+                        });
+                },
+                error: function (e) {
+                    $("#table").html("<strong>Не найдено(</strong>");
+                }
+            });
+        }
+
+        function getImages() {
+            $.ajax({
+                type: "GET",
+                url: "/admin/image",
+                success: function (result) {
+                    $('#table').empty().append("<tr><th>id</th><th>name</th> </tr>");
+                    $.each(result,
+                        function (i, image) {
+                            $('#table').append("<tr> <td> <a href=\"/admin/image/" + image.id + "\">" + image.id + "</a> </td> <td> <a href=\"/admin/image/" + image.id + "\">" + image.link + "</a> </td> </tr>");
+                        });
+                },
+                error: function (e) {
+                    $("#table").html("<strong>Не найдено(</strong>");
+                }
+            });
+        }
+
+        function getUsers() {
+            $.ajax({
+                type: "GET",
+                url: "/admin/user",
+                success: function (result) {
+                    $('#table').empty().append("<tr><th>id</th><th>name</th> </tr>");
+                    $.each(result,
+                        function (i, user) {
+                            $('#table').append("<tr> <td> <a href=\"/admin/user/" + user.id + "\">" + user.id + "</a> </td> <td> <a href=\"/admin/user/" + user.id + "\">" + user.name + ' ' + user.lastname + "</a> </td> </tr>");
                         });
                 },
                 error: function (e) {

@@ -35,23 +35,23 @@ main {
     font-size: 30px;
 }
 
-/*  games  */
+/*  products  */
 /**************************************************/
-.games {
+.products {
     width: 100%;
     margin-top: 50px;
     height: auto;
     background: #f0f0f0;
 }
 
-.games .main-delete {
+.products .main-delete {
     position: absolute;
     right: 10%;
     top: 366px;
     box-shadow: 5px 5px 30px -5px #9b9b9b;
 }
 
-.games .game-box {
+.products .product-box {
     position: relative;
     width: 50%;
     height: 300px;
@@ -60,47 +60,47 @@ main {
     box-shadow: 5px 5px 30px -5px #9b9b9b;
 }
 
-.games .game-box .delete {
+.products .product-box .delete {
     position: absolute;
     right: 0;
     top: 0;
 }
 
-.games .game-box .image {
+.products .product-box .image {
     width: 40%;
     height: 100%;
     float: left;
     overflow: hidden;
 }
 
-.games .game-box .image img {
+.products .product-box .image img {
     object-fit: cover;
     height: 100%;
     width: 100%;
     float: left;
 }
 
-.games .game-box .text {
+.products .product-box .text {
     width: 50%;
     height: 80%;
     padding: 5%;
     float: right;
 }
 
-.games .game-box .text .name {
+.products .product-box .text .name {
     margin: 0;
     color: gray;
     font-weight: normal;
     font-size: 30px;
 }
 
-.games .game-box .text .line {
+.products .product-box .text .line {
     width: 100%;
     height: 1px;
     background: gray;
 }
 
-.games .game-box .text .price {
+.products .product-box .text .price {
     margin-top: 50px;
     color: gray;
     font-weight: normal;

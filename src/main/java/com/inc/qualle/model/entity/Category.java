@@ -3,6 +3,7 @@ package com.inc.qualle.model.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Set;
 
 @Entity
@@ -22,5 +23,5 @@ public class Category {
     private String value;
 
     @OneToMany(mappedBy="category", fetch = FetchType.LAZY)
-    private Set<Product> products;
+    private Collection<Product> products;
 }

@@ -1,8 +1,7 @@
 package com.inc.qualle.service.security;
 
-import com.inc.qualle.service.dao.UserService;
+import com.inc.qualle.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,6 +15,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        return new UserDetailsImpl(userService.getByLogin(login));
+        return new UserDetailsImpl(userService.getWithCredentialsByLogin(login));
     }
 }

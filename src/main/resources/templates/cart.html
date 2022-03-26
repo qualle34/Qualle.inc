@@ -39,19 +39,19 @@
                 </form>
             </div>
 
-            <div th:each="product : ${products}" class="product-box">
+            <div th:each="product : ${profile.cart}" class="product-box">
                 <div class="image">
-                    <img th:src="${product.img}">
+                    <img th:src="${product.image.link}">
                 </div>
                 <div class="text">
-                    <p class="name" th:text="${product.name}"></p>
+                    <p class="name" th:text="${product.title}"></p>
                     <div class="line"></div>
                     <p class="price"> цена: <span class="numPrice" th:text="${product.price}"></span> $</p>
                 </div>
 
                 <div class="delete">
                     <form action="#" th:action="@{'/cart/delete'}" method="post">
-                        <input th:value="${product.id}" type="hidden" name="gameId"/>
+                        <input th:value="${product.id}" type="hidden" name="productId"/>
                         <input type="submit" class="small-delete-button" value="X"/>
                     </form>
                 </div>

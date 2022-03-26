@@ -3,6 +3,7 @@ package com.inc.qualle.model.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Set;
 
 @Entity
@@ -31,7 +32,7 @@ public class Developer {
     private String address;
 
     @OneToMany(mappedBy = "developer", fetch = FetchType.LAZY)
-    private Set<Product> products;
+    private Collection<Product> products;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JoinColumn(name = "metadata_id")

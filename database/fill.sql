@@ -1,5 +1,3 @@
-USE 'qualleinc';
-
 INSERT INTO user(name, lastname, phone)
 values ('Андрей', 'Андреев', '+7456735456');
 INSERT INTO user(name, lastname, phone)
@@ -23,7 +21,7 @@ values ('Катя', 'Катева', '+7123465269');
 INSERT INTO user(name, lastname, phone)
 values ('Admin', 'Admin', '+71926784359');
 INSERT INTO user(name, lastname, phone)
-values ('user', 'user', '+123');
+values ('user', 'user', '+71926784359');
 
 INSERT INTO credentials
 values (1, 'A1n', '$2a$10$ge8V9B.RtVvf8/2SlGLemui1ohaz93UGiepzPCGiGZVnm/hnCSkxm', 'USER');
@@ -74,6 +72,8 @@ INSERT INTO card(number, date, user_id)
 values ('1203945239459324', '11/23', 11);
 INSERT INTO card(number, date, user_id)
 values ('1203945239459324', '7/23', 12);
+INSERT INTO card(number, date, user_id)
+values ('1234124334459324', '3/25', 12);
 
 INSERT INTO developer(title)
 values ('Other');
@@ -82,7 +82,7 @@ values ('Ubisoft');
 INSERT INTO developer(title)
 values ('RockStar Games');
 INSERT INTO developer(title)
-values ('CD Projekt Red');
+values ('CD Project Red');
 INSERT INTO developer(title)
 values ('DICE');
 INSERT INTO developer(title)
@@ -244,87 +244,94 @@ values ('Игра 10', 10.00, '', 'GAME', 1, 1, 5, 22);
 INSERT INTO product(title, price, description, type, developer_id, category_id, genre_id, image_id)
 values ('Игра 11', 10.00, '', 'GAME', 1, 1, 9, 22);
 
-INSERT INTO purchase(product_id, user_id, card_id)
-values (1, 1, 1);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (1, 4, 4);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (1, 6, 6);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (1, 8, 8);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (1, 12, 12);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (1, 2, 2);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (2, 1, 1);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (2, 4, 4);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (2, 6, 6);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (3, 8, 8);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (3, 12, 12);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (3, 2, 2);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (4, 1, 1);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (4, 4, 4);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (5, 6, 6);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (7, 8, 8);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (7, 12, 12);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (7, 2, 2);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (7, 1, 1);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (7, 4, 4);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (7, 6, 6);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (8, 12, 12);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (8, 2, 2);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (8, 1, 1);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (8, 4, 4);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (8, 6, 6);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (9, 8, 8);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (9, 12, 12);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (10, 2, 2);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (10, 1, 1);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (10, 4, 4);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (10, 6, 6);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (10, 8, 8);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (11, 12, 12);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (11, 2, 2);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (12, 1, 1);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (12, 4, 4);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (12, 6, 6);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (12, 8, 8);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (12, 12, 12);
-INSERT INTO purchase(product_id, user_id, card_id)
-values (12, 2, 2);
+INSERT INTO purchase(product_id, user_id)
+values (1, 1);
+INSERT INTO purchase(product_id, user_id)
+values (1, 4);
+INSERT INTO purchase(product_id, user_id)
+values (1, 6);
+INSERT INTO purchase(product_id, user_id)
+values (1, 8);
+INSERT INTO purchase(product_id, user_id)
+values (1, 12);
+INSERT INTO purchase(product_id, user_id)
+values (1, 2);
+INSERT INTO purchase(product_id, user_id)
+values (2, 1);
+INSERT INTO purchase(product_id, user_id)
+values (2, 4);
+INSERT INTO purchase(product_id, user_id)
+values (2, 6);
+INSERT INTO purchase(product_id, user_id)
+values (3, 8);
+INSERT INTO purchase(product_id, user_id)
+values (3, 12);
+INSERT INTO purchase(product_id, user_id)
+values (3, 2);
+INSERT INTO purchase(product_id, user_id)
+values (4, 1);
+INSERT INTO purchase(product_id, user_id)
+values (4, 4);
+INSERT INTO purchase(product_id, user_id)
+values (5, 6);
+INSERT INTO purchase(product_id, user_id)
+values (7, 8);
+INSERT INTO purchase(product_id, user_id)
+values (7, 12);
+INSERT INTO purchase(product_id, user_id)
+values (7, 2);
+INSERT INTO purchase(product_id, user_id)
+values (7, 1);
+INSERT INTO purchase(product_id, user_id)
+values (7, 4);
+INSERT INTO purchase(product_id, user_id)
+values (7, 6);
+INSERT INTO purchase(product_id, user_id)
+values (8, 12);
+INSERT INTO purchase(product_id, user_id)
+values (8, 2);
+INSERT INTO purchase(product_id, user_id)
+values (8, 1);
+INSERT INTO purchase(product_id, user_id)
+values (8, 4);
+INSERT INTO purchase(product_id, user_id)
+values (8, 6);
+INSERT INTO purchase(product_id, user_id)
+values (9, 8);
+INSERT INTO purchase(product_id, user_id)
+values (9, 12);
+INSERT INTO purchase(product_id, user_id)
+values (10, 2);
+INSERT INTO purchase(product_id, user_id)
+values (10, 1);
+INSERT INTO purchase(product_id, user_id)
+values (10, 4);
+INSERT INTO purchase(product_id, user_id)
+values (10, 6);
+INSERT INTO purchase(product_id, user_id)
+values (10, 8);
+INSERT INTO purchase(product_id, user_id)
+values (11, 12);
+INSERT INTO purchase(product_id, user_id)
+values (11, 2);
+INSERT INTO purchase(product_id, user_id)
+values (12, 1);
+INSERT INTO purchase(product_id, user_id)
+values (12, 4);
+INSERT INTO purchase(product_id, user_id)
+values (12, 6);
+INSERT INTO purchase(product_id, user_id)
+values (12, 8);
+INSERT INTO purchase(product_id, user_id)
+values (12, 12);
 
-
+INSERT INTO vacancy(title, description)
+values ('Тестировщик ПО (Quality Assurance Engineer)', 'Требуется опытный тестировщик со знанием: Функциональное тестирование. Тестирование UI. Нагрузочное тестирование. Автоматизированное тестирование (приветствуется).');
+INSERT INTO vacancy(title, description)
+values ('Junior Project Manager/Business Analyst', 'Анализ бизнеса потенциальных заказчиков, перспектив сотрудничества, умение оценивать достоинства/недостатки различных вариантов технической реализации. Выявление, сбор и анализ требований заинтересованных...
+Опыт создания проектной документации, знание стандартов разработки ТЗ и процесса разработки. Опыт в IT 0.5 года');
+INSERT INTO vacancy(title, description)
+values ('Backend разработчик игровых серверов', 'Qualle.inc нужен опытный Backend разработчик, которому предстоит заботиться об облачной платформе для наших игр. Мы используем игровой сервер, чтобы сохранять прогресс игроков, составлять рейтинговые таблицы, ловить читеров, организовывать чаты, кланы и тд. Веб-интерфейс сервера помогает нашим разработчикам решать задачи по поддержке игроков и исследованию багов.');
+INSERT INTO vacancy(title, description)
+values ('Senior Unity-разработчик', 'MGVC — инвестиционное подразделение Qualle.inc, работает как с начинающими разработчиками, так и с опытными студиями и помогает им не только с финансированием проектов, но и оказывает маркетинговую и операционную поддержку.
+Для своих студий-партнеров MGVC регулярно проводит образовательные митапы, посвященные разным аспектам разработки игр. Со студиями работает опытная команда продюсеров, бренд-менеджеров, маркетологов, которая также делится своей экспертизой и помогает развивать проекты. Присоединяйся!');

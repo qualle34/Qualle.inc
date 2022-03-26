@@ -1,13 +1,9 @@
 package com.inc.qualle.controller;
 
-import com.inc.qualle.model.dto.CategoryDto;
-import com.inc.qualle.model.dto.DeveloperDto;
-import com.inc.qualle.model.dto.GameDto;
+import com.inc.qualle.model.dto.*;
+import com.inc.qualle.service.*;
 import com.inc.qualle.service.security.SessionUtil;
-import com.inc.qualle.service.dao.ExtraService;
-import com.inc.qualle.service.dao.GameService;
-import com.inc.qualle.service.dao.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -18,84 +14,145 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Collection;
+
 @Controller
+@RequiredArgsConstructor
 public class AdminController {
 
-    @Autowired
-    private ExtraService extraService;
-
-    @Autowired
-    private GameService gameService;
-
-    @Autowired
-    private UserService userService;
+    private final ProductService productService;
+    private final CategoryService categoryService;
+    private final GenreService genreService;
+    private final DeveloperService developerService;
+    private final FeedbackService feedbackService;
+    private final VacancyService vacancyService;
+    private final ImageService imageService;
+    private final UserService userService;
 
     @GetMapping(value = "/admin")
     public String getAdminPage(Model model, Authentication authentication) {
         model.addAttribute("authority", SessionUtil.getAuthority(authentication));
-        model.addAttribute("games", gameService.getAllDto());
-        model.addAttribute("categories", extraService.getAllCategoriesDto());
-        model.addAttribute("users", userService.getAllDto());
-        model.addAttribute("summaries", extraService.getAllSummariesDto());
+        model.addAttribute("products", productService.getAll());
+        model.addAttribute("categories", categoryService.getAll());
+        model.addAttribute("genres", genreService.getAll());
+        model.addAttribute("developers", developerService.getAll());
+        model.addAttribute("feedbacks", feedbackService.getAll());
+        model.addAttribute("vacancies", vacancyService.getAll());
+        model.addAttribute("images", imageService.getAll());
+        model.addAttribute("users", userService.getAll());
+
         return "admin";
     }
 
-    @GetMapping(value = "/admin/games")
+    @GetMapping(value = "/admin/product")
     @ResponseBody
-    public ResponseEntity<Object> getGames() {
-        Object result = gameService.getAllDto();
+    public ResponseEntity<Collection<ProductDto>> getProducts() {
+        Collection<ProductDto> result = productService.getAll();
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/admin/categories")
+    @GetMapping(value = "/admin/category")
     @ResponseBody
-    public ResponseEntity<Object> getCategories() {
-        Object result = extraService.getAllCategoriesDto();
+    public ResponseEntity<Collection<CategoryDto>> getCategories() {
+        Collection<CategoryDto> result = categoryService.getAll();
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/admin/developers")
+    @GetMapping(value = "/admin/genre")
     @ResponseBody
-    public ResponseEntity<Object> getDevelopers() {
-        Object result = extraService.getAllDeveloperDto();
+    public ResponseEntity<Collection<GenreDto>> getGenres() {
+        Collection<GenreDto> result = genreService.getAll();
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/admin/users")
+    @GetMapping(value = "/admin/developer")
     @ResponseBody
-    public ResponseEntity<Object> getUsers() {
-        Object result = userService.getAllDto();
+    public ResponseEntity<Collection<DeveloperDto>> getDevelopers() {
+        Collection<DeveloperDto> result = developerService.getAll();
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/admin/summaries")
+    @GetMapping(value = "/admin/feedback")
     @ResponseBody
-    public ResponseEntity<Object> getSummaries() {
-        Object result = extraService.getAllSummariesDto();
+    public ResponseEntity<Collection<FeedbackDto>> getFeedbacks() {
+        Collection<FeedbackDto> result = feedbackService.getAll();
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/admin/game/{id}")
-    public String getGame(@PathVariable Long id, Model model, Authentication authentication) {
+    @GetMapping(value = "/admin/vacancy")
+    @ResponseBody
+    public ResponseEntity<Object> getVacancies() {
+        Collection<VacancyDto> result = vacancyService.getAll();
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/admin/image")
+    @ResponseBody
+    public ResponseEntity<Collection<ImageDto>> getImages() {
+        Collection<ImageDto> result = imageService.getAll();
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/admin/user")
+    @ResponseBody
+    public ResponseEntity<Collection<UserDto>> getUsers() {
+        Collection<UserDto> result = userService.getAll();
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/admin/product/{id}")
+    public String getProduct(@PathVariable Long id, Model model, Authentication authentication) {
         model.addAttribute("authority", SessionUtil.getAuthority(authentication));
-        model.addAttribute("game", gameService.getDtoById(id));
-        model.addAttribute("type", "game");
+        model.addAttribute("product", productService.getById(id));
+        model.addAttribute("type", "product");
         return "admin";
     }
 
     @GetMapping(value = "/admin/category/{id}")
     public String getCategory(@PathVariable Long id, Model model, Authentication authentication) {
         model.addAttribute("authority", SessionUtil.getAuthority(authentication));
-        model.addAttribute("category", extraService.getCategoryDtoById(id));
+        model.addAttribute("category", categoryService.getById(id));
         model.addAttribute("type", "category");
+        return "admin";
+    }
+
+    @GetMapping(value = "/admin/genre/{id}")
+    public String getGenre(@PathVariable Long id, Model model, Authentication authentication) {
+        model.addAttribute("authority", SessionUtil.getAuthority(authentication));
+        model.addAttribute("genre", genreService.getById(id));
+        model.addAttribute("type", "genre");
         return "admin";
     }
 
     @GetMapping(value = "/admin/developer/{id}")
     public String getDeveloper(@PathVariable Long id, Model model, Authentication authentication) {
         model.addAttribute("authority", SessionUtil.getAuthority(authentication));
-        model.addAttribute("developer", extraService.getDeveloperDtoById(id));
+        model.addAttribute("developer", developerService.getById(id));
         model.addAttribute("type", "developer");
+        return "admin";
+    }
+
+    @GetMapping(value = "/admin/feedback/{id}")
+    public String getFeedback(@PathVariable Long id, Model model, Authentication authentication) {
+        model.addAttribute("authority", SessionUtil.getAuthority(authentication));
+        model.addAttribute("feedback", feedbackService.getById(id));
+        model.addAttribute("type", "feedback");
+        return "admin";
+    }
+
+    @GetMapping(value = "/admin/vacancy/{id}")
+    public String getVacancy(@PathVariable Long id, Model model, Authentication authentication) {
+        model.addAttribute("authority", SessionUtil.getAuthority(authentication));
+        model.addAttribute("vacancy", vacancyService.getById(id));
+        model.addAttribute("type", "vacancy");
+        return "admin";
+    }
+
+    @GetMapping(value = "/admin/image/{id}")
+    public String getImage(@PathVariable Long id, Model model, Authentication authentication) {
+        model.addAttribute("authority", SessionUtil.getAuthority(authentication));
+        model.addAttribute("image", imageService.getById(id));
+        model.addAttribute("type", "image");
         return "admin";
     }
 
@@ -107,70 +164,94 @@ public class AdminController {
         return "admin";
     }
 
-    @GetMapping(value = "/admin/summary/{id}")
-    public String getSummary(@PathVariable Long id, Model model, Authentication authentication) {
+    @GetMapping(value = "/admin/product/add")
+    public String addProductPage(Model model, Authentication authentication) {
         model.addAttribute("authority", SessionUtil.getAuthority(authentication));
-        model.addAttribute("summary", extraService.getSummaryDtoById(id));
-        model.addAttribute("type", "summary");
-        return "admin";
+        model.addAttribute("categories",categoryService.getAll());
+        model.addAttribute("developers", developerService.getAll());
+        return "edit_product";
     }
 
-    @GetMapping(value = "/admin/add/game")
-    public String addGamePage(Model model, Authentication authentication) {
-        model.addAttribute("authority", SessionUtil.getAuthority(authentication));
-        model.addAttribute("categories", extraService.getAllCategoriesDto());
-        model.addAttribute("developers", extraService.getAllDeveloperDto());
-        return "edit_game";
-    }
-
-    @GetMapping(value = "/admin/add/category")
+    @GetMapping(value = "/admin/category/add")
     public String addCategoryPage(Model model, Authentication authentication) {
         model.addAttribute("authority", SessionUtil.getAuthority(authentication));
         return "edit_category";
     }
 
-    @GetMapping(value = "/admin/add/developer")
+    @GetMapping(value = "/admin/genre/add")
+    public String addGenrePage(Model model, Authentication authentication) {
+        model.addAttribute("authority", SessionUtil.getAuthority(authentication));
+        return "edit_genre";
+    }
+
+    @GetMapping(value = "/admin/developer/add")
     public String addDeveloperPage(Model model, Authentication authentication) {
         model.addAttribute("authority", SessionUtil.getAuthority(authentication));
         return "edit_developer";
     }
 
-    @GetMapping(value = "/admin/update/game/{id}")
-    public String updateGamePage(@PathVariable Long id, Model model, Authentication authentication) {
+    @GetMapping(value = "/admin/vacancy/add")
+    public String addVacancyPage(Model model, Authentication authentication) {
         model.addAttribute("authority", SessionUtil.getAuthority(authentication));
-        model.addAttribute("categories", extraService.getAllCategoriesDto());
-        model.addAttribute("developers", extraService.getAllDeveloperDto());
-        model.addAttribute("game", gameService.getDtoById(id));
-        return "edit_game";
+        return "edit_vacancy";
     }
 
-    @PostMapping(value = "/admin/add/game")
-    public String addGame(GameDto dto) {
-        gameService.add(dto);
+    @GetMapping(value = "/admin/image/add")
+    public String addImagePage(Model model, Authentication authentication) {
+        model.addAttribute("authority", SessionUtil.getAuthority(authentication));
+        return "edit_image";
+    }
+
+    @PostMapping(value = "/admin/product/add")
+    public String addProduct(ProductDto dto) {
+        productService.save(dto);
         return "admin";
     }
 
-    @PostMapping(value = "/admin/update/game")
-    public String addDeveloper(GameDto dto) {
-        gameService.update(dto);
-        return "admin";
-    }
-
-    @PostMapping(value = "/admin/delete/game")
-    public String addDeveloper(Long gameId) {
-        gameService.delete(gameId);
-        return "admin";
-    }
-
-    @PostMapping(value = "/admin/add/category")
+    @PostMapping(value = "/admin/category/add")
     public String addCategory(CategoryDto dto) {
-        extraService.add(dto);
+        categoryService.save(dto);
+        return "admin";
+    }
+    @PostMapping(value = "/admin/genre/add")
+    public String addGenre(GenreDto dto) {
+        genreService.save(dto);
+        return "admin";
+    }
+    @PostMapping(value = "/admin/developer/add")
+    public String addDeveloper(DeveloperDto dto) {
+        developerService.save(dto);
+        return "admin";
+    }
+    @PostMapping(value = "/admin/vacancy/add")
+    public String addVacancy(VacancyDto dto) {
+        vacancyService.save(dto);
+        return "admin";
+    }
+    @PostMapping(value = "/admin/image/add")
+    public String addImage(ImageDto dto) {
+        imageService.save(dto);
         return "admin";
     }
 
-    @PostMapping(value = "/admin/add/developer")
-    public String addDeveloper(DeveloperDto dto) {
-        extraService.add(dto);
+    @PostMapping(value = "/admin/product/update")
+    public String updateProduct(ProductDto dto) {
+        productService.save(dto);
+        return "admin";
+    }
+
+    @GetMapping(value = "/admin/product/{id}/update")
+    public String updateProductPage(@PathVariable Long id, Model model, Authentication authentication) {
+        model.addAttribute("authority", SessionUtil.getAuthority(authentication));
+        model.addAttribute("categories", categoryService.getAll());
+        model.addAttribute("developers", developerService.getAll());
+        model.addAttribute("product", productService.getById(id));
+        return "edit_product";
+    }
+
+    @PostMapping(value = "/admin/product/delete")
+    public String addDeveloper(Long productId) {
+        productService.delete(productId);
         return "admin";
     }
 }

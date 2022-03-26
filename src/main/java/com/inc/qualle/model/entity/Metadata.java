@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.Set;
 
 @Entity
@@ -32,23 +33,23 @@ public class Metadata {
     private boolean enabled;
 
     @OneToMany(mappedBy="metadata", fetch = FetchType.LAZY)
-    private Set<User> users;
+    private Collection<User> users;
 
     @OneToMany(mappedBy="metadata", fetch = FetchType.LAZY)
-    private Set<Card> cards;
+    private Collection<Card> cards;
 
     @OneToMany(mappedBy="metadata", fetch = FetchType.LAZY)
-    private Set<Feedback> feedbacks;
+    private Collection<Feedback> feedbacks;
 
     @OneToMany(mappedBy="metadata", fetch = FetchType.LAZY)
-    private Set<Vacancy> vacancies;
+    private Collection<Vacancy> vacancies;
 
     @OneToMany(mappedBy="metadata", fetch = FetchType.LAZY)
-    private Set<Product> products;
+    private Collection<Product> products;
 
     @OneToMany(mappedBy="metadata", fetch = FetchType.LAZY)
-    private Set<Review> reviews;
+    private Collection<Review> reviews;
 
     @OneToMany(mappedBy="metadata", fetch = FetchType.LAZY)
-    private Set<Developer> developers;
+    private Collection<Developer> developers;
 }

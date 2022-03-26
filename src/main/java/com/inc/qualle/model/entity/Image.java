@@ -3,6 +3,7 @@ package com.inc.qualle.model.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Set;
 
 @Entity
@@ -25,8 +26,8 @@ public class Image {
     private String link;
 
     @OneToMany(mappedBy="image", fetch = FetchType.LAZY)
-    private Set<User> users;
+    private Collection<User> users;
 
     @OneToMany(mappedBy="image", fetch = FetchType.LAZY)
-    private Set<Product> products;
+    private Collection<Product> products;
 }

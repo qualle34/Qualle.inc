@@ -60,11 +60,3 @@ CREATE TRIGGER developer_metadata_handler
 BEGIN
     SET NEW.metadata_id = add_metadata();
 END |
-
-CREATE TRIGGER purchase_metadata_handler
-    BEFORE INSERT
-    ON purchase
-    FOR EACH ROW
-BEGIN
-    SET NEW.metadata_id = add_metadata();
-END |

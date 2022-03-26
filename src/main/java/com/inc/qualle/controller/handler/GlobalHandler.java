@@ -1,7 +1,7 @@
 package com.inc.qualle.controller.handler;
 
 import com.inc.qualle.model.exception.CartNotFoundException;
-import com.inc.qualle.model.exception.GameNotFoundException;
+import com.inc.qualle.model.exception.ProductNotFoundException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class GlobalHandler {
 
-    @ExceptionHandler(value = GameNotFoundException.class)
-    public String GameNotFoundPage(GameNotFoundException e, Model model) {
-        model.addAttribute("cause", "game");
+    @ExceptionHandler(value = ProductNotFoundException.class)
+    public String ProductNotFoundPage(ProductNotFoundException e, Model model) {
+        model.addAttribute("cause", "product");
         return "redirect:/error";
     }
 
@@ -24,6 +24,6 @@ public class GlobalHandler {
     @ExceptionHandler(value = Exception.class)
     public String exception(Exception e, Model model) {
         model.addAttribute("cause", e.getMessage());
-        return "redirect:error";
+        return "redirect:/error";
     }
 }

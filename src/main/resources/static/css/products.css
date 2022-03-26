@@ -1,0 +1,389 @@
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#wrapper {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/*  main  */
+/**************************************************/
+main {
+    width: 100%;
+}
+
+/*  Title  */
+/**************************************************/
+.title-box {
+    width: 100%;
+    height: 1000px;
+    position: relative;
+    background: url("../img/bg/anthem.jpg") 50% 50% no-repeat;
+    background-size: cover;
+}
+
+a {
+    color: white;
+}
+
+.title-box .inner-title-box {
+    width: 100%;
+    height: 100px;
+    padding-top: 250px;
+}
+
+.title-box .inner-title {
+    margin: 0;
+    padding-left: 20%;
+    color: white;
+}
+
+.title-box .products-box {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    position: absolute;
+    bottom: 0;
+}
+
+.title-box .products-box .product-box {
+    position: relative;
+    color: white;
+    font-weight: bold;
+    overflow: hidden;
+    background: black;
+}
+
+.title-box .products-box .product-box .image {
+    opacity: 0.7;
+    transition: 0.5s;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.title-box .products-box .product-box .image:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.title-box .products-box .product-box .text {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-right: 15px;
+    text-align: right;
+}
+
+/* for tablet */
+@media screen and (max-width: 800px) {
+
+    .title-box .products-box {
+        width: 100%;
+        height: 400px;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 50% 50%;
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+/* for mobile */
+@media screen and (max-width: 480px) {
+
+    .title-box .products-box {
+        width: 100%;
+        height: 300px;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 50% 50%;
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+/*  popular-products  */
+/**************************************************/
+
+.popular-products {
+    width: 100%;
+    height: 900px;
+    position: relative;
+    background: white;
+}
+
+.popular-products .products-box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -270px;
+    margin-left: -640px;
+    display: grid;
+    grid-template-columns: 400px 400px 400px;
+    grid-template-rows: 250px 250px;
+    grid-gap: 40px;
+}
+
+.popular-products .products-box .product-box {
+    padding: 20px;
+}
+
+.popular-products .products-box .product-box:nth-child(even)::before {
+    content: '';
+    height: 100px;
+    width: 100px;
+    background: #fceeff;
+    filter: blur(50px);
+    position: absolute;
+}
+
+.popular-products .products-box .product-box .image {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+/* for tablet */
+@media screen and (max-width: 800px) {
+
+}
+
+/* for mobile */
+@media screen and (max-width: 480px) {
+
+}
+
+/*  search  */
+/**************************************************/
+.search {
+    width: 100%;
+    background: #00425b;
+}
+
+.search .search-box {
+    width: 30%;
+    height: 100%;
+    padding: 100px 0;
+    position: relative;
+    margin: 0 auto;
+    background: #00425b;
+}
+
+input, button {
+    border: none;
+    outline: none;
+    background: white;
+}
+
+input {
+    width: 100%;
+    height: 42px;
+    padding-left: 15px;
+}
+
+.search-button {
+    height: 42px;
+    width: 42px;
+    position: absolute;
+    top: 100px;
+    right: 0;
+    cursor: pointer;
+}
+
+.search-button:before {
+    content: "\f002";
+    font-family: FontAwesome;
+    font-size: 16px;
+    color: #00b0ff;
+}
+
+/*  result  */
+/**************************************************/
+.result {
+    width: 100%;
+    background: white;
+    animation-name: animate;
+    animation-duration: 0.6s;
+}
+
+.result .result-box {
+    width: 30%;
+    height: 100%;
+    margin: auto;
+    padding: 20px 0 5px;
+}
+
+.result .result-box .product {
+    margin: auto;
+}
+
+.result .result-box .name {
+    margin: 20px 0;
+    color: black;
+    text-decoration: none;
+}
+
+.result .result-box .name:hover {
+    color: #00b0ff;
+}
+
+.result .result-box .line {
+    width: 100%;
+    height: 1px;
+    margin-bottom: 20px;
+    background: #9b9b9b;
+}
+
+@keyframes animate {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
+}
+
+/*  sport-products  */
+/**************************************************/
+.sport-products {
+    width: 100%;
+    height: 600px;
+    position: relative;
+    background: url("../img/bg/arena.jpg") center;
+    background-size: cover;
+}
+
+.sport-products::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;
+}
+
+.sport-products .products-box {
+    position: absolute;
+    left: calc(50% - 450px);
+    top: calc(50% - 150px);
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    grid-template-rows: 100px 100px;
+    grid-gap: 100px;
+}
+
+.sport-products .products-box .product-box {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    transition: 0.5s;
+}
+
+.sport-products .products-box .product-box:hover {
+    transform: scale(1.1);
+}
+
+/* for tablet */
+@media screen and (max-width: 800px) {
+
+}
+
+/* for mobile */
+@media screen and (max-width: 480px) {
+
+}
+
+/*  mobile-products  */
+/**************************************************/
+.mobile-products {
+    width: 100%;
+    height: 500px;
+    padding: 100px 0;
+    position: relative;
+    background: white;
+}
+
+.mobile-products .products-box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -245px;
+    margin-left: -310px;
+    display: grid;
+    grid-template-columns: 400px 400px;
+    grid-template-rows: 150px 150px 150px;
+    grid-gap: 20px;
+}
+
+.mobile-products .products-box .product-box {
+    position: relative;
+}
+
+.mobile-products .products-box .product-box img {
+    width: 100px;
+    height: 100px;
+    padding-top: 25px;
+    float: left;
+}
+
+.mobile-products .products-box .product-box .text {
+    padding-left: 50px;
+    padding-top: 25px;
+    float: left;
+}
+
+.mobile-products .products-box .product-box .platform {
+    font-size: 13px;
+    color: #00b0ff;
+}
+
+/* for tablet */
+@media screen and (max-width: 800px) {
+
+}
+
+/* for mobile */
+@media screen and (max-width: 480px) {
+
+}
+
+/*  other-products  */
+/**************************************************/
+.other-products {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    background: black;
+}
+
+.other-products .product-box {
+    width: 20%;
+    height: 170px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.other-products .product-box img:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.other-products .product-box img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    opacity: 0.7;
+    transition: 0.5s;
+}

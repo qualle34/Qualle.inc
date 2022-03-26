@@ -28,11 +28,11 @@
             <h1 class="title"> Профиль </h1>
 
             <ul>
-                <li>Имя - <span th:text="${user.name}"></span></li>
-                <li>Фамилия - <span th:text="${user.lastname}"></span></li>
-                <li>Телефон - <span th:text="${user.phone}"></span></li>
-                <li>Email - <span th:text="${user.email}"></span></li>
-                <li>День рождения - <span th:text="${user.birthday}"></span></li>
+                <li>Имя - <span th:text="${profile.user.name}"></span></li>
+                <li>Фамилия - <span th:text="${profile.user.lastname}"></span></li>
+                <li>Телефон - <span th:text="${profile.user.phone}"></span></li>
+                <li>Email - <span th:text="${profile.user.email}"></span></li>
+                <li>День рождения - <span th:text="${profile.user.birthday}"></span></li>
             </ul>
         </div>
 
@@ -40,13 +40,24 @@
 
             <h1 class="title"> Игры </h1>
 
-            <div class="product" th:each="product : ${products}">
+            <div class="product" th:each="product : ${profile.purchases}">
                 <div class="logo">
-                    <img th:src="${product.img}">
+                    <img th:src="${product.image.link}">
                 </div>
-                <p class="name" th:text="${product.name}"></p>
+                <p class="name" th:text="${product.title}"></p>
             </div>
         </div>
+
+
+        <div class="products">
+
+            <h1 class="title"> Карточки </h1>
+
+            <div class="product" th:each="card : ${profile.cards}">
+                <p class="name" th:text="${card.number} + ' - ' + ${card.date}"></p>
+            </div>
+        </div>
+
     </section>
 
     <div th:insert="fragments/footer :: footer"></div>

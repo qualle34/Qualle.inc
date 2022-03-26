@@ -36,34 +36,34 @@ main {
     margin: 10px 0;
 }
 
-.info .games {
+.info .products {
     width: 60%;
     margin: 100px auto auto;
     padding: 2% 5%;
     background: white;
 }
 
-.info .games .game {
+.info .products .product {
     width: 60%;
     height: 100px;
     margin: 20px auto 20px;
     border-bottom: 1px solid #dddddd;
 }
 
-.info .games .game .logo {
+.info .products .product .logo {
     width: 40%;
     height: 90px;
     float: left;
     overflow: hidden;
 }
 
-.info .games .game img {
+.info .products .product img {
     object-fit: cover;
     height: 100%;
     width: 100%;
 }
 
-.info .games .game .name {
+.info .products .product .name {
     text-align: right;
 }
 

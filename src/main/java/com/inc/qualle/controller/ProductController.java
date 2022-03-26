@@ -1,0 +1,94 @@
+package com.inc.qualle.controller;
+
+import com.inc.qualle.model.dto.SimpleProductDto;
+import com.inc.qualle.service.ProductService;
+import com.inc.qualle.service.security.SessionUtil;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.*;
+
+@Controller
+@RequiredArgsConstructor
+public class ProductController {
+
+    private final ProductService productService;
+
+    @GetMapping(value = "/products")
+    public String getProductPage(Model model, Authentication authentication) {
+        model.addAttribute("authority", SessionUtil.getAuthority(authentication));
+        Collection<SimpleProductDto> products = productService.getAllWithCategory();
+
+        Map<String, Collection<SimpleProductDto>> dto = new HashMap<>();
+        dto.put("main", new ArrayList<>());
+        dto.put("popular", new ArrayList<>());
+        dto.put("sport", new ArrayList<>());
+        dto.put("mobile", new ArrayList<>());
+        dto.put("other", new ArrayList<>());
+
+        for (SimpleProductDto product : products) {
+
+            switch (product.getCategory().getValue().trim().toLowerCase()) {
+
+                case "main":
+                    if (dto.get("main").size() < 4) {
+                        dto.get("main").add(product);
+                    }
+                    break;
+
+                case "popular":
+                    if (dto.get("popular").size() < 6) {
+                        dto.get("popular").add(product);
+                    }
+                    break;
+
+                case "sport":
+                    if (dto.get("sport").size() < 6) {
+                        dto.get("sport").add(product);
+                    }
+                    break;
+
+                case "mobile":
+                    if (dto.get("mobile").size() < 6) {
+                        dto.get("mobile").add(product);
+                    }
+                    break;
+
+                case "other":
+                    if (dto.get("other").size() < 15) {
+                        dto.get("other").add(product);
+                    }
+                    break;
+            }
+        }
+
+        model.addAttribute("main", dto.get("main"));
+        model.addAttribute("popular", dto.get("popular"));
+        model.addAttribute("sport", dto.get("sport"));
+        model.addAttribute("mobile", dto.get("mobile"));
+        model.addAttribute("other", dto.get("other"));
+        return "products";
+    }
+
+    @GetMapping(value = "/product/{id}")
+    public String getProductPage(@PathVariable Long id, Model model, Authentication authentication) {
+        model.addAttribute("authority", SessionUtil.getAuthority(authentication));
+        model.addAttribute("product", productService.getById(id));
+        return "product";
+    }
+
+    @GetMapping(value = "/product/search")
+    @ResponseBody
+    public ResponseEntity<Object> search(@RequestParam(value = "search", required = false) String search) {
+        Object result = productService.getByTitle(search);
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+}

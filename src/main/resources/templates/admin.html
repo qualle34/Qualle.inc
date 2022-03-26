@@ -32,26 +32,38 @@
             <div class="box">
 
                 <div class="add-box">
-                    <a href="/admin/add/product">Добавить игру</a>
+                    <a href="/admin/product/add">Добавить товар</a>
                 </div>
 
                 <div class="add-box">
-                    <a href="/admin/add/category">Добавить категорию</a>
+                    <a href="/admin/category/add">Добавить категорию</a>
                 </div>
 
                 <div class="add-box">
-                    <a href="/admin/add/developer">Добавить разработчика</a>
+                    <a href="/admin/genre/add">Добавить жанр</a>
+                </div>
+
+                <div class="add-box">
+                    <a href="/admin/developer/add">Добавить разработчика</a>
+                </div>
+
+                <div class="add-box">
+                    <a href="/admin/vacancy/add">Добавить вакансию</a>
+                </div>
+
+                <div class="add-box">
+                    <a href="/admin/image/add">Добавить изображение</a>
                 </div>
 
                 <div class="info" th:if="${type == 'product'}">
                     <h2>Информация о игре </h2>
                     <p th:text="'id: ' + ${product.id}"></p>
-                    <p th:text="'Название: ' + ${product.name}"></p>
+                    <p th:text="'Название: ' + ${product.title}"></p>
                     <p th:text="'Описание: ' + ${product.description}"></p>
                     <p th:text="'Цена: ' + ${product.price}"></p>
                     <p th:text="'Разработчик: ' + ${product.developer}"></p>
                     <p th:text="'Категория: ' + ${product.category}"></p>
-                    <p th:text="'Ссылка на логотип: ' + ${product.img}"></p>
+                    <p th:text="'Ссылка на логотип: ' + ${product.image.link}"></p>
 
                     <div class="update">
                         <a th:href="${'/admin/update/product/' + product.id}"><span style='font-size:20px;'>&#x270e;</span></a>
@@ -59,7 +71,7 @@
 
                     <div class="delete">
                         <form action="#" th:action="@{'/admin/delete/product'}" method="post">
-                            <input th:value="${product.id}" type="hidden" name="gameId"/>
+                            <input th:value="${product.id}" type="hidden" name="productId"/>
                             <input type="submit" class="small-delete-button" value="X"/>
                         </form>
                     </div>
@@ -68,8 +80,13 @@
                 <div class="info" th:if="${type == 'category'}">
                     <h2>Информация о категории</h2>
                     <p th:text="'id: ' + ${category.id}"></p>
-                    <p th:text="'Заголовок: ' + ${category.title}"></p>
-                    <p th:text="'Заголовок на русском: ' + ${category.localTitle}"></p>
+                    <p th:text="'Заголовок: ' + ${category.value}"></p>
+                </div>
+
+                <div class="info" th:if="${type == 'genre'}">
+                    <h2>Информация о жанрах</h2>
+                    <p th:text="'id: ' + ${genre.id}"></p>
+                    <p th:text="'Заголовок: ' + ${genre.value}"></p>
                 </div>
 
                 <div class="info" th:if="${type == 'developer'}">
@@ -81,6 +98,27 @@
                     <p th:text="'Адрес: ' + ${developer.address}"></p>
                 </div>
 
+                <div class="info" th:if="${type == 'feedback'}">
+                    <h2>Информация о сообщении</h2>
+                    <p th:text="'id: ' + ${feedback.id}"></p>
+                    <p th:text="'Имя: ' + ${feedback.title}"></p>
+                    <p th:text="'Email: ' + ${feedback.description}"></p>
+                </div>
+
+                <div class="info" th:if="${type == 'vacancy'}">
+                    <h2>Информация о сообщении</h2>
+                    <p th:text="'id: ' + ${vacancy.id}"></p>
+                    <p th:text="'Имя: ' + ${vacancy.title}"></p>
+                    <p th:text="'Email: ' + ${vacancy.description}"></p>
+                </div>
+
+                <div class="info" th:if="${type == 'image'}">
+                    <h2>Информация о сообщении</h2>
+                    <p th:text="'id: ' + ${image.id}"></p>
+                    <p th:text="'Имя: ' + ${image.name}"></p>
+                    <p th:text="'Email: ' + ${image.link}"></p>
+                </div>
+
                 <div class="info" th:if="${type == 'user'}">
                     <h2>Информация о пользователе</h2>
                     <p th:text="'id: ' + ${user.id}"></p>
@@ -88,15 +126,6 @@
                     <p th:text="'Фамилия: ' + ${user.lastname}"></p>
                     <p th:text="'Телефон: ' + ${user.phone}"></p>
                     <p th:text="'Email: ' + ${user.email}"></p>
-                </div>
-
-                <div class="info" th:if="${type == 'feedback'}">
-                    <h2>Информация о сообщении</h2>
-                    <p th:text="'id: ' + ${feedback.id}"></p>
-                    <p th:text="'Имя: ' + ${feedback.name}"></p>
-                    <p th:text="'Email: ' + ${feedback.email}"></p>
-                    <p th:text="'Телефон: ' + ${feedback.phone}"></p>
-                    <p th:text="'Сообщение: ' + ${feedback.message}"></p>
                 </div>
 
                 <table id="table" style="background: white; box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);">

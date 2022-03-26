@@ -3,6 +3,7 @@ package com.inc.qualle.model.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Set;
 
 @Entity
@@ -28,6 +29,7 @@ public class Product {
     private double price;
 
     @Column(name = "type")
+    @Enumerated(value = EnumType.STRING)
     private ProductType type;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -51,11 +53,11 @@ public class Product {
     private Metadata metadata;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    private Set<Review> reviews;
+    private Collection<Review> reviews;
 
-    @OneToMany(mappedBy="product", fetch = FetchType.LAZY)
-    private Set<Purchase> purchases;
+    @ManyToMany(mappedBy="purchases", fetch = FetchType.LAZY)
+    private Collection<User> purchases;
 
     @ManyToMany(mappedBy = "cart", cascade = CascadeType.ALL)
-    private Set<User> carts;
+    private Collection<User> carts;
 }

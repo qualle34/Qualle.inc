@@ -21,13 +21,15 @@
     <div class="box">
         <div class="registration-form">
             <form th:action="@{/registration}" method="post" id="registration">
-                <input class="login-input" type="text" placeholder="login" name="login"/>
-                <input class="name-input" type="text" placeholder="name" name="name"/>
-                <!--<input class="email-input" type="email" placeholder="email" name="email"/>-->
-                <input class="phone-input" type="text" placeholder="phone" name="phone"/>
-                <input class="password-input" type="password" placeholder="password" name="password"/>
+                <input class="login-input" type="text" placeholder="Логин *" name="login"/>
+                <input class="name-input" type="text" placeholder="Имя *" name="name"/>
+                <input class="name-input" type="text" placeholder="Фамилия" name="lastname"/>
+                <input class="email-input" type="email" placeholder="Email" name="email"/>
+                <input class="phone-input" type="text" placeholder="Номер телефона" name="phone"/>
+                <input class="phone-input" type="text" placeholder="Дата рождения (2001-01-01)" name="birthday"/>
+                <input class="password-input" type="password" placeholder="Пароль *" name="password"/>
                 <p id="message" class="message"></p>
-                <input class="submit-input" type="submit" value="Зарегистрироватся">
+                <input class="submit-input" type="submit" value="Зарегистрироваться">
             </form>
         </div>
     </div>
