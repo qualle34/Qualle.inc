@@ -107,6 +107,24 @@
 
         </section>
 
+
+        <section class="merch-products">
+
+            <div class="products-box">
+
+                <div class="product-box" th:each="product : ${merch}">
+                    <a th:href="${'/product/' + product.id}">
+                        <img class="image" th:src="${product.image.link}">
+                        <div class="text">
+                            <p class="title" th:text="${product.title}"></p>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+        </section>
+
         <section class="other-products">
 
             <div class="product-box" th:each="product : ${other}">

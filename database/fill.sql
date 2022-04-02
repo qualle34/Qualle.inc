@@ -82,7 +82,7 @@ values ('Ubisoft');
 INSERT INTO developer(title)
 values ('RockStar Games');
 INSERT INTO developer(title)
-values ('CD Project Red');
+values ('CD Projekt Red');
 INSERT INTO developer(title)
 values ('DICE');
 INSERT INTO developer(title)
@@ -178,15 +178,25 @@ INSERT INTO image(link)
 values ('img/products/mobile/mobile-6.png');
 INSERT INTO image(link)
 values ('img/products/others/product.jpg');
+INSERT INTO image(link)
+values ('img/products/merch/assassins-backpack.jpg');
+INSERT INTO image(link)
+values ('img/products/merch/batman-cup.jpg');
+INSERT INTO image(link)
+values ('img/products/merch/blizzard-item.png');
+INSERT INTO image(link)
+values ('img/products/merch/cyberpunk-hoodie.jpg');
+INSERT INTO image(link)
+values ('img/products/merch/witcher-tshirt.jpg');
 
 INSERT INTO product(title, price, description, type, developer_id, category_id, genre_id, image_id)
-values ('Witcher 3', 12.00, '', 'GAME', 4, 4, 4, 1);
+values ('Witcher 3', 12.00, 'The Witcher is a series of fantasy action role-playing games developed by CD Projekt Red and published by CD Projekt. ', 'GAME', 4, 4, 4, 1);
 INSERT INTO product(title, price, description, type, developer_id, category_id, genre_id, image_id)
-values ('Battlefront 2', 23.00, '', 'GAME', 5, 4, 2, 2);
+values ('Battlefront 2', 23.00, 'Become the Hero in a galaxy at war in Star Wars Battlefront II. Available for PlayStation 4, Xbox One, and on Origin for PC November 2021.', 'GAME', 5, 4, 2, 2);
 INSERT INTO product(title, price, description, type, developer_id, category_id, genre_id, image_id)
-values ('Assassins Creed Origins', 34.00, '', 'GAME', 2, 4, 8, 3);
+values ('Assassins Creed Origins', 34.00, 'Assassin''s Creed Origins is a 2021 action role-playing video game developed by Ubisoft Montreal and published by Ubisoft.', 'GAME', 2, 4, 8, 3);
 INSERT INTO product(title, price, description, type, developer_id, category_id, genre_id, image_id)
-values ('Mortal Kombat', 27.00, '', 'GAME', 1, 4, 9, 4);
+values ('Mortal Kombat', 27.00, 'Mortal Kombat is an American media franchise centered on a series of video games, originally developed by Midway Games in 1992.', 'GAME', 1, 4, 9, 4);
 INSERT INTO product(title, price, description, type, developer_id, category_id, genre_id, image_id)
 values ('Call of Duty Black Ops', 45.00, '', 'GAME', 7, 3, 1, 5);
 INSERT INTO product(title, price, description, type, developer_id, category_id, genre_id, image_id)
@@ -243,6 +253,16 @@ INSERT INTO product(title, price, description, type, developer_id, category_id, 
 values ('Игра 10', 10.00, '', 'GAME', 1, 1, 5, 22);
 INSERT INTO product(title, price, description, type, developer_id, category_id, genre_id, image_id)
 values ('Игра 11', 10.00, '', 'GAME', 1, 1, 9, 22);
+INSERT INTO product(title, price, description, type, developer_id, category_id, genre_id, image_id)
+values ('Рюкзак Assassin’s Creed', 39.00, 'Рюкзак, выполненный в стиле серии компьютерных игр Assassin’s Creed.', 'MERCH', 1, 1, 9, 23);
+INSERT INTO product(title, price, description, type, developer_id, category_id, genre_id, image_id)
+values ('Кружка Бэтмен', 8.00, 'Кружка Бэтмен Классический Логотип DC Comics', 'MERCH', 1, 1, 9, 24);
+INSERT INTO product(title, price, description, type, developer_id, category_id, genre_id, image_id)
+values ('Фанко Поп Иллидан', 11.00, 'Фигурка Фанко Поп Иллидан 10 см Варкрафт Близзард', 'MERCH', 1, 1, 9, 25);
+INSERT INTO product(title, price, description, type, developer_id, category_id, genre_id, image_id)
+values ('Толстовка «Cyberpunk 2077»', 34.00, 'Толстовка прямого кроя с капюшоном и молнией спереди, по бокам два вместительных кармана без застежек.', 'MERCH', 1, 1, 9, 26);
+INSERT INTO product(title, price, description, type, developer_id, category_id, genre_id, image_id)
+values ('Футболка Ведьмак | снаряжение', 16.00, 'Футболка из синтетической премиум-ткани с улучшенными характеристиками', 'MERCH', 1, 1, 9, 27);
 
 INSERT INTO purchase(product_id, user_id)
 values (1, 1);

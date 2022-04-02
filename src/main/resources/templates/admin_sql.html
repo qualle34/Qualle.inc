@@ -35,14 +35,14 @@
 
                     <div class="wrap-form">
                         <div class="contact-form-title">
-                            <span class="contact-form-title-2"> Добавление категории </span>
+                            <span class="contact-form-title-2"> SQL-Редактор </span>
                         </div>
 
-                        <form class="contact-form validate-form" method="post" th:action="@{'/admin/category/add'}">
+                        <form class="contact-form validate-form" method="post" th:action="@{'/admin/sql'}">
 
                             <div class="wrap-input validate-input">
-                                <span class="label-input">Название:</span>
-                                <input class="input" type="text" name="value" placeholder="Введите название категории*">
+                                <span class="label-input">SQL запрос:</span>
+                                <textarea class="input" name="query" placeholder="Введите SQL запрос ..."></textarea>
                                 <span class="focus-input"></span>
                             </div>
 
@@ -52,14 +52,28 @@
                                 </button>
                             </div>
                         </form>
+
+                        <div id="response" class="contact-form wrap-input ">
+
+                        </div>
+
                     </div>
+
                 </div>
-            </div>
+
 
             </div>
+
         </div>
-
     </div>
+
+</div>
+
+
+<script>
+    urlParams = new URLSearchParams(window.location.search);
+    document.getElementById("response").innerText = urlParams.get('response');
+</script>
 
 </body>
 </html>

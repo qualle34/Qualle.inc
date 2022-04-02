@@ -134,7 +134,7 @@ GET: $(document).ready(
                     $('#table').empty().append("<tr><th>id</th><th>name</th> </tr>");
                     $.each(result,
                         function (i, vacancy) {
-                            $('#table').append("<tr> <td> <a href=\"/admin/vacancy/" + vacancy.id + "\">" + vacancy.id + "</a> </td> <td> <a href=\"/admin/category/" + vacancy.id + "\">" + vacancy.title + "</a> </td> </tr>");
+                            $('#table').append("<tr> <td> <a href=\"/admin/vacancy/" + vacancy.id + "\">" + vacancy.id + "</a> </td> <td> <a href=\"/admin/vacancy/" + vacancy.id + "\">" + vacancy.title + "</a> </td> </tr>");
                         });
                 },
                 error: function (e) {

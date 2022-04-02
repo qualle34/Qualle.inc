@@ -213,7 +213,6 @@ input {
     width: 30%;
     height: 100%;
     margin: auto;
-    padding: 20px 0 5px;
 }
 
 .result .result-box .product {
@@ -224,6 +223,7 @@ input {
     margin: 20px 0;
     color: black;
     text-decoration: none;
+    padding: 10px 0 10px;
 }
 
 .result .result-box .name:hover {
@@ -353,6 +353,45 @@ input {
 /* for mobile */
 @media screen and (max-width: 480px) {
 
+}
+
+.merch-products {
+    width: 100%;
+    height: 500px;
+    padding: 100px 0;
+    position: relative;
+    background: white;
+}
+
+.merch-products .products-box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -245px;
+    margin-left: -310px;
+    display: grid;
+    grid-template-columns: 400px 400px;
+    grid-template-rows: 150px 150px 150px;
+    grid-gap: 20px;
+}
+
+.merch-products .products-box .product-box {
+    position: relative;
+}
+
+.merch-products .products-box .product-box img {
+    width: 100px;
+    height: 100px;
+    padding-top: 25px;
+    float: left;
+}
+
+.merch-products .products-box .product-box .text .title {
+    font-size: 13px;
+    color: #000000;
+    padding-left: 50px;
+    padding-top: 25px;
+    float: left;
 }
 
 /*  other-products  */

@@ -61,16 +61,17 @@
                     <p th:text="'Название: ' + ${product.title}"></p>
                     <p th:text="'Описание: ' + ${product.description}"></p>
                     <p th:text="'Цена: ' + ${product.price}"></p>
-                    <p th:text="'Разработчик: ' + ${product.developer}"></p>
-                    <p th:text="'Категория: ' + ${product.category}"></p>
+                    <p th:text="'Разработчик: ' + ${product.developer.title}"></p>
+                    <p th:text="'Категория: ' + ${product.category.value}"></p>
+                    <p th:text="'Жанр: ' + ${product.genre.value}"></p>
                     <p th:text="'Ссылка на логотип: ' + ${product.image.link}"></p>
 
                     <div class="update">
-                        <a th:href="${'/admin/update/product/' + product.id}"><span style='font-size:20px;'>&#x270e;</span></a>
+                        <a th:href="${'/admin/product/'+ product.id +'/update'}"><span style='font-size:20px;'>&#x270e;</span></a>
                     </div>
 
                     <div class="delete">
-                        <form action="#" th:action="@{'/admin/delete/product'}" method="post">
+                        <form action="#" th:action="@{'/admin/product/delete'}" method="post">
                             <input th:value="${product.id}" type="hidden" name="productId"/>
                             <input type="submit" class="small-delete-button" value="X"/>
                         </form>

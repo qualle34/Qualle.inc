@@ -42,7 +42,7 @@
 
                             <div class="wrap-input validate-input">
                                 <span class="label-input">Название:</span>
-                                <input class="input" type="text" name="name" placeholder="Введите название игры*">
+                                <input class="input" type="text" name="title" placeholder="Введите название игры*">
                                 <span class="focus-input"></span>
                             </div>
 
@@ -54,7 +54,7 @@
 
                             <div class="wrap-input validate-input">
                                 <span class="label-input">Ссылка на картинку:</span>
-                                <input class="input" type="text" name="img" placeholder="Введите путь к катинке">
+                                <input class="input" type="text" name="image" placeholder="Введите путь к катинке">
                                 <span class="focus-input"></span>
                             </div>
 
@@ -80,17 +80,27 @@
                                 <span class="focus-input"></span>
                             </div>
 
+                            <div class="wrap-input validate-input">
+                                <span class="label-input">Жанр:</span>
+                                <select size="5" name="genreId">
+                                    <option th:each="genre : ${genres}" th:value="${genre.id}" th:text="${genre.value}"></option>
+                                </select>
+                                <span class="focus-input"></span>
+                            </div>
+
+
                             <div class="container-contact-form-btn">
                                 <button class="contact-form-btn" type="submit">
                                     <span>ОК</span>
                                 </button>
                             </div>
                         </form>
+
                         <form class="contact-form validate-form" method="post" th:if="${product != null}" th:action="@{'/admin/product/update'}">
 
                             <div class="wrap-input validate-input">
                                 <span class="label-input">Название:</span>
-                                <input class="input" th:value="${product.title}" type="text" name="name" placeholder="Введите название игры*">
+                                <input class="input" th:value="${product.title}" type="text" name="title" placeholder="Введите название игры*">
                                 <span class="focus-input"></span>
                             </div>
 
@@ -102,7 +112,7 @@
 
                             <div class="wrap-input validate-input">
                                 <span class="label-input">Ссылка на картинку:</span>
-                                <input class="input" th:value="${product.img}" type="text" name="img" placeholder="Введите путь к катинке">
+                                <input class="input" th:value="${product.image.link}" type="text" name="image" placeholder="Введите путь к катинке">
                                 <span class="focus-input"></span>
                             </div>
 
@@ -113,7 +123,7 @@
                             </div>
 
                             <div class="wrap-input validate-input">
-                                <span class="label-input" th:text="${'Разработчик: ' + product.developer}"></span>
+                                <span class="label-input" th:text="${'Разработчик: ' + product.developer.title}"></span>
                                 <select size="5" name="developerId">
                                     <option th:each="developer : ${developers}" th:value="${developer.id}" th:text="${developer.title}"></option>
                                 </select>
@@ -121,9 +131,17 @@
                             </div>
 
                             <div class="wrap-input validate-input">
-                                <span class="label-input" th:text="${'Категория: ' + product.category}"></span>
+                                <span class="label-input" th:text="${'Категория: ' + product.category.value}"></span>
                                 <select size="5" name="categoryId">
                                     <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.value}"></option>
+                                </select>
+                                <span class="focus-input"></span>
+                            </div>
+
+                            <div class="wrap-input validate-input">
+                                <span class="label-input" th:text="${'Жанр: ' + product.genre.value}"></span>
+                                <select size="5" name="genreId">
+                                    <option th:each="genre : ${genres}" th:value="${genre.id}" th:text="${genre.value}"></option>
                                 </select>
                                 <span class="focus-input"></span>
                             </div>

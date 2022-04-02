@@ -28,6 +28,7 @@ public class AdminController {
     private final VacancyService vacancyService;
     private final ImageService imageService;
     private final UserService userService;
+    private final AdminService adminService;
 
     @GetMapping(value = "/admin")
     public String getAdminPage(Model model, Authentication authentication) {
@@ -46,8 +47,8 @@ public class AdminController {
 
     @GetMapping(value = "/admin/product")
     @ResponseBody
-    public ResponseEntity<Collection<ProductDto>> getProducts() {
-        Collection<ProductDto> result = productService.getAll();
+    public ResponseEntity<Collection<SimpleProductDto>> getProducts() {
+        Collection<SimpleProductDto> result = productService.getAllSimple();
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
@@ -98,6 +99,11 @@ public class AdminController {
     public ResponseEntity<Collection<UserDto>> getUsers() {
         Collection<UserDto> result = userService.getAll();
         return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/admin/sql")
+    public String getSqlPage() {
+        return "admin_sql";
     }
 
     @GetMapping(value = "/admin/product/{id}")
@@ -167,8 +173,9 @@ public class AdminController {
     @GetMapping(value = "/admin/product/add")
     public String addProductPage(Model model, Authentication authentication) {
         model.addAttribute("authority", SessionUtil.getAuthority(authentication));
-        model.addAttribute("categories",categoryService.getAll());
+        model.addAttribute("categories", categoryService.getAll());
         model.addAttribute("developers", developerService.getAll());
+        model.addAttribute("genres", genreService.getAll());
         return "edit_product";
     }
 
@@ -203,7 +210,7 @@ public class AdminController {
     }
 
     @PostMapping(value = "/admin/product/add")
-    public String addProduct(ProductDto dto) {
+    public String addProduct(SaveProductDto dto) {
         productService.save(dto);
         return "admin";
     }
@@ -213,21 +220,25 @@ public class AdminController {
         categoryService.save(dto);
         return "admin";
     }
+
     @PostMapping(value = "/admin/genre/add")
     public String addGenre(GenreDto dto) {
         genreService.save(dto);
         return "admin";
     }
+
     @PostMapping(value = "/admin/developer/add")
     public String addDeveloper(DeveloperDto dto) {
         developerService.save(dto);
         return "admin";
     }
+
     @PostMapping(value = "/admin/vacancy/add")
     public String addVacancy(VacancyDto dto) {
         vacancyService.save(dto);
         return "admin";
     }
+
     @PostMapping(value = "/admin/image/add")
     public String addImage(ImageDto dto) {
         imageService.save(dto);
@@ -235,9 +246,15 @@ public class AdminController {
     }
 
     @PostMapping(value = "/admin/product/update")
-    public String updateProduct(ProductDto dto) {
+    public String updateProduct(SaveProductDto dto) {
         productService.save(dto);
         return "admin";
+    }
+
+    @PostMapping(value = "/admin/sql")
+    public String getSqlPage(Model model, Authentication authentication, String query) {
+        model.addAttribute("authority", SessionUtil.getAuthority(authentication));
+        return "redirect:/admin/sql?response=" + adminService.executeQuery(query);
     }
 
     @GetMapping(value = "/admin/product/{id}/update")
@@ -245,6 +262,7 @@ public class AdminController {
         model.addAttribute("authority", SessionUtil.getAuthority(authentication));
         model.addAttribute("categories", categoryService.getAll());
         model.addAttribute("developers", developerService.getAll());
+        model.addAttribute("genres", genreService.getAll());
         model.addAttribute("product", productService.getById(id));
         return "edit_product";
     }

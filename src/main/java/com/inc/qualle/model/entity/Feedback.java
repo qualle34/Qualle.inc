@@ -23,9 +23,6 @@ public class Feedback {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "file")
-    private String file;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "metadata_id")
     private Metadata metadata;

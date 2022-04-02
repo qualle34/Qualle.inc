@@ -11,3 +11,6 @@ spring:
     url: ${spring.datasource.url}
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
+logging:
+  level:
+    com.inc.qualle: WARN

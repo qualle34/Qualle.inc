@@ -16,4 +16,8 @@ public class GenreDto {
 
     private long id;
     private String value;
+
+    public GenreDto(long id) {
+        this.id = id;
+    }
 }

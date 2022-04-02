@@ -1,6 +1,7 @@
 package com.inc.qualle.controller;
 
 import com.inc.qualle.model.dto.SimpleProductDto;
+import com.inc.qualle.model.entity.ProductType;
 import com.inc.qualle.service.ProductService;
 import com.inc.qualle.service.security.SessionUtil;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 @RequiredArgsConstructor
@@ -63,7 +65,7 @@ public class ProductController {
                     break;
 
                 case "other":
-                    if (dto.get("other").size() < 15) {
+                    if (dto.get("other").size() < 10) {
                         dto.get("other").add(product);
                     }
                     break;
@@ -75,6 +77,9 @@ public class ProductController {
         model.addAttribute("sport", dto.get("sport"));
         model.addAttribute("mobile", dto.get("mobile"));
         model.addAttribute("other", dto.get("other"));
+        model.addAttribute("merch", products.stream()
+                .filter(p -> ProductType.MERCH.equals(p.getType()))
+                .collect(Collectors.toList()));
         return "products";
     }
 
@@ -87,8 +92,8 @@ public class ProductController {
 
     @GetMapping(value = "/product/search")
     @ResponseBody
-    public ResponseEntity<Object> search(@RequestParam(value = "search", required = false) String search) {
-        Object result = productService.getByTitle(search);
+    public ResponseEntity<Collection<SimpleProductDto>> search(@RequestParam(value = "title", required = false) String search) {
+        Collection<SimpleProductDto> result = productService.getByTitle(search);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }

@@ -35,14 +35,20 @@
 
                     <div class="wrap-form">
                         <div class="contact-form-title">
-                            <span class="contact-form-title-2"> Добавление категории </span>
+                            <span class="contact-form-title-2"> Добавление вакансии </span>
                         </div>
 
-                        <form class="contact-form validate-form" method="post" th:action="@{'/admin/category/add'}">
+                        <form class="contact-form validate-form" method="post" th:action="@{'/admin/vacancy/add'}">
 
                             <div class="wrap-input validate-input">
                                 <span class="label-input">Название:</span>
-                                <input class="input" type="text" name="value" placeholder="Введите название категории*">
+                                <input class="input" type="text" name="title" placeholder="Введите название вакансии*">
+                                <span class="focus-input"></span>
+                            </div>
+
+                            <div class="wrap-input validate-input">
+                                <span class="label-input">Описание:</span>
+                                <input class="input" type="text" name="description" placeholder="Введите описание*">
                                 <span class="focus-input"></span>
                             </div>
 

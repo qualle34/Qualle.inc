@@ -11,4 +11,8 @@ public class CategoryDto {
 
     private long id;
     private String value;
+
+    public CategoryDto(long id) {
+        this.id = id;
+    }
 }

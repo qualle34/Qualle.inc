@@ -37,7 +37,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `qualleinc`.`image` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
-  `link` VARCHAR(45) NOT NULL,
+  `link` VARCHAR(128) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -103,8 +103,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `qualleinc`.`developer` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NOT NULL,
-  `description` VARCHAR(45) NULL,
-  `contacts` VARCHAR(45) NULL,
+  `description` VARCHAR(256) NULL,
+  `contacts` VARCHAR(256) NULL,
   `address` VARCHAR(45) NULL,
   `metadata_id` BIGINT NULL,
   PRIMARY KEY (`id`),
@@ -133,7 +133,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `qualleinc`.`product` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NOT NULL,
-  `description` VARCHAR(45) NULL,
+  `description` VARCHAR(256) NULL,
   `price` DECIMAL(13,2) NULL,
   `type` ENUM('GAME', 'MERCH') NULL,
   `category_id` BIGINT NULL,
@@ -225,8 +225,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `qualleinc`.`feedback` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NOT NULL,
-  `description` VARCHAR(255) NOT NULL,
-  `file` VARCHAR(255) NOT NULL,
+  `description` VARCHAR(256) NOT NULL,
   `user_id` BIGINT NOT NULL,
   `metadata_id` BIGINT NULL,
   PRIMARY KEY (`id`, `user_id`),
@@ -240,28 +239,6 @@ CREATE TABLE IF NOT EXISTS `qualleinc`.`feedback` (
   CONSTRAINT `fk_feedback_metadata`
     FOREIGN KEY (`metadata_id`)
     REFERENCES `qualleinc`.`metadata` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `qualleinc`.`cart`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `qualleinc`.`cart` (
-  `product_id` BIGINT NOT NULL,
-  `user_id` BIGINT NOT NULL,
-  PRIMARY KEY (`product_id`, `user_id`),
-  INDEX `fk_cart_product_idx` (`product_id` ASC) VISIBLE,
-  INDEX `fk_cart_user_idx` (`user_id` ASC) VISIBLE,
-  CONSTRAINT `fk_cart_product`
-    FOREIGN KEY (`product_id`)
-    REFERENCES `qualleinc`.`product` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_cart_user`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `qualleinc`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -297,7 +274,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `qualleinc`.`review` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
-  `text` VARCHAR(255) NULL,
+  `text` VARCHAR(256) NULL,
   `score` INT NOT NULL,
   `user_id` BIGINT NOT NULL,
   `metadata_id` BIGINT NULL,
@@ -330,7 +307,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `qualleinc`.`vacancy` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NOT NULL,
-  `description` VARCHAR(2000) NOT NULL,
+  `description` VARCHAR(2048) NOT NULL,
   `metadata_id` BIGINT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_vacancy_metadata_idx` (`metadata_id` ASC) VISIBLE,

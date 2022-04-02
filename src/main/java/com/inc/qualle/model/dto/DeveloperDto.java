@@ -15,4 +15,8 @@ public class DeveloperDto {
     private String contacts;
     private String address;
     private long metadataId;
+
+    public DeveloperDto(long id) {
+        this.id = id;
+    }
 }

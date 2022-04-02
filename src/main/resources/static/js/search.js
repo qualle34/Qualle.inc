@@ -9,13 +9,13 @@ GET: $(document).ready(
         function ajaxGet(search) {
             $.ajax({
                 type: "GET",
-                url: "products/search",
-                data : "search=" + search,
+                url: "product/search",
+                data : "title=" + search,
                 success: function (result) {
                     $('#result').empty();
                     $.each(result,
                         function (i, product) {
-                            $('#result').append("<a class=\"name\" href=\"/product/" + product.id + "\">" + product.name + "</a><div class=\"line\"></div>");
+                            $('#result').append("<a class=\"name\" href=\"/product/" + product.id + "\">" + product.title + "</a><div class=\"line\"></div>");
                         });
                 },
                 error: function (e) {

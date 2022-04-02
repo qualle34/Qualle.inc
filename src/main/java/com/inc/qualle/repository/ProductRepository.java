@@ -16,8 +16,10 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     @Query("FROM Product g JOIN FETCH g.category c")
     Collection<Product> findAllWithCategory();
 
-    @Query("FROM Product g WHERE g.title LIKE :name")
-    Collection<Product> findByName(@Param("name") String name);
+    @Query("FROM Product g")
+    Collection<Product> findAllSimple();
+
+    Collection<Product> findByTitleContaining(String title);
 
     @Query("FROM Product g WHERE (SELECT u FROM User u WHERE :id = u.id) MEMBER OF g.purchases")
     Collection<Product> findByUserId(@Param("id") long id);
