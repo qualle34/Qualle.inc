@@ -50,6 +50,9 @@ public class User {
     @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
     private Set<Card> cards;
 
+    @OneToMany(mappedBy="user", fetch = FetchType.EAGER)
+    private Set<Session> sessions;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "purchase",

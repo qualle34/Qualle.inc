@@ -67,7 +67,8 @@
                     <p th:text="'Ссылка на логотип: ' + ${product.image.link}"></p>
 
                     <div class="update">
-                        <a th:href="${'/admin/product/'+ product.id +'/update'}"><span style='font-size:20px;'>&#x270e;</span></a>
+                        <a th:href="${'/admin/product/'+ product.id +'/update'}"><span
+                                style='font-size:20px;'>&#x270e;</span></a>
                     </div>
 
                     <div class="delete">
@@ -132,6 +133,24 @@
                 <table id="table" style="background: white; box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);">
 
                 </table>
+
+                <div id="db_functions">
+                    <div class="add-box">
+                        <a href="/admin/call/clear_sessions">Удалить все сессии пользователей</a>
+                    </div>
+
+                    <div class="add-box">
+                        <a href="/admin/call/clear_sessions_for">Удалить сессии для пользователя</a>
+                    </div>
+
+                    <div class="add-box">
+                        <a href="/admin/call/clear_logs">Удалить все логи</a>
+                    </div>
+
+                    <div class="add-box">
+                        <a href="/admin/call/clear_old_logs">Удалить старые логи</a>
+                    </div>
+                </div>
             </div>
         </div>
 

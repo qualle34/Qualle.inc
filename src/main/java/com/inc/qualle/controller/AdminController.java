@@ -254,7 +254,7 @@ public class AdminController {
     @PostMapping(value = "/admin/sql")
     public String getSqlPage(Model model, Authentication authentication, String query) {
         model.addAttribute("authority", SessionUtil.getAuthority(authentication));
-        return "redirect:/admin/sql?response=" + adminService.executeQuery(query);
+        return "redirect:/admin/sql?response=" + adminService.executeQueryWithResponse(query);
     }
 
     @GetMapping(value = "/admin/product/{id}/update")
@@ -270,6 +270,12 @@ public class AdminController {
     @PostMapping(value = "/admin/product/delete")
     public String addDeveloper(Long productId) {
         productService.delete(productId);
+        return "admin";
+    }
+
+    @GetMapping(value = "/admin/call/{value}")
+    public String addDeveloper(@PathVariable String value) {
+        adminService.executeQuery("CALL " + value);
         return "admin";
     }
 }

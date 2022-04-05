@@ -3,6 +3,7 @@ package com.inc.qualle.service.impl;
 import com.inc.qualle.service.AdminService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,12 +21,24 @@ public class AdminServiceImpl implements AdminService {
     private EntityManager entityManager;
 
     @Override
-    public String executeQuery(String query) {
-        Query entityManagerQuery = entityManager.createNativeQuery(query);
+    @Transactional
+    public String executeQueryWithResponse(String query) {
+       Query entityManagerQuery = entityManager.createNativeQuery(query);
 
         List<Object[]> result = entityManagerQuery.getResultList();
 
+        if (result == null || result.isEmpty()) {
+            return null;
+        }
+
         String s =  result.stream().map(Arrays::toString).collect(Collectors.joining(" "));
         return s.replaceAll("[^a-zA-Z0-9]", " ");
+    }
+
+    @Override
+    @Transactional
+    public void executeQuery(String query) {
+        Query entityManagerQuery = entityManager.createNativeQuery(query);
+        entityManagerQuery.executeUpdate();
     }
 }

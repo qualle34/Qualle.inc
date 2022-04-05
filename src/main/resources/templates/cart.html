@@ -63,16 +63,27 @@
             <div class="text" id="nullText">
                 <h1>Ваша корзина пуста </h1>
             </div>
+            <form action="#" th:action="@{/cart/buy}" method="post">
+                <div class="text cards" tabindex="1">
+                    <h1>Способ оплаты:</h1>
 
-            <div class="text" id="amountText">
-                <h1>Сумма заказа: <span id="fullPrice"></span> $</h1>
-            </div>
+                    <div class="cards-select">
+                        <select  name="cardId">
+                            <option th:each="card : ${profile.cards}" th:value="${card.id}"
+                                    th:text="${card.number}"></option>
+                        </select>
+                    </div>
+                </div>
 
-            <div class="text-2" id="buy">
-                <form action="#" th:action="@{/cart/buy}" method="post">
+                <div class="text" id="amountText">
+                    <h1>Сумма заказа: <span id="fullPrice"></span> $</h1>
+                </div>
+
+                <div class="text-2" id="buy">
                     <input type="submit" class="big-button" value="Купить"/>
-                </form>
-            </div>
+                </div>
+
+            </form>
         </section>
 
         <div th:insert="fragments/footer :: footer"></div>
