@@ -1,10 +1,3 @@
-CREATE FUNCTION add_metadata()
-    RETURNS BIGINT NOT DETERMINISTIC
-BEGIN
-    INSERT INTO metadata(created_at, created_by, enabled) VALUES (NOW(), CURRENT_USER(), true);
-    RETURN LAST_INSERT_ID();
-END |
-
 CREATE PROCEDURE clear_sessions()
 BEGIN
     DELETE FROM session;

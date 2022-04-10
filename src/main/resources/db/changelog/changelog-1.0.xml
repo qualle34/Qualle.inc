@@ -17,8 +17,15 @@
                  stripComments="true"/>
     </changeSet>
 
-<!--    <changeSet author="Anton Samoilo" id="2022-04-05_19:30-1">-->
-<!--        <sqlFile path="db/data/functions.sql" encoding="UTF-8"-->
+    <changeSet author="Anton Samoilo" id="2022-04-05_19:30-1">
+        <sqlFile path="db/data/functions.sql" encoding="UTF-8"
+                 splitStatements="true"
+                 endDelimiter="|"
+                 stripComments="true"/>
+    </changeSet>
+
+<!--    <changeSet author="Anton Samoilo" id="2022-04-09_9:30-1">-->
+<!--        <sqlFile path="db/data/logging.sql" encoding="UTF-8"-->
 <!--                 splitStatements="true"-->
 <!--                 endDelimiter="|"-->
 <!--                 stripComments="true"/>-->

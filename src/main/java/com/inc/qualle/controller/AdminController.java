@@ -29,6 +29,7 @@ public class AdminController {
     private final ImageService imageService;
     private final UserService userService;
     private final AdminService adminService;
+    private final ReportService reportService;
 
     @GetMapping(value = "/admin")
     public String getAdminPage(Model model, Authentication authentication) {
@@ -274,8 +275,14 @@ public class AdminController {
     }
 
     @GetMapping(value = "/admin/call/{value}")
-    public String addDeveloper(@PathVariable String value) {
+    public String executeQuery(@PathVariable String value) {
         adminService.executeQuery("CALL " + value);
+        return "admin";
+    }
+
+    @GetMapping(value = "/admin/product/report")
+    public String productReport() {
+        reportService.generate(productService.getAll());
         return "admin";
     }
 }

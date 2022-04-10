@@ -11,7 +11,8 @@ spring:
     url: ${spring.datasource.url}
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
-logging:
-  level:
-    com.inc.qualle: INFO
-    org.springframework: INFO
+
+application:
+  folder-name: BD
+  report:
+    output-path: report/

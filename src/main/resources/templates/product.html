@@ -81,7 +81,7 @@
                     </td>
                     <td>
                         <div class="developer value">
-                            <h3 th:text="${product.developer}">Разработчик</h3>
+                            <h3 th:text="${product.developer.title}">Разработчик</h3>
                         </div>
                     </td>
                 </tr>
@@ -93,7 +93,19 @@
                     </td>
                     <td>
                         <div class="category value">
-                            <h3 th:text="${product.category}">Категория</h3>
+                            <h3 th:text="${product.category.value}">Категория</h3>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="category value">
+                            <h3>Жанр:</h3>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="category value">
+                            <h3 th:text="${product.genre.value}">Жанр</h3>
                         </div>
                     </td>
                 </tr>

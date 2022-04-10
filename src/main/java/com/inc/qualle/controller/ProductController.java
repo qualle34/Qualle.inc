@@ -2,6 +2,8 @@ package com.inc.qualle.controller;
 
 import com.inc.qualle.model.dto.SimpleProductDto;
 import com.inc.qualle.model.entity.ProductType;
+import com.inc.qualle.service.CategoryService;
+import com.inc.qualle.service.GenreService;
 import com.inc.qualle.service.ProductService;
 import com.inc.qualle.service.security.SessionUtil;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +25,8 @@ import java.util.stream.Collectors;
 public class ProductController {
 
     private final ProductService productService;
+    private final CategoryService categoryService;
+    private final GenreService genreService;
 
     @GetMapping(value = "/products")
     public String getProductPage(Model model, Authentication authentication) {
@@ -92,8 +96,30 @@ public class ProductController {
 
     @GetMapping(value = "/product/search")
     @ResponseBody
-    public ResponseEntity<Collection<SimpleProductDto>> search(@RequestParam(value = "title", required = false) String search) {
-        Collection<SimpleProductDto> result = productService.getByTitle(search);
+    public ResponseEntity<Collection<SimpleProductDto>> search(@RequestParam(required = false) String title,
+                                                               @RequestParam(required = false) String[] categories,
+                                                               @RequestParam(required = false) String[] genres) {
+        Collection<Long> c = Collections.emptyList();
+        Collection<Long> g = Collections.emptyList();
+
+        if (categories != null && categories.length != 0) {
+           c = Arrays.stream(categories).map(Long::parseLong).collect(Collectors.toList());
+        }
+
+        if (genres != null && genres.length != 0) {
+            g = Arrays.stream(genres).map(Long::parseLong).collect(Collectors.toList());
+        }
+
+        Collection<SimpleProductDto> result = productService.getByTitleAndCategoryAndGenre(title, c, g);
+
         return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/search")
+    public String getSearchPage(Model model, Authentication authentication) {
+        model.addAttribute("authority", SessionUtil.getAuthority(authentication));
+        model.addAttribute("categories", categoryService.getAll());
+        model.addAttribute("genres", genreService.getAll());
+        return "search";
     }
 }

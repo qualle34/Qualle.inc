@@ -1,0 +1,345 @@
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#wrapper {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/*  main  */
+/**************************************************/
+main {
+    width: 100%;
+}
+
+
+
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#wrapper {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/*  main  */
+/**************************************************/
+main {
+    width: 100%;
+}
+
+/*  Info  */
+/**************************************************/
+.info {
+    width: 100%;
+    padding: 200px 0 300px;
+    background: #e2e2e2;
+    height: 200px;
+    position: relative;
+    background: url("../img/bg/search-bg.jpg") 50% 50% no-repeat;
+    background-size: cover;
+}
+
+.info .search-container {
+    width: 60%;
+    margin: auto;
+    padding: 2% 5%;
+    background: rgba(255, 255, 255, 0.65)
+}
+
+.info .search-container .title {
+    text-align: center;
+    font-size: 30px;
+    margin: 10px 0;
+    z-index: 2;
+}
+
+.vacancies-box {
+    width: 100%;
+    padding: 50px 0;
+    background: #e2e2e2;
+    position: relative;
+    background-size: cover;
+}
+
+.vacancies-box .vacancies {
+    width: 60%;
+    margin: auto;
+    padding: 2% 5%;
+    background: white;
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.4);
+}
+
+.vacancies-box .vacancies .vacancy {
+    width: 80%;
+    margin: 20px auto 20px;
+    border-bottom: 1px solid #dddddd;
+}
+
+.vacancies-box .vacancies .vacancy .title {
+    font-size: 20px;
+}
+
+.vacancies-box .vacancies .vacancy .description {
+    font-size: 14px;
+}
+
+
+
+
+/*  Title  */
+/**************************************************/
+.title-box {
+    width: 100%;
+    height: 600px;
+    position: relative;
+    background: url("../img/bg/anthem.jpg") 50% 50% no-repeat;
+    background-size: cover;
+}
+
+a {
+    color: white;
+}
+
+.title-box .inner-title-box {
+    width: 100%;
+    height: 100px;
+    padding-top: 250px;
+}
+
+.title-box .inner-title {
+    margin: 0;
+    padding-left: 20%;
+    color: white;
+}
+
+.title-box .products-box {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    position: absolute;
+    bottom: 0;
+}
+
+.title-box .products-box .product-box {
+    position: relative;
+    color: white;
+    font-weight: bold;
+    overflow: hidden;
+    background: black;
+}
+
+.title-box .products-box .product-box .image {
+    opacity: 0.7;
+    transition: 0.5s;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.title-box .products-box .product-box .image:hover {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+.title-box .products-box .product-box .text {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-right: 15px;
+    text-align: right;
+}
+
+/* for tablet */
+@media screen and (max-width: 800px) {
+
+    .title-box .products-box {
+        width: 100%;
+        height: 400px;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 50% 50%;
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+/* for mobile */
+@media screen and (max-width: 480px) {
+
+    .title-box .products-box {
+        width: 100%;
+        height: 300px;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 50% 50%;
+        position: absolute;
+        bottom: 0;
+    }
+}
+
+/*  search  */
+/**************************************************/
+.search .search-box {
+    height: 100%;
+    position: relative;
+    margin: 0 auto;
+}
+
+input, button {
+    border: none;
+    outline: none;
+    background: white;
+}
+
+input {
+    width: 100%;
+    height: 42px;
+    padding-left: 15px;
+}
+
+.search-button {
+    height: 42px;
+    width: 42px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.search-button:before {
+    content: "\f002";
+    font-family: FontAwesome;
+    font-size: 16px;
+    color: #00b0ff;
+}
+
+
+/*  switch  */
+/**************************************************/
+.category-switch-box {
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: flex-start;
+    align-content: flex-start;
+    gap: 10px;
+}
+
+.genre-switch-box {
+    width: 60%;
+    display: flex;
+    margin: auto;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    gap: 10px;
+}
+
+.container {
+    max-width: 640px;
+    font-size: 13px;
+}
+
+ul.switch-list {
+    list-style: none;
+    padding: 20px;
+}
+ul.switch-list li{
+    display: inline;
+}
+ul.switch-list li label{
+    display: inline-block;
+    background-color: rgba(255, 255, 255, .9);
+    color: #adadad;
+    border-radius: 25px;
+    white-space: nowrap;
+    margin: 3px 0px;
+    user-select: none;
+    transition: all .2s;
+}
+
+ul.switch-list li label {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+ul.switch-list li label::before {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 900;
+    font-size: 12px;
+    padding: 2px 6px 2px 2px;
+    content: "";
+    transition: transform .3s ease-in-out;
+}
+
+ul.switch-list li input[type="checkbox"]:checked + label {
+    background-color: #00b0ff;
+    color: #fff;
+    transition: all .2s;
+}
+
+ul.switch-list li input[type="checkbox"] {
+    display: absolute;
+}
+ul.switch-list li input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+}
+
+/*  result  */
+/**************************************************/
+.result {
+    width: 80%;
+    background: #e2e2e2;
+    padding: 10%;
+    animation-name: animate;
+    animation-duration: 0.6s;
+}
+
+.result .result-box {
+    width: 30%;
+    height: 100%;
+    margin: auto;
+}
+
+.result .result-box .product {
+    margin: auto;
+}
+
+.result .result-box .name {
+    margin: 20px 0;
+    color: black;
+    text-decoration: none;
+    padding: 10px 0 10px;
+}
+
+.result .result-box .name:hover {
+    color: #00b0ff;
+}
+
+.result .result-box .line {
+    width: 100%;
+    height: 1px;
+    margin-bottom: 20px;
+    background: #9b9b9b;
+}
+
+@keyframes animate {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 0;
+        opacity: 1
+    }
+}

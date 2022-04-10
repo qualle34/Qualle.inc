@@ -3,14 +3,24 @@ GET: $(document).ready(
 
         $("#find").click(function (event) {
             event.preventDefault();
-            ajaxGet($("#search").val());
+
+            var categories = $("div.category-switch-box input:checkbox:checked").map(function(){
+                return $(this).val();
+            }).get();
+
+            var genres = $("div.genre-switch-box input:checkbox:checked").map(function(){
+                return $(this).val();
+            }).get();
+
+
+            ajaxGet($("#search").val(), categories, genres);
         });
 
-        function ajaxGet(search) {
+        function ajaxGet(search, categories, genres) {
             $.ajax({
                 type: "GET",
                 url: "product/search",
-                data : "title=" + search,
+                data : "title=" + search + "&categories=" + categories.join(",") + "&genres=" + genres.join(","),
                 success: function (result) {
                     $('#result').empty();
                     $.each(result,

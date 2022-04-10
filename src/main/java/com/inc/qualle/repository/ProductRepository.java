@@ -7,8 +7,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
-import java.util.List;
-import java.util.Set;
 
 @Repository
 public interface ProductRepository extends CrudRepository<Product, Long> {
@@ -26,4 +24,13 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 
     @Query("FROM Product g WHERE (SELECT c FROM User c WHERE :id = c.id) MEMBER OF g.carts")
     Collection<Product> findByCartId(@Param("id") long id);
+
+    @Query("FROM Product g WHERE g.title like %:title% and g.category in (SELECT c FROM Category c WHERE c.id in :categories)")
+    Collection<Product> findByTitleContainingAndCategoryIn(@Param("title") String title, @Param("categories")  Collection<Long> categories);
+
+    @Query("FROM Product g WHERE g.title like %:title% and g.genre in (SELECT g FROM Genre g WHERE g.id in :genres)")
+    Collection<Product> findByTitleContainingAndGenreIn(@Param("title") String title, @Param("genres")  Collection<Long> genres);
+
+    @Query("FROM Product g WHERE g.title like %:title% and g.category in (SELECT c FROM Category c WHERE c.id in :categories) and g.genre in (SELECT g FROM Genre g WHERE g.id in :genres)")
+    Collection<Product> findByTitleContainingAndCategoryInAndGenreIn(@Param("title") String title, @Param("categories")  Collection<Long> categories, @Param("genres")  Collection<Long> genres);
 }

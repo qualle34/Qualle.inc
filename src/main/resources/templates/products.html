@@ -17,7 +17,6 @@
     <link rel="stylesheet" type="text/css" href="../static/css/footer.css" th:href="@{/css/footer.css}"/>
 
     <script src="../js/products.js" type="text/javascript"></script>
-    <script src="../js/search.js" type="text/javascript"></script>
     <script src="../js/common.js" type="text/javascript"></script>
 </head>
 <body>
@@ -63,15 +62,10 @@
 
         <section class="search">
             <div class="search-box">
-                <input id="search" type="text" name="search" placeholder="Поиск..."/>
-                <input id="find" class="search-button" type="submit" value="0"/>
-            </div>
-        </section>
-
-        <section class="result">
-            <div id="searchResult" class="result-box">
-                <div id="result">
-                </div>
+                <a href="/search" class="link">
+                    <input id="search" type="text" name="search" placeholder="Поиск..."/>
+                    <input id="find" class="search-button" type="submit" value="🔍"/>
+                </a>
             </div>
         </section>
 

@@ -3,7 +3,6 @@ package com.inc.qualle.service.impl;
 import com.inc.qualle.model.dto.*;
 import com.inc.qualle.model.entity.Product;
 import com.inc.qualle.model.exception.NotFoundException;
-import com.inc.qualle.model.exception.ProductNotFoundException;
 import com.inc.qualle.repository.*;
 import com.inc.qualle.service.ImageService;
 import com.inc.qualle.service.ProductService;
@@ -73,6 +72,23 @@ public class ProductServiceImpl extends AbstractService<Product, ProductDto, Lon
     }
 
     @Override
+    public Collection<SimpleProductDto> getByTitleAndCategoryAndGenre(String title, Collection<Long> categories, Collection<Long> genres) {
+        if (categories.isEmpty() && genres.isEmpty()) {
+            return getByTitle(title);
+        }
+
+        if (genres.isEmpty()) {
+            return simpleMapper.toDto(repository.findByTitleContainingAndCategoryIn(title, categories));
+        }
+
+        if (categories.isEmpty()) {
+            return simpleMapper.toDto(repository.findByTitleContainingAndGenreIn(title, genres));
+        }
+
+        return simpleMapper.toDto(repository.findByTitleContainingAndCategoryInAndGenreIn(title, categories, genres));
+    }
+
+    @Override
     public void save(SaveProductDto dto) {
 
         if (dto.getId() == 0) {
@@ -104,7 +120,7 @@ public class ProductServiceImpl extends AbstractService<Product, ProductDto, Lon
         saveImpl(product);
     }
 
-    private void saveImpl(ProductDto dto){
+    private void saveImpl(ProductDto dto) {
         Product product = mapper.toEntity(dto);
         product.setImage(imageRepository.findById(dto.getImage().getId()).orElseThrow(NotFoundException::new));
         product.setCategory(categoryRepository.findById(dto.getCategory().getId()).orElseThrow(NotFoundException::new));
