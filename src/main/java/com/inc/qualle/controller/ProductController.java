@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -98,7 +99,13 @@ public class ProductController {
     @ResponseBody
     public ResponseEntity<Collection<SimpleProductDto>> search(@RequestParam(required = false) String title,
                                                                @RequestParam(required = false) String[] categories,
-                                                               @RequestParam(required = false) String[] genres) {
+                                                               @RequestParam(required = false) String[] genres,
+                                                               @RequestParam(required = false) String sort) {
+
+        if (!StringUtils.isEmpty(sort)) {
+            return new ResponseEntity<>(productService.getByTitleOrderBy(title != null ? title : "", sort), HttpStatus.OK);
+        }
+
         Collection<Long> c = Collections.emptyList();
         Collection<Long> g = Collections.emptyList();
 

@@ -10,6 +10,7 @@ GET: $(document).ready(
         $("#products").click(function (event) {
             event.preventDefault();
             reset();
+            $('#sorting-box').css('display', 'block');
             getProducts();
         });
 
@@ -61,11 +62,37 @@ GET: $(document).ready(
             $('#db_functions').css('display', 'block');
         });
 
+        $("#sort-btn").click(function (event) {
+            event.preventDefault();
+            reset();
+            getSorted($("#sorting").children("option:selected").val());
+        });
+
         function reset() {
             $('#table').empty();
             $('#db_functions').css('display', 'none');
             $('#add-menu').css('display', 'none');
+            $('#sorting-box').css('display', 'none');
         }
+
+
+        function getSorted(sort) {
+            $.ajax({
+                type: "GET",
+                url: "/product/search?sort=" + sort,
+                success: function (result) {
+                    $('#table').append("<tr><th>Идентификатор</th><th>Название</th> </tr>");
+                    $.each(result,
+                        function (i, product) {
+                            $('#table').append("<tr> <td> <a href=\"/admin/product/" + product.id + "\">" + product.id + "</a> </td> <td> <a href=\"/admin/product/" + product.id + "\">" + product.title + "</a> </td> </tr>");
+                        });
+                },
+                error: function (e) {
+                    $("#table").html("<strong>Не найдено(</strong>");
+                }
+            });
+        }
+
 
         function getProducts() {
             $.ajax({

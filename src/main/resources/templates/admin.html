@@ -61,6 +61,19 @@
                     </div>
                 </div>
 
+                <div class="sorting-box" id="sorting-box">
+                    <form>
+                        <label for="sorting"> </label>
+                        <select name="sort" id="sorting">
+                            <option value="price-low">Сначала дешевые</option>
+                            <option value="price-high">Сначала дорогие</option>
+                            <option value="new">Новые</option>
+                            <option value="alphabetic">По алфавиту</option>
+                        </select>
+                        <input id="sort-btn" type="submit" value="↻" />
+                    </form>
+                </div>
+
                 <div class="info" th:if="${type == 'product'}">
                     <h2>Информация о игре </h2>
                     <p th:text="'id: ' + ${product.id}"></p>

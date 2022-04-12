@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Service
@@ -86,6 +87,29 @@ public class ProductServiceImpl extends AbstractService<Product, ProductDto, Lon
         }
 
         return simpleMapper.toDto(repository.findByTitleContainingAndCategoryInAndGenreIn(title, categories, genres));
+    }
+
+    @Override
+    public Collection<SimpleProductDto> getByTitleOrderBy(String title, String order) {
+
+        Collection<Product> result = new ArrayList<>();
+
+        switch (order) {
+            case "price-high":
+                result = repository.findAllByTitleContainingOrderByPriceDesc(title);
+                break;
+            case "price-low":
+                result = repository.findAllByTitleContainingOrderByPrice(title);
+                break;
+            case "new":
+                result = repository.findAllByTitleContainingOrderByMetadata(title);
+                break;
+            case "alphabetic":
+                result = repository.findAllByTitleContainingOrderByTitle(title);
+                break;
+        }
+
+        return simpleMapper.toDto(result);
     }
 
     @Override

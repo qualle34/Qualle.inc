@@ -250,14 +250,14 @@ a[data-toggle="collapse"] {
 .info .update a span {
     padding: 6px 11px 7px;
     background-color: white;
-    color: #2c95ff;
+    color: #00b0ff;
     border: 0;
     font-size: 16px !important;
     transition: background-color 0.25s linear;
 }
 
 .info .update a span:hover {
-    background-color: #2c95ff;
+    background-color: #00b0ff;
     color: white;
 }
 
@@ -282,6 +282,36 @@ a[data-toggle="collapse"] {
 }
 
 
+/*  sorting  */
+/**************************************************/
+.sorting-box {
+}
+
+.sorting-box select {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    outline: 0;
+    background: #00b0ff;
+    color: white;
+    border: 0;
+    padding: 10px;
+    border-radius: 3px;
+
+    font-size: 14px;
+}
+
+.sorting-box input {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    outline: 0;
+    background: #00b0ff;
+    color: white;
+    border: 0;
+    padding: 10px;
+    border-radius: 3px;
+
+    font-size: 15px;
+}
 
 
 

@@ -1,9 +1,9 @@
 package com.inc.qualle.service;
 
 import com.inc.qualle.model.dto.ProductDto;
-import com.inc.qualle.model.dto.SimpleProductDto;
 import com.inc.qualle.model.dto.SaveProductDto;
-import org.springframework.data.repository.query.Param;
+import com.inc.qualle.model.dto.SimpleProductDto;
+import com.inc.qualle.model.entity.Product;
 
 import java.util.Collection;
 
@@ -22,6 +22,8 @@ public interface ProductService extends BaseService<ProductDto, Long> {
     Collection<SimpleProductDto> getByTitle(String title);
 
     Collection<SimpleProductDto> getByTitleAndCategoryAndGenre(String title, Collection<Long> categories, Collection<Long> genres);
+
+    Collection<SimpleProductDto> getByTitleOrderBy(String title, String order);
 
     void save(SaveProductDto dto);
 }
