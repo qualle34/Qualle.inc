@@ -30,6 +30,7 @@ public class AdminController {
     private final UserService userService;
     private final AdminService adminService;
     private final ReportService reportService;
+    private final DatabaseBackupService backupService;
 
     @GetMapping(value = "/admin")
     public String getAdminPage(Model model, Authentication authentication) {
@@ -276,6 +277,12 @@ public class AdminController {
 
     @GetMapping(value = "/admin/call/{value}")
     public String executeQuery(@PathVariable String value) {
+
+        if ("backup".equals(value)) {
+            backupService.backup();
+            return "admin";
+        }
+
         adminService.executeQuery("CALL " + value);
         return "admin";
     }

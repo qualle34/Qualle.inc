@@ -14,8 +14,8 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     @Query("FROM Product g JOIN FETCH g.category c")
     Collection<Product> findAllWithCategory();
 
-    @Query("FROM Product g")
-    Collection<Product> findAllSimple();
+    @Query("FROM Product g JOIN FETCH g.category c JOIN FETCH g.image i")
+    Collection<Product> findAllWithCategoryAndImage();
 
     Collection<Product> findByTitleContaining(String title);
 

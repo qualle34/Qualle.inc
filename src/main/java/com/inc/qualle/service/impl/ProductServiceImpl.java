@@ -44,7 +44,7 @@ public class ProductServiceImpl extends AbstractService<Product, ProductDto, Lon
 
     @Override
     public Collection<SimpleProductDto> getAllSimple() {
-        return simpleMapper.toDto(repository.findAllSimple());
+        return simpleMapper.toDto(repository.findAllWithCategoryAndImage());
     }
 
     @Override

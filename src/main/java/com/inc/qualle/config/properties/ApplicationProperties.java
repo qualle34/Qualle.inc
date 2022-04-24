@@ -13,4 +13,5 @@ public class ApplicationProperties {
 
     private String folderName;
     private ReportProperties report;
+    private DatabaseProperties database;
 }

@@ -3,6 +3,7 @@ spring:
     url: jdbc:mysql://localhost:3306/qualleinc?serverTimezone=UTC
     username: qualle
     password: 43q21
+    database: qualleinc
   jpa:
     show-sql: true
   liquibase:
@@ -16,3 +17,8 @@ application:
   folder-name: BD
   report:
     output-path: report/
+  database:
+    file: S:\University\22\BD\backup\backup.sql
+    container: deploy_db_1
+    restore-command: docker exec ${application.database.container} mysql --user=${spring.datasource.username} --password=${spring.datasource.password} ${spring.datasource.database} < ${application.database.file}
+    backup-command: docker exec ${application.database.container} mysqldump --user=${spring.datasource.username} --password=${spring.datasource.password} ${spring.datasource.database}
