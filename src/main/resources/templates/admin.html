@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>Qualle.inc | Admin</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../static/css/admin.css" th:href="@{/css/admin.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/header.css" th:href="@{/css/header.css}"/>
+
+    <script src="../js/common.js" type="text/javascript"></script>
+    <script src="../js/admin.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div id="wrapper">
+
+    <div th:insert="fragments/header :: header"></div>
+
+    <div class="wrapper d-flex align-items-stretch">
+
+        <nav id="sidebar" th:insert="fragments/sidebar :: sidebar"></nav>
+
+        <div id="content" class="p-4">
+
+            <div class="box">
+
+                <div id="add-menu">
+                    <div class="add-box">
+                        <a href="/admin/product/add">Добавить товар</a>
+                    </div>
+
+                    <div class="add-box">
+                        <a href="/admin/category/add">Добавить категорию</a>
+                    </div>
+
+                    <div class="add-box">
+                        <a href="/admin/genre/add">Добавить жанр</a>
+                    </div>
+
+                    <div class="add-box">
+                        <a href="/admin/developer/add">Добавить разработчика</a>
+                    </div>
+
+                    <div class="add-box">
+                        <a href="/admin/vacancy/add">Добавить вакансию</a>
+                    </div>
+
+                    <div class="add-box">
+                        <a href="/admin/image/add">Добавить изображение</a>
+                    </div>
+
+                    <div class="add-box">
+                        <a href="/admin/product/report">Отчет по товарам</a>
+                    </div>
+                </div>
+
+                <div class="sorting-box" id="sorting-box">
+                    <form>
+                        <label for="sorting"> </label>
+                        <select name="sort" id="sorting">
+                            <option value="price-low">Сначала дешевые</option>
+                            <option value="price-high">Сначала дорогие</option>
+                            <option value="new">Новые</option>
+                            <option value="alphabetic">По алфавиту</option>
+                        </select>
+                        <input id="sort-btn" type="submit" value="↻"/>
+                    </form>
+                </div>
+
+                <div class="info" th:if="${type == 'product'}">
+                    <h2>Информация о игре </h2>
+                    <p th:text="'id: ' + ${product.id}"></p>
+                    <p th:text="'Название: ' + ${product.title}"></p>
+                    <p th:text="'Описание: ' + ${product.description}"></p>
+                    <p th:text="'Цена: ' + ${product.price}"></p>
+                    <p th:text="'Разработчик: ' + ${product.developer.title}"></p>
+                    <p th:text="'Категория: ' + ${product.category.value}"></p>
+                    <p th:text="'Жанр: ' + ${product.genre.value}"></p>
+                    <p th:text="'Ссылка на логотип: ' + ${product.image.link}"></p>
+
+                    <div class="update">
+                        <a th:href="${'/admin/product/'+ product.id +'/update'}"><span
+                                style='font-size:20px;'>&#x270e;</span></a>
+                    </div>
+
+                    <div class="delete">
+                        <form action="#" th:action="@{'/admin/product/delete'}" method="post">
+                            <input th:value="${product.id}" type="hidden" name="productId"/>
+                            <input type="submit" class="small-delete-button" value="X"/>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="info" th:if="${type == 'category'}">
+                    <h2>Информация о категории</h2>
+                    <p th:text="'id: ' + ${category.id}"></p>
+                    <p th:text="'Заголовок: ' + ${category.value}"></p>
+                </div>
+
+                <div class="info" th:if="${type == 'genre'}">
+                    <h2>Информация о жанрах</h2>
+                    <p th:text="'id: ' + ${genre.id}"></p>
+                    <p th:text="'Заголовок: ' + ${genre.value}"></p>
+                </div>
+
+                <div class="info" th:if="${type == 'developer'}">
+                    <h2>Информация о разработчике</h2>
+                    <p th:text="'id: ' + ${developer.id}"></p>
+                    <p th:text="'Заголовок: ' + ${developer.title}"></p>
+                    <p th:text="'Описание: ' + ${developer.description}"></p>
+                    <p th:text="'Контактные данные: ' + ${developer.contacts}"></p>
+                    <p th:text="'Адрес: ' + ${developer.address}"></p>
+                </div>
+
+                <div class="info" th:if="${type == 'feedback'}">
+                    <h2>Информация о сообщении</h2>
+                    <p th:text="'id: ' + ${feedback.id}"></p>
+                    <p th:text="'Имя: ' + ${feedback.title}"></p>
+                    <p th:text="'Email: ' + ${feedback.description}"></p>
+                </div>
+
+                <div class="info" th:if="${type == 'vacancy'}">
+                    <h2>Информация о сообщении</h2>
+                    <p th:text="'id: ' + ${vacancy.id}"></p>
+                    <p th:text="'Имя: ' + ${vacancy.title}"></p>
+                    <p th:text="'Email: ' + ${vacancy.description}"></p>
+                </div>
+
+                <div class="info" th:if="${type == 'image'}">
+                    <h2>Информация о сообщении</h2>
+                    <p th:text="'id: ' + ${image.id}"></p>
+                    <p th:text="'Имя: ' + ${image.name}"></p>
+                    <p th:text="'Email: ' + ${image.link}"></p>
+                </div>
+
+                <div class="info" th:if="${type == 'user'}">
+                    <h2>Информация о пользователе</h2>
+                    <p th:text="'id: ' + ${user.id}"></p>
+                    <p th:text="'Имя: ' + ${user.name}"></p>
+                    <p th:text="'Фамилия: ' + ${user.lastname}"></p>
+                    <p th:text="'Телефон: ' + ${user.phone}"></p>
+                    <p th:text="'Email: ' + ${user.email}"></p>
+                </div>
+
+                <table id="table" style="background: white; box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);">
+
+                </table>
+
+                <div id="db_functions">
+                    <div class="add-box">
+                        <a href="/admin/call/clear_sessions">Удалить все сессии пользователей</a>
+                    </div>
+
+                    <div class="add-box">
+                        <a href="/admin/call/clear_old_sessions(11)">Удалить все старые сессии пользователей</a>
+                    </div>
+
+                    <div class="add-box">
+                        <a href="/admin/call/clear_sessions_for(11)">Удалить все свои сессии</a>
+                    </div>
+
+                    <div class="add-box">
+                        <a href="/admin/call/clear_sessions_for(11)">Удалить все свои старые сессии</a>
+                    </div>
+
+                    <div class="add-box">
+                        <a href="/admin/call/get_last_login_users_count">Кол. пользователей которые входили за 30 дней</a>
+                    </div>
+
+                    <div class="add-box">
+                        <a href="/admin/call/get_all_purchases_count">Кол. проданных товаров</a>
+                    </div>
+
+                    <div class="add-box">
+                        <a href="/admin/call/get_purchases_count_for(1)">Кол. продаж для товара 1</a>
+                    </div>
+
+                    <div class="add-box">
+                        <a href="/admin/call/get_most_popular_product_id">Id самой продаваемой игры</a>
+                    </div>
+
+                    <div class="add-box">
+                        <a href="/admin/call/backup">Создать резервную копию БД</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
+

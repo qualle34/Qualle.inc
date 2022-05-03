@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>Qualle.inc | Вакансии</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="../static/css/vacancies.css" th:href="@{/css/vacancies.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/header.css" th:href="@{/css/header.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/css/footer.css" th:href="@{/css/footer.css}"/>
+
+    <script src="../js/common.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div id="wrapper">
+
+    <div th:insert="fragments/header :: header"></div>
+
+    <section class="info box">
+
+        <div class="vacancy-info-inner">
+            <h1 class="title"> Доступные вакансии </h1>
+        </div>
+
+    </section>
+
+    <section class="vacancies-box box">
+
+        <div class="vacancies" >
+
+            <div class="vacancy" th:each="vacancy : ${vacancies}">
+                <a href="/feedback"><p class="title" th:text="${vacancy.title}"></p></a>
+                <p class="description" th:text="${vacancy.description}"></p>
+            </div>
+        </div>
+
+    </section>
+
+    <div th:insert="fragments/footer :: footer"></div>
+
+</div>
+</body>
+</html>

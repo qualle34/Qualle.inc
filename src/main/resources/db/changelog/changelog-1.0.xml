@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet author="Anton Samoilo" id="2022-03-19_20:30-1">
+        <sqlFile path="db/data/create.sql" encoding="UTF-8"
+                 splitStatements="true"
+                 stripComments="true"/>
+    </changeSet>
+
+    <changeSet author="Anton Samoilo" id="2022-03-20_9:30-2">
+        <sqlFile path="db/data/metadata.sql" encoding="UTF-8"
+                 splitStatements="true"
+                 endDelimiter="|"
+                 stripComments="true"/>
+    </changeSet>
+
+    <changeSet author="Anton Samoilo" id="2022-04-05_19:30-1">
+        <sqlFile path="db/data/functions.sql" encoding="UTF-8"
+                 splitStatements="true"
+                 endDelimiter="|"
+                 stripComments="true"/>
+    </changeSet>
+
+    <changeSet author="Anton Samoilo" id="2022-05-03_19:30-1">
+        <sqlFile path="db/data/procedures.sql" encoding="UTF-8"
+                 splitStatements="true"
+                 endDelimiter="|"
+                 stripComments="true"/>
+    </changeSet>
+
+</databaseChangeLog>
