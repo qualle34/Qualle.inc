@@ -24,11 +24,11 @@
                  stripComments="true"/>
     </changeSet>
 
-<!--    <changeSet author="Anton Samoilo" id="2022-04-09_9:30-1">-->
-<!--        <sqlFile path="db/data/logging.sql" encoding="UTF-8"-->
-<!--                 splitStatements="true"-->
-<!--                 endDelimiter="|"-->
-<!--                 stripComments="true"/>-->
-<!--    </changeSet>-->
+    <changeSet author="Anton Samoilo" id="2022-05-03_19:30-1">
+        <sqlFile path="db/data/procedures.sql" encoding="UTF-8"
+                 splitStatements="true"
+                 endDelimiter="|"
+                 stripComments="true"/>
+    </changeSet>
 
 </databaseChangeLog>

@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `qualleinc`.`developer` (
   `title` VARCHAR(45) NOT NULL,
   `description` VARCHAR(256) NULL,
   `contacts` VARCHAR(256) NULL,
-  `address` VARCHAR(45) NULL,
+  `address` VARCHAR(256) NULL,
   `metadata_id` BIGINT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_developer_metadata_idx` (`metadata_id` ASC) VISIBLE,
